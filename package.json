@@ -1,6 +1,6 @@
 {
   "name": "lghgp-components-library",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -23,7 +23,10 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "bump": "standard-version --skip-tag",
+    "release": "git flow release start `sh nextver.sh`",
+    "publish": "git flow release finish `sh ver.sh"
   },
   "dependencies": {
     "@stencil/core": "^4.7.0"
@@ -31,9 +34,17 @@
   "devDependencies": {
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "puppeteer": "21.1.1"
+    "puppeteer": "21.1.1",
+    "standard-version": "^9.5.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
