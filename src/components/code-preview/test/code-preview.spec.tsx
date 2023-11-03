@@ -9,9 +9,6 @@ describe('code-preview', () => {
     });
     expect(page.root).toEqualHtml(`
       <code-preview>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
       </code-preview>
     `);
   });
