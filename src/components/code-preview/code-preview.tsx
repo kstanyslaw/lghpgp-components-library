@@ -16,6 +16,13 @@ export class CodePreview {
    */
   @Prop()
   code: string[];
+  @Prop()
+  lang: string;
+
+  get codeHighlightClass (): string {
+    // TO-DO: call for method in utils to get the right code highlights css class
+    return 'language-javascript'; //TO-DO;
+  }
 
   render() {
     if (!this.code || this.code.length === 0) {
@@ -25,7 +32,7 @@ export class CodePreview {
     return (
       <tbody>
         {this.code.map((row: string, index: number) => <tr>
-          <td>{index + 1}</td>  <td class={'blob-code-inner'}>{row}</td>
+          <td>{index + 1}</td>  <td class={'blob-code-inner ' + this.codeHighlightClass}>{row}</td>
         </tr>)}
       </tbody>
     );
