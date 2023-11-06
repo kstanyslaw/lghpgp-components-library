@@ -2,6 +2,7 @@ import { Component, Prop, h } from '@stencil/core';
 
 /**
  * @param {string[]} code - A property that takes an array of lines of code
+ * @param {string} lang - A programing language of this code
  * @returns A table of strings line by line.
  * Uses {index + 1} to display the line number.
  */
@@ -16,6 +17,10 @@ export class CodePreview {
    */
   @Prop()
   code: string[];
+
+  /**
+   * @type {string}
+   */
   @Prop()
   lang: string;
 

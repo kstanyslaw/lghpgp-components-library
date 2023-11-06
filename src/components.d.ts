@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
      * @returns A table of strings line by line.
      * Uses {index + 1} to display the line number.
      */
@@ -16,6 +17,10 @@ export namespace Components {
           * @type {string[]}
          */
         "code": string[];
+        /**
+          * @type {string}
+         */
+        "lang": string;
     }
     interface MyComponent {
         /**
@@ -35,6 +40,7 @@ export namespace Components {
 declare global {
     /**
      * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
      * @returns A table of strings line by line.
      * Uses {index + 1} to display the line number.
      */
@@ -58,6 +64,7 @@ declare global {
 declare namespace LocalJSX {
     /**
      * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
      * @returns A table of strings line by line.
      * Uses {index + 1} to display the line number.
      */
@@ -66,6 +73,10 @@ declare namespace LocalJSX {
           * @type {string[]}
          */
         "code"?: string[];
+        /**
+          * @type {string}
+         */
+        "lang"?: string;
     }
     interface MyComponent {
         /**
@@ -92,6 +103,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             /**
              * @param code - A property that takes an array of lines of code
+             * @param lang - A programing language of this code
              * @returns A table of strings line by line.
              * Uses {index + 1} to display the line number.
              */
