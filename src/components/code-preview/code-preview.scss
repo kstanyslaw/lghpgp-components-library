@@ -1,3 +1,13 @@
 :host {
   display: block;
 }
+
+.blob-code-inner {
+  display: table-cell;
+  overflow: visible;
+  // font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; // TO-DO: set to Logseq global var
+  // font-size: 12px; // TO-DO: set to Logseq global var
+  // color: var(--fgColor-default, var(--color-fg-default));  // TO-DO: set to Logseq global var
+  word-wrap: anywhere;
+  white-space: pre;
+}

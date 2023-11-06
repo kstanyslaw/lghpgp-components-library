@@ -6,7 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
     interface CodePreview {
+        /**
+          * @type {string[]}
+         */
         "code": string[];
     }
     interface MyComponent {
@@ -25,6 +33,11 @@ export namespace Components {
     }
 }
 declare global {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
     interface HTMLCodePreviewElement extends Components.CodePreview, HTMLStencilElement {
     }
     var HTMLCodePreviewElement: {
@@ -43,7 +56,15 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
     interface CodePreview {
+        /**
+          * @type {string[]}
+         */
         "code"?: string[];
     }
     interface MyComponent {
@@ -69,6 +90,11 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * @param code - A property that takes an array of lines of code
+             * @returns A table of strings line by line.
+             * Uses {index + 1} to display the line number.
+             */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
