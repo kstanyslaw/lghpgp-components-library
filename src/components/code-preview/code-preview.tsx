@@ -35,11 +35,14 @@ export class CodePreview {
     }
 
     return (
-      <tbody>
-        {this.code.map((row: string, index: number) => <tr>
-          <td>{index + 1}</td>  <td class={'blob-code-inner ' + this.codeHighlightClass}>{row}</td>
-        </tr>)}
-      </tbody>
+      <table>
+        <tbody class={'code'}>
+          {this.code.map((row: string, index: number) => <tr>
+            <td class={'blob-num'}>{index + 1}</td>
+            <td class={'blob-code-inner ' + this.codeHighlightClass}>{row}</td>
+          </tr>)}
+        </tbody>
+      </table>
     );
   }
 
