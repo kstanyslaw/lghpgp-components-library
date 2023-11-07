@@ -3,7 +3,7 @@ import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css',
+  styleUrls: ['my-component.css', 'style.css'],
   shadow: true,
 })
 export class MyComponent {
