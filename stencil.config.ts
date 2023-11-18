@@ -25,4 +25,5 @@ export const config: Config = {
   testing: {
     browserHeadless: "new",
   },
+  globalStyle: 'src/style.css'
 };
