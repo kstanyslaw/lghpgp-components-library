@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css");
+@import "../../../node_modules/prismjs/themes/prism.css";
 
 :host {
   display: block;
@@ -25,4 +25,28 @@
   min-width: 2rem;
   width: 1%;
   padding: 0 .6rem;
+}
+
+pre {
+  // background: #303030;
+  // color: #f1f1f1;
+  padding: 10px 16px;
+  counter-reset: line;
+}
+
+pre code {
+  display: block;
+  line-height: 1.5rem;
+}
+
+pre code:before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  padding: 0 .5em;
+  margin-right: .5em;
+  min-width: 1rem;
+  text-align: end;
+  width: 1%;
 }

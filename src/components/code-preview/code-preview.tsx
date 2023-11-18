@@ -1,4 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
+import Prism from 'prismjs';
 
 /**
  * @param {string[]} code - A property that takes an array of lines of code
@@ -35,14 +36,12 @@ export class CodePreview {
     }
 
     return (
-      <table>
-        <tbody class={'code'}>
-          {this.code.map((row: string, index: number) => <tr>
-            <td class={'blob-num'}>{index + 1}</td>
-            <td class={'blob-code-inner ' + this.codeHighlightClass}>{row}</td>
-          </tr>)}
-        </tbody>
-      </table>
+      <pre>
+        {this.code.map((row: string) => {
+          const highlighted = Prism.highlight(row, Prism.languages.javascript, 'javascript');
+          return <code innerHTML={highlighted} class={'lang-js'}></code>
+        })}
+      </pre>
     );
   }
 
