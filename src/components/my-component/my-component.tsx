@@ -39,6 +39,6 @@ export class MyComponent {
 
   render() {
     // return <div>Hello, World! I'm {this.getText()}</div>;
-    return <code-preview code={this.DUMMY_CODE} />;
+    return <code-preview code={this.DUMMY_CODE} codeLang='javascript'/>;
   }
 }

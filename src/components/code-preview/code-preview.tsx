@@ -23,12 +23,7 @@ export class CodePreview {
    * @type {string}
    */
   @Prop()
-  lang: string;
-
-  get codeHighlightClass (): string {
-    // TO-DO: call for method in utils to get the right code highlights css class
-    return 'language-javascript'; //TO-DO;
-  }
+  codeLang: string;
 
   render() {
     if (!this.code || this.code.length === 0) {
@@ -38,7 +33,7 @@ export class CodePreview {
     return (
       <pre>
         {this.code.map((row: string) => {
-          const highlighted = Prism.highlight(row, Prism.languages.javascript, 'javascript');
+          const highlighted = Prism.highlight(row, Prism.languages[this.codeLang], this.codeLang);
           return <code innerHTML={highlighted} class={'lang-js'}></code>
         })}
       </pre>
