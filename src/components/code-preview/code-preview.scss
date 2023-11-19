@@ -1,36 +1,18 @@
-@import "../../../node_modules/prismjs/themes/prism.css";
+@import '../../../node_modules/prismjs/themes/prism.css';
 
 :host {
   display: block;
+  background-color: var(--ls-primary-background-color);
+  color: var(--ls-primary-text-color);
 }
 
 .code {
   font-family: monospace;
   // font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; // TO-DO: set to Logseq global var
   // font-size: 12px; // TO-DO: set to Logseq global var
-  // color: var(--fgColor-default, var(--color-fg-default));  // TO-DO: set to Logseq global var
-}
-
-.blob-code-inner {
-  display: table-cell;
-  overflow: visible;
-  word-wrap: anywhere;
-  white-space: pre;
-  padding: 0 .6rem;
-}
-
-.blob-num {
-  user-select: none;
-  text-align: right;
-  min-width: 2rem;
-  width: 1%;
-  padding: 0 .6rem;
 }
 
 pre {
-  // background: #303030;
-  // color: #f1f1f1;
-  padding: 10px 16px;
   counter-reset: line;
 }
 
@@ -40,13 +22,75 @@ pre code {
 }
 
 pre code:before {
-  counter-increment: line;
-  content: counter(line);
+  background-color: var(--color-level-1);
   display: inline-block;
-  border-right: 1px solid #ddd;
   padding: 0 .5em;
   margin-right: .5em;
-  min-width: 1rem;
-  text-align: end;
+  min-width: 1.5rem;
   width: 1%;
+  counter-increment: line;
+  content: counter(line);
+  text-align: end;
+}
+
+
+// PRISM RULES
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+.token.punctuation {
+	color: #999;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: var(--color-pink-700);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: var(--color-lime-500);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--color-violet-10);
+  /* This background color was intended by the author of this theme. */
+  background: none;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: var(--color-orange-9);
+}
+
+.token.function,
+.token.class-name {
+	color: var(--color-teal-400);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: var(--color-amber-500);
 }

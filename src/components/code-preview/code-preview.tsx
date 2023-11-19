@@ -34,7 +34,7 @@ export class CodePreview {
       <pre>
         {this.code.map((row: string) => {
           const highlighted = Prism.highlight(row, Prism.languages[this.codeLang], this.codeLang);
-          return <code innerHTML={highlighted} class={'lang-js'}></code>
+          return <code innerHTML={highlighted}></code>
         })}
       </pre>
     );
