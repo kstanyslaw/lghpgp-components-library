@@ -6,6 +6,22 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
+    interface CodePreview {
+        /**
+          * @type {string[]} - Code Raw
+         */
+        "code": string[];
+        /**
+          * @type {string} - Code language
+         */
+        "codeLang": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +38,18 @@ export namespace Components {
     }
 }
 declare global {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
+    interface HTMLCodePreviewElement extends Components.CodePreview, HTMLStencilElement {
+    }
+    var HTMLCodePreviewElement: {
+        prototype: HTMLCodePreviewElement;
+        new (): HTMLCodePreviewElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +57,27 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "code-preview": HTMLCodePreviewElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    /**
+     * @param code - A property that takes an array of lines of code
+     * @param lang - A programing language of this code
+     * @returns A table of strings line by line.
+     * Uses {index + 1} to display the line number.
+     */
+    interface CodePreview {
+        /**
+          * @type {string[]} - Code Raw
+         */
+        "code"?: string[];
+        /**
+          * @type {string} - Code language
+         */
+        "codeLang"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +93,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "code-preview": CodePreview;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +101,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * @param code - A property that takes an array of lines of code
+             * @param lang - A programing language of this code
+             * @returns A table of strings line by line.
+             * Uses {index + 1} to display the line number.
+             */
+            "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
