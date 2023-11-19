@@ -1,5 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+// import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
@@ -22,9 +22,9 @@ export class MyComponent {
    */
   @Prop() last: string;
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
-  }
+  // private getText(): string {
+  //   return format(this.first, this.middle, this.last);
+  // }
 
   DUMMY_CODE: string[] = (`var promisify =
   (fn) =>
