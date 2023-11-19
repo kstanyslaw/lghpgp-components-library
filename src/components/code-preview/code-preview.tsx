@@ -14,13 +14,13 @@ import Prism from 'prismjs';
 export class CodePreview {
 
   /**
-   * @type {string[]}
+   * @type {string[]} - Code Raw
    */
   @Prop()
   code: string[];
 
   /**
-   * @type {string}
+   * @type {string} - Code language
    */
   @Prop()
   codeLang: string;

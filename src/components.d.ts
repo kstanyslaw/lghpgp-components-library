@@ -14,13 +14,13 @@ export namespace Components {
      */
     interface CodePreview {
         /**
-          * @type {string[]}
+          * @type {string[]} - Code Raw
          */
         "code": string[];
         /**
-          * @type {string}
+          * @type {string} - Code language
          */
-        "lang": string;
+        "codeLang": string;
     }
     interface MyComponent {
         /**
@@ -70,13 +70,13 @@ declare namespace LocalJSX {
      */
     interface CodePreview {
         /**
-          * @type {string[]}
+          * @type {string[]} - Code Raw
          */
         "code"?: string[];
         /**
-          * @type {string}
+          * @type {string} - Code language
          */
-        "lang"?: string;
+        "codeLang"?: string;
     }
     interface MyComponent {
         /**
