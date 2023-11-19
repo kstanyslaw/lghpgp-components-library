@@ -22,6 +22,8 @@ export namespace Components {
          */
         "codeLang": string;
     }
+    interface MetadataHeader {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -50,6 +52,12 @@ declare global {
         prototype: HTMLCodePreviewElement;
         new (): HTMLCodePreviewElement;
     };
+    interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
+    }
+    var HTMLMetadataHeaderElement: {
+        prototype: HTMLMetadataHeaderElement;
+        new (): HTMLMetadataHeaderElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -58,6 +66,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
+        "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
     }
 }
@@ -78,6 +87,8 @@ declare namespace LocalJSX {
          */
         "codeLang"?: string;
     }
+    interface MetadataHeader {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -94,6 +105,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;
+        "metadata-header": MetadataHeader;
         "my-component": MyComponent;
     }
 }
@@ -108,6 +120,7 @@ declare module "@stencil/core" {
              * Uses {index + 1} to display the line number.
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
+            "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
