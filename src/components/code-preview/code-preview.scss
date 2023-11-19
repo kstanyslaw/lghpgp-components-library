@@ -26,7 +26,7 @@ pre code:before {
   display: inline-block;
   padding: 0 .5em;
   margin-right: .5em;
-  min-width: 1.5rem;
+  min-width: 2rem;
   width: 1%;
   counter-increment: line;
   content: counter(line);

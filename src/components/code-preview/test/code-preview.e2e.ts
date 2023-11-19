@@ -9,7 +9,7 @@ fdescribe('code-preview', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('renders code correctly', async () => {
+  it('renders code correctly with Prism highlighting', async () => {
     const page = await newE2EPage();
 
     await page.setContent('<code-preview></code-preview>');
@@ -22,21 +22,28 @@ fdescribe('code-preview', () => {
      */
     const mockProp = ['const a = 1;', 'const b = 2;'];
     component.setProperty('code', mockProp);
+    component.setProperty('codeLang', 'javascript');
     await page.waitForChanges();
 
-    const rows = await page.findAll('code-preview tbody tr');
-    expect(rows.length).toBe(2);
+    const pre = await component.find('pre');
+    expect(pre).not.toBeNull();
 
-    /**
-     * Check first row of code
-     */
-    expect(await rows[0].find('td:nth-child(1)')).toEqualText('1');
-    expect(await rows[0].find('td:nth-child(2)')).toEqualText('const a = 1;');
+    const codeBlocks = await component.findAll('code');
+    expect(codeBlocks.length).toBe(2);
 
-    /**
-     * Check second row of code
-     */
-    expect(await rows[1].find('td:nth-child(1)')).toEqualText('2');
-    expect(await rows[1].find('td:nth-child(2)')).toEqualText('const b = 2;');
+    expect(codeBlocks[0].innerHTML).toContain('<span class="token keyword">const</span>');
+    expect(codeBlocks[1].innerHTML).toContain('<span class="token keyword">const</span>');
+  });
+
+  it('handles empty code array', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<code-preview></code-preview>');
+    const component = await page.find('code-preview');
+
+    component.setProperty('code', []);
+    component.setProperty('codeLang', 'javascript');
+    await page.waitForChanges();
+
+    expect(component.innerHTML).toEqualText("");
   });
 })
