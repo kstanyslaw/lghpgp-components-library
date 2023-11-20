@@ -7,39 +7,52 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class MetadataHeader {
   @Prop()
-  files: number;
+  files!: number;
 
   @Prop()
-  forks: number;
+  forks!: number;
 
   @Prop()
-  comments: number;
+  comments!: number;
 
   @Prop()
-  stars: number;
+  stars!: number;
+
+  @Prop()
+  fileName!: string;
+  @Prop()
+  gistUrl!: string;
+
+  @Prop()
+  userName!: string;
+  @Prop()
+  userNameUrl!: string;
+
+  @Prop()
+  lastActive: Date = new Date();
+
+  @Prop()
+  isSecret!: boolean;
+
+  @Prop()
+  avatarUrl: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
 
   render() {
-    // TEST
-    this.files = 1;
-    this.forks = 0;
-    this.comments = 3;
-    this.stars = 2;
-    // TEST
 
     return (
       <Host class={'d-flex space-between'}>
         <div class={'d-flex items-center flex-order-1 left'}>
-          <div class={'avatar'}></div>
+          <div class={'avatar'} style={{'background-image': `url(${this.avatarUrl})`}}></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
-              <a href='#'>name</a>
+              <a href={this.userNameUrl}>{this.userName}</a>
               {' / '}
-              <a href='#'><strong>file</strong></a>
+              <a href={this.gistUrl}><strong>{this.fileName}</strong></a>
 
-              <span title='Only those with the link can see this gist.' class={"label"}>Secret</span>
+              {this.isSecret && <span title='Only those with the link can see this gist.' class={'label'}>Secret</span>}
             </span>
 
-            <div class={'fg-color-muted fg-small'}>Last active <relative-time>month ago</relative-time> </div>
+            <div class={'fg-color-muted fg-small'}>Last active <relative-time timestamp={this.lastActive}>month ago</relative-time> </div>
           </div>
         </div>
 

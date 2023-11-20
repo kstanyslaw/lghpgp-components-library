@@ -23,10 +23,17 @@ export namespace Components {
         "codeLang": string;
     }
     interface MetadataHeader {
+        "avatarUrl": string;
         "comments": number;
+        "fileName": string;
         "files": number;
         "forks": number;
+        "gistUrl": string;
+        "isSecret": boolean;
+        "lastActive": Date;
         "stars": number;
+        "userName": string;
+        "userNameUrl": string;
     }
     interface MyComponent {
         /**
@@ -92,10 +99,17 @@ declare namespace LocalJSX {
         "codeLang"?: string;
     }
     interface MetadataHeader {
-        "comments"?: number;
-        "files"?: number;
-        "forks"?: number;
-        "stars"?: number;
+        "avatarUrl"?: string;
+        "comments": number;
+        "fileName": string;
+        "files": number;
+        "forks": number;
+        "gistUrl": string;
+        "isSecret": boolean;
+        "lastActive"?: Date;
+        "stars": number;
+        "userName": string;
+        "userNameUrl": string;
     }
     interface MyComponent {
         /**
