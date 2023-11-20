@@ -52,7 +52,7 @@ export class MetadataHeader {
               {this.isSecret && <span title='Only those with the link can see this gist.' class={'label'}>Secret</span>}
             </span>
 
-            <div class={'fg-color-muted fg-small'}>Last active <relative-time timestamp={this.lastActive}>month ago</relative-time> </div>
+            <div class={'fg-color-muted fg-small'}>Last active <relative-time timestamp={this.lastActive} /> </div>
           </div>
         </div>
 

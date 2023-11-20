@@ -49,6 +49,9 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface RelativeTime {
+        "timestamp": Date;
+    }
 }
 declare global {
     /**
@@ -75,10 +78,17 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLRelativeTimeElement extends Components.RelativeTime, HTMLStencilElement {
+    }
+    var HTMLRelativeTimeElement: {
+        prototype: HTMLRelativeTimeElement;
+        new (): HTMLRelativeTimeElement;
+    };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
+        "relative-time": HTMLRelativeTimeElement;
     }
 }
 declare namespace LocalJSX {
@@ -125,10 +135,14 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface RelativeTime {
+        "timestamp": Date;
+    }
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
+        "relative-time": RelativeTime;
     }
 }
 export { LocalJSX as JSX };
@@ -144,6 +158,7 @@ declare module "@stencil/core" {
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
         }
     }
 }
