@@ -53,3 +53,14 @@ export function timeString(timestamp:Date): string {
       return 'a few seconds ago';
   }
 }
+
+export const DUMMY_CODE: string[] = (`var promisify =
+(fn) =>
+  (...args) =>
+    new Promise((resolve, reject) => {
+      fn(
+        ...args,
+        result => resolve(result),
+        error => reject(error)
+      );
+    });`).split('\n');

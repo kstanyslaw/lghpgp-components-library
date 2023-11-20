@@ -22,6 +22,8 @@ export namespace Components {
          */
         "codeLang": string;
     }
+    interface GistListItem {
+    }
     interface MetadataHeader {
         "avatarUrl": string;
         "comments": number;
@@ -66,6 +68,12 @@ declare global {
         prototype: HTMLCodePreviewElement;
         new (): HTMLCodePreviewElement;
     };
+    interface HTMLGistListItemElement extends Components.GistListItem, HTMLStencilElement {
+    }
+    var HTMLGistListItemElement: {
+        prototype: HTMLGistListItemElement;
+        new (): HTMLGistListItemElement;
+    };
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
     }
     var HTMLMetadataHeaderElement: {
@@ -86,6 +94,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
+        "gist-list-item": HTMLGistListItemElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -107,6 +116,8 @@ declare namespace LocalJSX {
           * @type {string} - Code language
          */
         "codeLang"?: string;
+    }
+    interface GistListItem {
     }
     interface MetadataHeader {
         "avatarUrl"?: string;
@@ -140,6 +151,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;
+        "gist-list-item": GistListItem;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -156,6 +168,7 @@ declare module "@stencil/core" {
              * Uses {index + 1} to display the line number.
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
+            "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
