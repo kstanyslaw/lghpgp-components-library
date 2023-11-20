@@ -23,6 +23,10 @@ export namespace Components {
         "codeLang": string;
     }
     interface MetadataHeader {
+        "comments": number;
+        "files": number;
+        "forks": number;
+        "stars": number;
     }
     interface MyComponent {
         /**
@@ -88,6 +92,10 @@ declare namespace LocalJSX {
         "codeLang"?: string;
     }
     interface MetadataHeader {
+        "comments"?: number;
+        "files"?: number;
+        "forks"?: number;
+        "stars"?: number;
     }
     interface MyComponent {
         /**
