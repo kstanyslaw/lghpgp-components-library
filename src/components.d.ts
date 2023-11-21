@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
@@ -21,6 +23,9 @@ export namespace Components {
           * @type {string} - Code language
          */
         "codeLang": string;
+    }
+    interface GistListItem {
+        "gistListItem": IGistListItem;
     }
     interface MetadataHeader {
         "avatarUrl": string;
@@ -53,6 +58,10 @@ export namespace Components {
         "timestamp": Date;
     }
 }
+export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGistListItemElement;
+}
 declare global {
     /**
      * @param code - A property that takes an array of lines of code
@@ -65,6 +74,23 @@ declare global {
     var HTMLCodePreviewElement: {
         prototype: HTMLCodePreviewElement;
         new (): HTMLCodePreviewElement;
+    };
+    interface HTMLGistListItemElementEventMap {
+        "gistSelected": string;
+    }
+    interface HTMLGistListItemElement extends Components.GistListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGistListItemElementEventMap>(type: K, listener: (this: HTMLGistListItemElement, ev: GistListItemCustomEvent<HTMLGistListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGistListItemElementEventMap>(type: K, listener: (this: HTMLGistListItemElement, ev: GistListItemCustomEvent<HTMLGistListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGistListItemElement: {
+        prototype: HTMLGistListItemElement;
+        new (): HTMLGistListItemElement;
     };
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
     }
@@ -86,6 +112,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
+        "gist-list-item": HTMLGistListItemElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -107,6 +134,10 @@ declare namespace LocalJSX {
           * @type {string} - Code language
          */
         "codeLang"?: string;
+    }
+    interface GistListItem {
+        "gistListItem"?: IGistListItem;
+        "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface MetadataHeader {
         "avatarUrl"?: string;
@@ -140,6 +171,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;
+        "gist-list-item": GistListItem;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -156,6 +188,7 @@ declare module "@stencil/core" {
              * Uses {index + 1} to display the line number.
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
+            "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;

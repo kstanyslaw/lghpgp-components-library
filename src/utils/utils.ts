@@ -1,3 +1,5 @@
+import { IGistListItem } from "../common/interfaces/gist-list-item.interface";
+
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
 }
@@ -52,4 +54,34 @@ export function timeString(timestamp:Date): string {
     default:
       return 'a few seconds ago';
   }
+}
+
+export const DUMMY_CODE: string[] = (`var promisify =
+(fn) =>
+  (...args) =>
+    new Promise((resolve, reject) => {
+      fn(
+        ...args,
+        result => resolve(result),
+        error => reject(error)
+      );
+    });`).split('\n');
+
+export const DUMMY_GIST_ITEM: IGistListItem = {
+  codePreviewRaw: DUMMY_CODE,
+  filesNumber: 1,
+  firstFileName: 'promisify.js',
+  codeLang: 'javascript',
+  lastActive: new Date("2023-10-24T11:53:42Z"),
+  description: "Dummy description",
+  forks: 0,
+  commentsNumber: 0,
+  stars: 0,
+  userName: "kstanylsaw",
+  avatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
+  gistUrl: "",
+  userNameUrl: "",
+  isSecret: true,
+  isUpdated: false,
+  gistId: "DummyID"
 }
