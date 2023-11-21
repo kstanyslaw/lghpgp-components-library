@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IGistListItem } from "./common/interfaces/IGistListItem";
-export { IGistListItem } from "./common/interfaces/IGistListItem";
+import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
@@ -58,6 +58,10 @@ export namespace Components {
         "timestamp": Date;
     }
 }
+export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGistListItemElement;
+}
 declare global {
     /**
      * @param code - A property that takes an array of lines of code
@@ -71,7 +75,18 @@ declare global {
         prototype: HTMLCodePreviewElement;
         new (): HTMLCodePreviewElement;
     };
+    interface HTMLGistListItemElementEventMap {
+        "gistSelected": string;
+    }
     interface HTMLGistListItemElement extends Components.GistListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGistListItemElementEventMap>(type: K, listener: (this: HTMLGistListItemElement, ev: GistListItemCustomEvent<HTMLGistListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGistListItemElementEventMap>(type: K, listener: (this: HTMLGistListItemElement, ev: GistListItemCustomEvent<HTMLGistListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGistListItemElement: {
         prototype: HTMLGistListItemElement;
@@ -122,6 +137,7 @@ declare namespace LocalJSX {
     }
     interface GistListItem {
         "gistListItem"?: IGistListItem;
+        "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface MetadataHeader {
         "avatarUrl"?: string;

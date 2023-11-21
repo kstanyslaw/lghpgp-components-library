@@ -1,6 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
-import { DUMMY_CODE } from '../../utils/utils';
-import { IGistListItem } from "../../common/interfaces/IGistListItem";
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
   tag: 'gist-list-item',
@@ -17,22 +15,22 @@ export class GistListItem {
       <Host>
         <div class={'mb-1'}>
           <metadata-header
-            files={0}
-            forks={0}
-            comments={0}
-            stars={0}
-            fileName='promisify.js'
-            userName='kstanyslaw'
-            avatarUrl='https://avatars.githubusercontent.com/u/15340653?v=4'
-            gistUrl='#'
-            userNameUrl='#'
-            isSecret={true}
-            lastActive={new Date("2023-10-24T11:53:42Z")}
+            files={this.gistListItem.filesNumber}
+            forks={this.gistListItem.forks}
+            comments={this.gistListItem.commentsNumber}
+            stars={this.gistListItem.stars}
+            fileName={this.gistListItem.firstFileName}
+            userName={this.gistListItem.userName}
+            userNameUrl={this.gistListItem.userNameUrl}
+            avatarUrl={this.gistListItem.avatarUrl}
+            gistUrl={this.gistListItem.gistUrl}
+            isSecret={this.gistListItem.isSecret}
+            lastActive={this.gistListItem.lastActive}
           />
         </div>
 
         <div class={'code-preview-border'}>
-          <code-preview code={DUMMY_CODE} codeLang='javascript'/>
+          <code-preview code={this.gistListItem.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
         </div>
       </Host>
     );
