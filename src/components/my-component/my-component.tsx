@@ -1,4 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
+import { DUMMY_GIST_ITEM } from '../../utils/utils';
 // import { format } from '../../utils/utils';
 
 @Component({
@@ -28,6 +29,6 @@ export class MyComponent {
 
   render() {
     // return <div>Hello, World! I'm {this.getText()}</div>;
-    return <gist-list-item />
+    return <gist-list-item gistListItem={DUMMY_GIST_ITEM} onGistSelected={ev => console.log(ev)}/>
   }
 }
