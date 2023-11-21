@@ -1,5 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 import { DUMMY_CODE } from '../../utils/utils';
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
   tag: 'gist-list-item',
@@ -7,6 +8,9 @@ import { DUMMY_CODE } from '../../utils/utils';
   // shadow: true,
 })
 export class GistListItem {
+
+  @Prop()
+  gistListItem: IGistListItem;
 
   render() {
     return (
