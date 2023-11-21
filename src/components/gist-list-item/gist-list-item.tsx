@@ -11,20 +11,25 @@ export class GistListItem {
   render() {
     return (
       <Host>
-        <metadata-header
-          files={0}
-          forks={0}
-          comments={0}
-          stars={0}
-          fileName='promisify.js'
-          userName='kstanyslaw'
-          avatarUrl='https://avatars.githubusercontent.com/u/15340653?v=4'
-          gistUrl='#'
-          userNameUrl='#'
-          isSecret={true}
-          lastActive={new Date("2023-10-24T11:53:42Z")}
-        />
-        <code-preview code={DUMMY_CODE} codeLang='javascript'/>
+        <div class={'mb-1'}>
+          <metadata-header
+            files={0}
+            forks={0}
+            comments={0}
+            stars={0}
+            fileName='promisify.js'
+            userName='kstanyslaw'
+            avatarUrl='https://avatars.githubusercontent.com/u/15340653?v=4'
+            gistUrl='#'
+            userNameUrl='#'
+            isSecret={true}
+            lastActive={new Date("2023-10-24T11:53:42Z")}
+          />
+        </div>
+
+        <div class={'code-preview-border'}>
+          <code-preview code={DUMMY_CODE} codeLang='javascript'/>
+        </div>
       </Host>
     );
   }
