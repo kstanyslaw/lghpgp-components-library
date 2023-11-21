@@ -1,3 +1,4 @@
+import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
@@ -6,9 +7,15 @@ import { IGistListItem } from '../../common/interfaces/gist-list-item.interface'
   // shadow: true,
 })
 export class GistListItem {
+  @Event()
+  gistSelected: EventEmitter<string>;
 
   @Prop()
   gistListItem: IGistListItem;
+
+  gistSelectedHandler() {
+    this.gistSelected.emit(this.gistListItem?.gistId );
+  }
 
   render() {
     return (
@@ -29,7 +36,7 @@ export class GistListItem {
           />
         </div>
 
-        <div class={'code-preview-border'}>
+        <div class={'code-preview-border'} onClick={this.gistSelectedHandler.bind(this)}>
           <code-preview code={this.gistListItem.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
         </div>
       </Host>
