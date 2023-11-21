@@ -2,7 +2,6 @@
 
 :host {
   display: block;
-  background-color: var(--ls-primary-background-color);
   color: var(--ls-primary-text-color);
 }
 
@@ -13,7 +12,9 @@
 }
 
 pre {
+  background-color: var(--ls-primary-background-color);
   counter-reset: line;
+  margin: 0;
 }
 
 pre code {
