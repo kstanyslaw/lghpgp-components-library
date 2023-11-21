@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
-export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+import { IGistListItem } from "./common/interfaces/IGistListItem";
+export { IGistListItem } from "./common/interfaces/IGistListItem";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code

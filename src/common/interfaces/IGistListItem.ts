@@ -2,10 +2,7 @@
  * @param {string} description - gist description
  * @param {number} filesNumber - number of files in the gist
  * @param {string} firstFileName - name of first file in gist that used for gist's title btw
- * @param {string[]} codePreviewRaw - an array of first ten rows of the first
- * file in the gist just for preview what it is
- * @param {string} codeLang - first file code language
- * @param {Date} lastActive - date of last manipulation with file
+ * @param {string} codePreviewRaw - first ten rows of the first file in the gist just for preview what it is
  * @param {number} forks
  * @param {number} commentsNumber
  * @param {number} stars
@@ -15,6 +12,8 @@
  * @param {string} userNameUrl
  * @param {boolean} isSecret
  * @param {boolean} isUpdated
+ * @param {Date} lastActive
+ * @param {string} codeLang
  * @param {string} gistId
  */
 export interface IGistListItem {
@@ -40,9 +39,9 @@ export interface IGistListItem {
   lastActive: Date;
 
   /**
-   * @type {string[]} - an array of first ten rows of the first file in the gist just for preview what it is
+   * @type {string} - first ten rows of the first file in the gist just for preview what it is
    */
-  codePreviewRaw: string[];
+  codePreviewRaw: string;
   codeLang: string;
   gistId: string;
 }

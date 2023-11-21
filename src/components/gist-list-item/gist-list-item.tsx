@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { DUMMY_CODE } from '../../utils/utils';
-import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
+import { IGistListItem } from "../../common/interfaces/IGistListItem";
 
 @Component({
   tag: 'gist-list-item',
