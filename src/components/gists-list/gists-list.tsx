@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
   tag: 'gists-list',
@@ -6,12 +7,27 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class GistsList {
+  @Prop()
+  gistsList: IGistListItem[];
+
+  @Prop()
+  currentPage: number;
+
+  @Prop()
+  lastPage: boolean;
 
   render() {
     return (
       <Host>
-        gists list
-        <slot></slot>
+        <ul class={'gists-list'}>
+          {this.gistsList.map((gistItem: IGistListItem) => <li class={'gist-list-item'}>
+            <gist-list-item gistListItem={gistItem} />
+          </li>)}
+        </ul>
+
+        <div class={'items-center'}>
+          <list-paginator lastPage={false} currentPage={this.currentPage}/>
+        </div>
       </Host>
     );
   }
