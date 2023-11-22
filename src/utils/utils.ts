@@ -67,6 +67,17 @@ export const DUMMY_CODE: string[] = (`var promisify =
       );
     });`).split('\n');
 
+const ANOTHER_DUMMY_CODE: string[] = (`import { Component } from '@angular/core';
+import { ControlContainer, FormGroup } from '@angular/forms';
+
+@Component({
+  ...
+  template: \`
+  <div [formGroup]="groupNameContainer">
+    <input type="text" formControlName="textInput">
+  </div>
+  \``).split('\n');
+
 export const DUMMY_GIST_ITEM: IGistListItem = {
   codePreviewRaw: DUMMY_CODE,
   filesNumber: 1,
@@ -85,3 +96,16 @@ export const DUMMY_GIST_ITEM: IGistListItem = {
   isUpdated: false,
   gistId: "DummyID"
 }
+
+export const DUMMY_GISTS_LIST: IGistListItem[] = [
+  DUMMY_GIST_ITEM,
+  {
+    ...DUMMY_GIST_ITEM,
+    firstFileName: 'child.component.ts',
+    filesNumber: 2,
+    isSecret: false,
+    gistId: 'Another DummyID',
+    lastActive: new Date(),
+    codePreviewRaw: ANOTHER_DUMMY_CODE
+  },
+]
