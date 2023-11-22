@@ -30,6 +30,7 @@ export class MyComponent {
   render() {
     // return <div>Hello, World! I'm {this.getText()}</div>;
     // return <gist-list-item gistListItem={DUMMY_GIST_ITEM} onGistSelected={ev => console.log(ev)}/>
-    return <list-paginator/>
+    // return <list-paginator/>
+    return <gists-list />
   }
 }

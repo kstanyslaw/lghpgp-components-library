@@ -27,6 +27,8 @@ export namespace Components {
     interface GistListItem {
         "gistListItem": IGistListItem;
     }
+    interface GistsList {
+    }
     interface ListPaginator {
         "currentPage": number;
         "lastPage": boolean;
@@ -100,6 +102,12 @@ declare global {
         prototype: HTMLGistListItemElement;
         new (): HTMLGistListItemElement;
     };
+    interface HTMLGistsListElement extends Components.GistsList, HTMLStencilElement {
+    }
+    var HTMLGistsListElement: {
+        prototype: HTMLGistsListElement;
+        new (): HTMLGistsListElement;
+    };
     interface HTMLListPaginatorElementEventMap {
         "goToPage": number;
     }
@@ -138,6 +146,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
+        "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
@@ -164,6 +173,8 @@ declare namespace LocalJSX {
     interface GistListItem {
         "gistListItem"?: IGistListItem;
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
+    }
+    interface GistsList {
     }
     interface ListPaginator {
         "currentPage"?: number;
@@ -203,6 +214,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
+        "gists-list": GistsList;
         "list-paginator": ListPaginator;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
@@ -221,6 +233,7 @@ declare module "@stencil/core" {
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
+            "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
