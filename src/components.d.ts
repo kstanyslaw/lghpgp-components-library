@@ -27,6 +27,8 @@ export namespace Components {
     interface GistListItem {
         "gistListItem": IGistListItem;
     }
+    interface ListPaginator {
+    }
     interface MetadataHeader {
         "avatarUrl": string;
         "comments": number;
@@ -92,6 +94,12 @@ declare global {
         prototype: HTMLGistListItemElement;
         new (): HTMLGistListItemElement;
     };
+    interface HTMLListPaginatorElement extends Components.ListPaginator, HTMLStencilElement {
+    }
+    var HTMLListPaginatorElement: {
+        prototype: HTMLListPaginatorElement;
+        new (): HTMLListPaginatorElement;
+    };
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
     }
     var HTMLMetadataHeaderElement: {
@@ -113,6 +121,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
+        "list-paginator": HTMLListPaginatorElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -138,6 +147,8 @@ declare namespace LocalJSX {
     interface GistListItem {
         "gistListItem"?: IGistListItem;
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
+    }
+    interface ListPaginator {
     }
     interface MetadataHeader {
         "avatarUrl"?: string;
@@ -172,6 +183,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
+        "list-paginator": ListPaginator;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -189,6 +201,7 @@ declare module "@stencil/core" {
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
+            "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
