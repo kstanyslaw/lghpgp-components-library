@@ -10,8 +10,8 @@ export class ListPaginator {
   render() {
     return (
       <Host>
-        <button disabled>Newer</button>
-        <button>Older</button>
+        <button disabled class={'btn-pagination'}>Newer</button>
+        <button class={'btn-pagination'}>Older</button>
       </Host>
     );
   }
