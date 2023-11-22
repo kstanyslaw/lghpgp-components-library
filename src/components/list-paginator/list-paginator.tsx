@@ -1,17 +1,42 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'list-paginator',
   styleUrl: 'list-paginator.scss',
-  shadow: true,
 })
 export class ListPaginator {
+
+  @Prop()
+  currentPage: number;
+
+  @Prop()
+  lastPage: boolean;
+
+  @Event()
+  goToPage: EventEmitter<number>;
+
+  clickHandler(nextPage: number) {
+    this.goToPage.emit(nextPage);
+  }
 
   render() {
     return (
       <Host>
-        <button disabled class={'btn-pagination'}>Newer</button>
-        <button class={'btn-pagination'}>Older</button>
+        <button
+          disabled={this.currentPage === 1}
+          onClick={this.clickHandler.bind(this, this.currentPage - 1)}
+          class={'btn-pagination'}
+        >
+            Newer
+        </button>
+
+        <button
+          disabled={this.lastPage}
+          onClick={this.clickHandler.bind(this, this.currentPage + 1)}
+          class={'btn-pagination'}
+        >
+            Older
+        </button>
       </Host>
     );
   }

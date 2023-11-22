@@ -28,6 +28,8 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface ListPaginator {
+        "currentPage": number;
+        "lastPage": boolean;
     }
     interface MetadataHeader {
         "avatarUrl": string;
@@ -64,6 +66,10 @@ export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGistListItemElement;
 }
+export interface ListPaginatorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLListPaginatorElement;
+}
 declare global {
     /**
      * @param code - A property that takes an array of lines of code
@@ -94,7 +100,18 @@ declare global {
         prototype: HTMLGistListItemElement;
         new (): HTMLGistListItemElement;
     };
+    interface HTMLListPaginatorElementEventMap {
+        "goToPage": number;
+    }
     interface HTMLListPaginatorElement extends Components.ListPaginator, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLListPaginatorElementEventMap>(type: K, listener: (this: HTMLListPaginatorElement, ev: ListPaginatorCustomEvent<HTMLListPaginatorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLListPaginatorElementEventMap>(type: K, listener: (this: HTMLListPaginatorElement, ev: ListPaginatorCustomEvent<HTMLListPaginatorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLListPaginatorElement: {
         prototype: HTMLListPaginatorElement;
@@ -149,6 +166,9 @@ declare namespace LocalJSX {
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface ListPaginator {
+        "currentPage"?: number;
+        "lastPage"?: boolean;
+        "onGoToPage"?: (event: ListPaginatorCustomEvent<number>) => void;
     }
     interface MetadataHeader {
         "avatarUrl"?: string;
