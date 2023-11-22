@@ -11,6 +11,9 @@ export class MyComponent {
   @State()
   currentPage: number = 1;
 
+  @State()
+  isListLoading = true;
+
   @Listen('goToPage')
   TEST_goToPage(event: CustomEvent<number>) {
     this.currentPage = event.detail;
@@ -22,10 +25,20 @@ export class MyComponent {
     console.log('gist choosed id: ', event.detail)
   }
 
+  get lastPage(): boolean {
+    return this.currentPage >= 13;
+  }
+
+  componentWillLoad() {
+    setTimeout(() => this.isListLoading = false, 2000);
+  }
+
   render() {
+    if(this.isListLoading) return <p>Loading...</p>
     return <gists-list
       gistsList={DUMMY_GISTS_LIST}
       currentPage={this.currentPage}
+      lastPage={this.lastPage}
     />
   }
 }
