@@ -1,35 +1,44 @@
-import { Component, Prop, h } from '@stencil/core';
-import { DUMMY_GIST_ITEM } from '../../utils/utils';
-// import { format } from '../../utils/utils';
+import { Component, Listen, State, h } from '@stencil/core';
+import { DUMMY_GISTS_LIST } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
-  styleUrls: ['my-component.css', 'style.css'],
+  styleUrls: ['my-component.css'],
   shadow: true,
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  @State()
+  currentPage: number = 1;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
+  @State()
+  isListLoading = true;
 
-  // private getText(): string {
-  //   return format(this.first, this.middle, this.last);
-  // }
+  @Listen('goToPage')
+  TEST_goToPage(event: CustomEvent<number>) {
+    this.currentPage = event.detail;
+    console.log(this.currentPage);
+  }
+
+  @Listen('gistSelected')
+  TEST_gistSelectedLog(event: CustomEvent<string>) {
+    console.log('gist choosed id: ', event.detail)
+  }
+
+  get lastPage(): boolean {
+    return this.currentPage >= 13;
+  }
+
+  componentWillLoad() {
+    setTimeout(() => this.isListLoading = false, 2000);
+  }
 
   render() {
-    // return <div>Hello, World! I'm {this.getText()}</div>;
-    // return <gist-list-item gistListItem={DUMMY_GIST_ITEM} onGistSelected={ev => console.log(ev)}/>
-    return <list-paginator/>
+    if(this.isListLoading) return <p>Loading...</p>
+    return <gists-list
+      gistsList={DUMMY_GISTS_LIST}
+      currentPage={this.currentPage}
+      lastPage={this.lastPage}
+    />
   }
 }

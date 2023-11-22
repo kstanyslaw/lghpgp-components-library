@@ -41,7 +41,7 @@ export class MetadataHeader {
 
     return (
       <Host class={'d-flex space-between'}>
-        <div class={'d-flex items-center flex-order-1 left'}>
+        <div class={'d-flex flex-order-1 left'}>
           <div class={'avatar'} style={{'background-image': `url(${this.avatarUrl})`}}></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
