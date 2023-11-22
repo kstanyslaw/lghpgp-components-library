@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.btn-pagination {
+  border-color: transparent;
+  border-radius: 5px;
+  border-width: 1px;
+  background: none;
+  font-size: inherit;
+  padding: 0.3rem 0.65rem;
+  &:hover:not(:disabled) {
+    border-color: gray;
+  }
+}
