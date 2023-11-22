@@ -28,6 +28,9 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface GistsList {
+        "currentPage": number;
+        "gistsList": IGistListItem[];
+        "lastPage": boolean;
     }
     interface ListPaginator {
         "currentPage": number;
@@ -47,18 +50,6 @@ export namespace Components {
         "userNameUrl": string;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface RelativeTime {
         "timestamp": Date;
@@ -175,6 +166,9 @@ declare namespace LocalJSX {
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistsList {
+        "currentPage"?: number;
+        "gistsList"?: IGistListItem[];
+        "lastPage"?: boolean;
     }
     interface ListPaginator {
         "currentPage"?: number;
@@ -195,18 +189,6 @@ declare namespace LocalJSX {
         "userNameUrl": string;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface RelativeTime {
         "timestamp": Date;
