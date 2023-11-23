@@ -38,7 +38,7 @@ export class SingleFileView {
       <div class={'file-view'}>
         <div class={'file-view__header d-flex'}>
           <div class={'file-view__filename d-flex'} >
-            {gitFileSVG}
+            {gitFileSVG()}
             {this.filename}
           </div>
 

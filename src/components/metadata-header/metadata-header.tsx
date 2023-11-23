@@ -62,28 +62,28 @@ export class MetadataHeader {
 
           {this.filesNumber &&
           <li class={'d-flex px-lg-2'}>
-            {gitFileSVG}
+            {gitFileSVG()}
             {this.filesNumber}
             {this.filesNumber === 1 ? ' file' : ' files'}
           </li>}
 
           {this.forksNumber &&
           <li class={'d-flex px-lg-2'}>
-            {gitForkSVG}
+            {gitForkSVG()}
             {this.forksNumber}
             {this.forksNumber === 1 ? ' fork' : ' forks'}
           </li>}
 
           {this.commentsNumber &&
           <li class={'d-flex px-lg-2'}>
-            {gitCommentSVG}
+            {gitCommentSVG()}
             {this.commentsNumber}
             {this.commentsNumber === 1 ? ' comment' : ' comments'}
           </li>}
 
           {this.starsNumber &&
           <li class={'d-flex px-lg-2'}>
-            {gitStarSVG}
+            {gitStarSVG()}
             {this.starsNumber}
             {this.starsNumber === 1 ? ' star' : ' stars'}
           </li>}
