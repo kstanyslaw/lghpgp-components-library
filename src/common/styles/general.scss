@@ -1,0 +1,62 @@
+:root {
+  --color-text-muted: gray;
+}
+
+.octicon {
+  display: inline-block;
+  overflow: visible !important;
+  padding-right: .1rem;
+  fill: currentColor;
+}
+
+.fg-color-muted {
+  color: var(--color-text-muted);
+}
+
+.fg-small {
+  font-size: small;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.px-lg-2 {
+  padding: 0 .4rem;
+}
+
+.px-2 {
+  padding: 0 .4rem;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-order-1 {
+  order: 1 !important;
+}
+
+.flex-order-2 {
+  order: 2 !important;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mb-4 {
+  margin-bottom: 2em;
+}
+
+.items-center {
+  text-align: center;
+}

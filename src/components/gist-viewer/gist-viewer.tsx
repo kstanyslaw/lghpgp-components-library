@@ -2,7 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gist-viewer',
-  styleUrls: ['gist-viewer.scss'],
+  styleUrl: 'gist-viewer.scss',
   shadow: true,
 })
 export class GistViewer {
@@ -19,6 +19,7 @@ export class GistViewer {
           gistUrl={''}
           lastActive={new Date()}
           userNameUrl={''}
+          class={'mb-4'}
         />
 
         <hr />
@@ -34,7 +35,7 @@ export class GistViewer {
           </li>)}
         </ul>
         ) : (
-          <p>No files in this gist</p>
+          <p class={'items-center'}>No files in this gist</p>
         )}
 
       </Host>
