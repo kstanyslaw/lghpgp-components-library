@@ -28,6 +28,7 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface GistViewer {
+        "gistData": any;
     }
     interface GistsList {
         "currentPage": number;
@@ -39,15 +40,15 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MetadataHeader {
-        "avatarUrl": string;
-        "comments": number;
+        "avatarUrl"?: string;
+        "commentsNumber"?: number;
         "fileName": string;
-        "files": number;
-        "forks": number;
+        "filesNumber"?: number;
+        "forksNumber"?: number;
         "gistUrl": string;
         "isSecret": boolean;
         "lastActive": Date;
-        "stars": number;
+        "starsNumber"?: number;
         "userName": string;
         "userNameUrl": string;
     }
@@ -206,6 +207,7 @@ declare namespace LocalJSX {
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
+        "gistData"?: any;
     }
     interface GistsList {
         "currentPage"?: number;
@@ -219,14 +221,14 @@ declare namespace LocalJSX {
     }
     interface MetadataHeader {
         "avatarUrl"?: string;
-        "comments": number;
+        "commentsNumber"?: number;
         "fileName": string;
-        "files": number;
-        "forks": number;
+        "filesNumber"?: number;
+        "forksNumber"?: number;
         "gistUrl": string;
         "isSecret": boolean;
         "lastActive"?: Date;
-        "stars": number;
+        "starsNumber"?: number;
         "userName": string;
         "userNameUrl": string;
     }

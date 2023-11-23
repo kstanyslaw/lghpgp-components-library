@@ -22,10 +22,10 @@ export class GistListItem {
       <Host>
         <div class={'mb-1'}>
           <metadata-header
-            files={this.gistListItem.filesNumber}
-            forks={this.gistListItem.forks}
-            comments={this.gistListItem.commentsNumber}
-            stars={this.gistListItem.stars}
+            filesNumber={this.gistListItem.filesNumber}
+            forksNumber={this.gistListItem.forks}
+            commentsNumber={this.gistListItem.commentsNumber}
+            starsNumber={this.gistListItem.stars}
             fileName={this.gistListItem.firstFileName}
             userName={this.gistListItem.userName}
             userNameUrl={this.gistListItem.userNameUrl}
