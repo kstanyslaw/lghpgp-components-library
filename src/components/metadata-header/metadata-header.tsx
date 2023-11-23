@@ -57,31 +57,34 @@ export class MetadataHeader {
           </div>
         </div>
 
-        {(this.filesNumber || this.forksNumber || this.commentsNumber || this.starsNumber) &&
+        {(this.filesNumber !== undefined ||
+        this.forksNumber !== undefined ||
+        this.commentsNumber !== undefined ||
+        this.starsNumber !== undefined) &&
         <ul class={'d-flex flex-order-2 right fg-color-muted fg-small m-0'}>
 
-          {this.filesNumber &&
+          {this.filesNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
             {gitFileSVG()}
             {this.filesNumber}
             {this.filesNumber === 1 ? ' file' : ' files'}
           </li>}
 
-          {this.forksNumber &&
+          {this.forksNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
             {gitForkSVG()}
             {this.forksNumber}
             {this.forksNumber === 1 ? ' fork' : ' forks'}
           </li>}
 
-          {this.commentsNumber &&
+          {this.commentsNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
             {gitCommentSVG()}
             {this.commentsNumber}
             {this.commentsNumber === 1 ? ' comment' : ' comments'}
           </li>}
 
-          {this.starsNumber &&
+          {this.starsNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
             {gitStarSVG()}
             {this.starsNumber}

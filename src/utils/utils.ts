@@ -80,14 +80,14 @@ import { ControlContainer, FormGroup } from '@angular/forms';
 
 export const DUMMY_GIST_ITEM: IGistListItem = {
   codePreviewRaw: DUMMY_CODE,
-  filesNumber: 1,
+  filesNumber: 0,
   firstFileName: 'promisify.js',
   codeLang: 'javascript',
   lastActive: new Date("2023-10-24T11:53:42Z"),
   description: "Dummy description",
-  forks: 0,
+  forks: 1,
   commentsNumber: 0,
-  stars: 0,
+  stars: 2,
   userName: "kstanylsaw",
   avatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
   gistUrl: "",
