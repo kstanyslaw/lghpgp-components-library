@@ -39,10 +39,13 @@ export class MyComponent {
     //   currentPage={this.currentPage}
     //   lastPage={this.lastPage}
     // />
-    return <single-file-view
-      code={DUMMY_CODE}
-      codeLang='javascript'
-      filename='promisify.js'
-    />
+
+    // return <single-file-view
+    //   code={DUMMY_CODE}
+    //   codeLang='javascript'
+    //   filename='promisify.js'
+    // />
+
+    return <gist-viewer />
   }
 }

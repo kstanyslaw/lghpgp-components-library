@@ -27,6 +27,8 @@ export namespace Components {
     interface GistListItem {
         "gistListItem": IGistListItem;
     }
+    interface GistViewer {
+    }
     interface GistsList {
         "currentPage": number;
         "gistsList": IGistListItem[];
@@ -102,6 +104,12 @@ declare global {
         prototype: HTMLGistListItemElement;
         new (): HTMLGistListItemElement;
     };
+    interface HTMLGistViewerElement extends Components.GistViewer, HTMLStencilElement {
+    }
+    var HTMLGistViewerElement: {
+        prototype: HTMLGistViewerElement;
+        new (): HTMLGistViewerElement;
+    };
     interface HTMLGistsListElement extends Components.GistsList, HTMLStencilElement {
     }
     var HTMLGistsListElement: {
@@ -167,6 +175,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
+        "gist-viewer": HTMLGistViewerElement;
         "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
         "metadata-header": HTMLMetadataHeaderElement;
@@ -195,6 +204,8 @@ declare namespace LocalJSX {
     interface GistListItem {
         "gistListItem"?: IGistListItem;
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
+    }
+    interface GistViewer {
     }
     interface GistsList {
         "currentPage"?: number;
@@ -237,6 +248,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
+        "gist-viewer": GistViewer;
         "gists-list": GistsList;
         "list-paginator": ListPaginator;
         "metadata-header": MetadataHeader;
@@ -257,6 +269,7 @@ declare module "@stencil/core" {
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
+            "gist-viewer": LocalJSX.GistViewer & JSXBase.HTMLAttributes<HTMLGistViewerElement>;
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
