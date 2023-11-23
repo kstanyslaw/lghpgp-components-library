@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gist-viewer',
@@ -6,12 +6,37 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class GistViewer {
+  @Prop()
+  gistData: any; // TODO Interface
 
   render() {
     return (
       <Host>
-        Hello gist viewer
-        <slot></slot>
+        <metadata-header
+          fileName={'promisify.js'}
+          isSecret={this.gistData?.isSecret ?? true} //TODO
+          userName={'kstanyslaw'}
+          gistUrl={''}
+          lastActive={new Date()}
+          userNameUrl={''}
+        />
+
+        <hr />
+
+        {this.gistData?.files ? (
+          <ul>
+          {this.gistData.files.map((file: any) => <li>
+            <single-file-view
+              code={file.code}
+              codeLang={file.codeLang}
+              filename={file.fileName}
+            />
+          </li>)}
+        </ul>
+        ) : (
+          <p>No files in this gist</p>
+        )}
+
       </Host>
     );
   }
