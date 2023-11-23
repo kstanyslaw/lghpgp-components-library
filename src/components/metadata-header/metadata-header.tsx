@@ -36,14 +36,14 @@ export class MetadataHeader {
   starsNumber?: number;
 
   @Prop()
-  avatarUrl?: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
+  userAvatarUrl?: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
 
   render() {
 
     return (
       <Host class={'d-flex space-between'}>
         <div class={'d-flex flex-order-1 left'}>
-          <div class={'avatar'} style={{'background-image': `url(${this.avatarUrl})`}}></div>
+          <div class={'avatar'} style={{'background-image': `url(${this.userAvatarUrl})`}}></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
               <a href={this.userNameUrl}>{this.userName}</a>

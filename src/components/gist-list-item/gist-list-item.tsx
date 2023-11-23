@@ -4,7 +4,6 @@ import { IGistListItem } from '../../common/interfaces/gist-list-item.interface'
 @Component({
   tag: 'gist-list-item',
   styleUrl: 'gist-list-item.scss',
-  // shadow: true,
 })
 export class GistListItem {
   @Event()
@@ -29,7 +28,7 @@ export class GistListItem {
             fileName={this.gistListItem.firstFileName}
             userName={this.gistListItem.userName}
             userNameUrl={this.gistListItem.userNameUrl}
-            avatarUrl={this.gistListItem.avatarUrl}
+            userAvatarUrl={this.gistListItem.userAvatarUrl}
             gistUrl={this.gistListItem.gistUrl}
             isSecret={this.gistListItem.isSecret}
             lastActive={this.gistListItem.lastActive}

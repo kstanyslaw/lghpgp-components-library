@@ -89,7 +89,7 @@ export const DUMMY_GIST_ITEM: IGistListItem = {
   commentsNumber: 0,
   stars: 2,
   userName: "kstanylsaw",
-  avatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
+  userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
   gistUrl: "",
   userNameUrl: "",
   isSecret: true,
