@@ -1,0 +1,57 @@
+:host {
+  --border-color: var(--ls-border-color, gray);
+  --border-color__hover: var(--ls-secondary-border-color, lightgray);
+}
+
+.file-view {
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.file-view__header {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  height: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+
+  button {
+    background-color: var(--color-level-1);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    color: var(--ls-primary-text-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--border-color__hover);
+      background-color: var(--color-level-2);
+    }
+
+    &:active {
+      background-color: var(--color-level-3);
+    }
+  }
+}
+
+.file-view__filename {
+  font-size: small;
+  font-weight: 600;
+}
+
+.octicon {
+  display: inline-block;
+  overflow: visible !important;
+  padding-right: .1rem;
+  fill: currentColor;
+}
+
+.d-flex {
+  display: flex;
+}

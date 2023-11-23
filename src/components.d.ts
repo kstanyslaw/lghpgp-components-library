@@ -54,6 +54,11 @@ export namespace Components {
     interface RelativeTime {
         "timestamp": Date;
     }
+    interface SingleFileView {
+        "code": string[];
+        "codeLang": string;
+        "filename": string;
+    }
 }
 export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -62,6 +67,10 @@ export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
 export interface ListPaginatorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLListPaginatorElement;
+}
+export interface SingleFileViewCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSingleFileViewElement;
 }
 declare global {
     /**
@@ -134,6 +143,27 @@ declare global {
         prototype: HTMLRelativeTimeElement;
         new (): HTMLRelativeTimeElement;
     };
+    interface HTMLSingleFileViewElementEventMap {
+        "selectFileInsert": {
+    code: string[],
+    fileName: string,
+    codeLang: string,
+  };
+    }
+    interface HTMLSingleFileViewElement extends Components.SingleFileView, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSingleFileViewElementEventMap>(type: K, listener: (this: HTMLSingleFileViewElement, ev: SingleFileViewCustomEvent<HTMLSingleFileViewElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSingleFileViewElementEventMap>(type: K, listener: (this: HTMLSingleFileViewElement, ev: SingleFileViewCustomEvent<HTMLSingleFileViewElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSingleFileViewElement: {
+        prototype: HTMLSingleFileViewElement;
+        new (): HTMLSingleFileViewElement;
+    };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
@@ -142,6 +172,7 @@ declare global {
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
+        "single-file-view": HTMLSingleFileViewElement;
     }
 }
 declare namespace LocalJSX {
@@ -193,6 +224,16 @@ declare namespace LocalJSX {
     interface RelativeTime {
         "timestamp": Date;
     }
+    interface SingleFileView {
+        "code"?: string[];
+        "codeLang"?: string;
+        "filename"?: string;
+        "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<{
+    code: string[],
+    fileName: string,
+    codeLang: string,
+  }>) => void;
+    }
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
@@ -201,6 +242,7 @@ declare namespace LocalJSX {
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
+        "single-file-view": SingleFileView;
     }
 }
 export { LocalJSX as JSX };
@@ -220,6 +262,7 @@ declare module "@stencil/core" {
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
+            "single-file-view": LocalJSX.SingleFileView & JSXBase.HTMLAttributes<HTMLSingleFileViewElement>;
         }
     }
 }
