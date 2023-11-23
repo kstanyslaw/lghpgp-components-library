@@ -41,6 +41,7 @@ export class MyComponent {
     // />
     return <single-file-view
       code={DUMMY_CODE}
+      codeLang='javascript'
       filename='promisify.js'
     />
   }

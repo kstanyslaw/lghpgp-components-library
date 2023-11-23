@@ -1,5 +1,6 @@
 :host {
   --border-color: var(--ls-border-color, gray);
+  --border-color__hover: var(--ls-secondary-border-color, lightgray);
 }
 
 .file-view {
@@ -26,6 +27,16 @@
     border-radius: 5px;
     padding: 0.3rem 0.5rem;
     color: var(--ls-primary-text-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--border-color__hover);
+      background-color: var(--color-level-2);
+    }
+
+    &:active {
+      background-color: var(--color-level-3);
+    }
   }
 }
 
