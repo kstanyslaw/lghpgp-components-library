@@ -1,4 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
+import { IGistFile } from '../../common/interfaces/gist-file.interface';
 
 @Component({
   tag: 'gist-viewer',
@@ -7,7 +9,10 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class GistViewer {
   @Prop()
-  gistData: any; // TODO Interface
+  gistData: IGistMetadata;
+
+  @Prop()
+  gistFiles?: IGistFile[];
 
   render() {
     return (
@@ -24,9 +29,9 @@ export class GistViewer {
 
         <hr />
 
-        {this.gistData?.files ? (
+        {!!this.gistFiles ? (
           <ul>
-          {this.gistData.files.map((file: any) => <li>
+          {this.gistFiles.map((file: IGistFile) => <li>
             <single-file-view
               code={file.code}
               codeLang={file.codeLang}

@@ -6,7 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+import { IGistMetadata } from "./common/interfaces/gist-data.interface";
+import { IGistFile } from "./common/interfaces/gist-file.interface";
 export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+export { IGistMetadata } from "./common/interfaces/gist-data.interface";
+export { IGistFile } from "./common/interfaces/gist-file.interface";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
@@ -28,7 +32,8 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface GistViewer {
-        "gistData": any;
+        "gistData": IGistMetadata;
+        "gistFiles"?: IGistFile[];
     }
     interface GistsList {
         "currentPage": number;
@@ -40,7 +45,6 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MetadataHeader {
-        "avatarUrl"?: string;
         "commentsNumber"?: number;
         "fileName": string;
         "filesNumber"?: number;
@@ -49,6 +53,7 @@ export namespace Components {
         "isSecret": boolean;
         "lastActive": Date;
         "starsNumber"?: number;
+        "userAvatarUrl"?: string;
         "userName": string;
         "userNameUrl": string;
     }
@@ -207,7 +212,8 @@ declare namespace LocalJSX {
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
-        "gistData"?: any;
+        "gistData"?: IGistMetadata;
+        "gistFiles"?: IGistFile[];
     }
     interface GistsList {
         "currentPage"?: number;
@@ -220,7 +226,6 @@ declare namespace LocalJSX {
         "onGoToPage"?: (event: ListPaginatorCustomEvent<number>) => void;
     }
     interface MetadataHeader {
-        "avatarUrl"?: string;
         "commentsNumber"?: number;
         "fileName": string;
         "filesNumber"?: number;
@@ -229,6 +234,7 @@ declare namespace LocalJSX {
         "isSecret": boolean;
         "lastActive"?: Date;
         "starsNumber"?: number;
+        "userAvatarUrl"?: string;
         "userName": string;
         "userNameUrl": string;
     }
