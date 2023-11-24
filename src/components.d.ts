@@ -32,8 +32,8 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface GistViewer {
-        "gistData": IGistMetadata;
         "gistFiles"?: IGistFile[];
+        "gistMetadata": IGistMetadata;
     }
     interface GistsList {
         "currentPage": number;
@@ -212,8 +212,8 @@ declare namespace LocalJSX {
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
-        "gistData"?: IGistMetadata;
         "gistFiles"?: IGistFile[];
+        "gistMetadata"?: IGistMetadata;
     }
     interface GistsList {
         "currentPage"?: number;

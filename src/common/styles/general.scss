@@ -60,3 +60,14 @@
 .items-center {
   text-align: center;
 }
+
+.list-no-decoration {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.horisontal-line {
+  border-color: var(--ls-border-color);
+  border-style: solid;
+  border-top: none;
+}

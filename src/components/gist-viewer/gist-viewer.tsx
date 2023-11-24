@@ -9,7 +9,7 @@ import { IGistFile } from '../../common/interfaces/gist-file.interface';
 })
 export class GistViewer {
   @Prop()
-  gistData: IGistMetadata;
+  gistMetadata: IGistMetadata;
 
   @Prop()
   gistFiles?: IGistFile[];
@@ -18,20 +18,22 @@ export class GistViewer {
     return (
       <Host>
         <metadata-header
-          fileName={'promisify.js'}
-          isSecret={this.gistData?.isSecret ?? true} //TODO
-          userName={'kstanyslaw'}
+          fileName={this.gistMetadata.fileName}
+          isSecret={this.gistMetadata.isSecret}
+          userName={this.gistMetadata.userName}
           gistUrl={''}
-          lastActive={new Date()}
+          lastActive={this.gistMetadata.lastActive}
           userNameUrl={''}
+          userAvatarUrl={this.gistMetadata.userAvatarUrl}
           class={'mb-4'}
         />
 
-        <hr />
+        <hr class={'horisontal-line mb-4'}/>
 
         {!!this.gistFiles ? (
-          <ul>
-          {this.gistFiles.map((file: IGistFile) => <li>
+          <ul class={'list-no-decoration'}>
+          {this.gistFiles.map((file: IGistFile) =>
+          <li class={'mb-4'}>
             <single-file-view
               code={file.code}
               codeLang={file.codeLang}
