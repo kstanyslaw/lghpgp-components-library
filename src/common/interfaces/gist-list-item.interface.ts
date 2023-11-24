@@ -10,7 +10,7 @@
  * @param {number} commentsNumber
  * @param {number} stars
  * @param {string} userName
- * @param {string} avatarUrl
+ * @param {string} userAvatarUrl
  * @param {string} gistUrl
  * @param {string} userNameUrl
  * @param {boolean} isSecret
@@ -32,7 +32,7 @@ export interface IGistListItem {
   stars: number;
   firstFileName: string;
   userName: string;
-  avatarUrl: string;
+  userAvatarUrl: string;
   gistUrl: string;
   userNameUrl: string;
   isSecret: boolean;

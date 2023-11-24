@@ -8,18 +8,6 @@ import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/
 })
 export class MetadataHeader {
   @Prop()
-  files!: number;
-
-  @Prop()
-  forks!: number;
-
-  @Prop()
-  comments!: number;
-
-  @Prop()
-  stars!: number;
-
-  @Prop()
   fileName!: string;
   @Prop()
   gistUrl!: string;
@@ -30,20 +18,32 @@ export class MetadataHeader {
   userNameUrl!: string;
 
   @Prop()
-  lastActive: Date = new Date();
+  lastActive: Date;
 
   @Prop()
   isSecret!: boolean;
 
   @Prop()
-  avatarUrl: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
+  filesNumber?: number;
+
+  @Prop()
+  forksNumber?: number;
+
+  @Prop()
+  commentsNumber?: number;
+
+  @Prop()
+  starsNumber?: number;
+
+  @Prop()
+  userAvatarUrl?: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
 
   render() {
 
     return (
       <Host class={'d-flex space-between'}>
         <div class={'d-flex flex-order-1 left'}>
-          <div class={'avatar'} style={{'background-image': `url(${this.avatarUrl})`}}></div>
+          <div class={'avatar'} style={{'background-image': `url(${this.userAvatarUrl})`}}></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
               <a href={this.userNameUrl}>{this.userName}</a>
@@ -57,24 +57,41 @@ export class MetadataHeader {
           </div>
         </div>
 
+        {(this.filesNumber !== undefined ||
+        this.forksNumber !== undefined ||
+        this.commentsNumber !== undefined ||
+        this.starsNumber !== undefined) &&
         <ul class={'d-flex flex-order-2 right fg-color-muted fg-small m-0'}>
+
+          {this.filesNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
-            {gitFileSVG}
-            {this.files}
-            {this.files === 1 ? ' file' : ' files'}</li>
+            {gitFileSVG()}
+            {this.filesNumber}
+            {this.filesNumber === 1 ? ' file' : ' files'}
+          </li>}
+
+          {this.forksNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
-            {gitForkSVG}
-            {this.forks}
-            {this.forks === 1 ? ' fork' : ' forks'}</li>
+            {gitForkSVG()}
+            {this.forksNumber}
+            {this.forksNumber === 1 ? ' fork' : ' forks'}
+          </li>}
+
+          {this.commentsNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
-            {gitCommentSVG}
-            {this.comments}
-            {this.comments === 1 ? ' comment' : ' comments'}</li>
+            {gitCommentSVG()}
+            {this.commentsNumber}
+            {this.commentsNumber === 1 ? ' comment' : ' comments'}
+          </li>}
+
+          {this.starsNumber !== undefined &&
           <li class={'d-flex px-lg-2'}>
-            {gitStarSVG}
-            {this.stars}
-            {this.stars === 1 ? ' star' : ' stars'}</li>
-        </ul>
+            {gitStarSVG()}
+            {this.starsNumber}
+            {this.starsNumber === 1 ? ' star' : ' stars'}
+          </li>}
+
+        </ul>}
       </Host>
     );
   }

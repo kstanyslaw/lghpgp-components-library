@@ -19,7 +19,7 @@ export class GistsList {
   render() {
     return (
       <Host>
-        <ul class={'gists-list'}>
+        <ul class={'list-no-decoration'}>
           {this.gistsList.map((gistItem: IGistListItem) => <li class={'gist-list-item mb-4'}>
             <gist-list-item gistListItem={gistItem} />
           </li>)}

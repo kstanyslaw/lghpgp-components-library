@@ -1,4 +1,6 @@
 import { IGistListItem } from "../common/interfaces/gist-list-item.interface";
+import { IGistMetadata } from "../common/interfaces/gist-data.interface";
+import { IGistFile } from "../common/interfaces/gist-file.interface";
 
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -80,16 +82,16 @@ import { ControlContainer, FormGroup } from '@angular/forms';
 
 export const DUMMY_GIST_ITEM: IGistListItem = {
   codePreviewRaw: DUMMY_CODE,
-  filesNumber: 1,
+  filesNumber: 0,
   firstFileName: 'promisify.js',
   codeLang: 'javascript',
   lastActive: new Date("2023-10-24T11:53:42Z"),
   description: "Dummy description",
-  forks: 0,
+  forks: 1,
   commentsNumber: 0,
-  stars: 0,
+  stars: 2,
   userName: "kstanylsaw",
-  avatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
+  userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
   gistUrl: "",
   userNameUrl: "",
   isSecret: true,
@@ -107,5 +109,33 @@ export const DUMMY_GISTS_LIST: IGistListItem[] = [
     gistId: 'Another DummyID',
     lastActive: new Date(),
     codePreviewRaw: ANOTHER_DUMMY_CODE
+  },
+];
+
+export const DUMMY_GIST_METADATA: IGistMetadata = {
+  gistId: 'DummyId',
+  filesNumber: 0,
+  fileName: 'promisify.js',
+  lastActive: new Date("2023-10-24T11:53:42Z"),
+  forksNumber: 1,
+  commentsNumber: 0,
+  starsNumber: 2,
+  userName: "kstanylsaw",
+  userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
+  gistUrl: "",
+  userNameUrl: "",
+  isSecret: true,
+}
+
+export const DUMMY_GIST_FILES: IGistFile[] = [
+  {
+    code: DUMMY_CODE,
+    codeLang: 'javascript',
+    fileName: 'promisify.js'
+  },
+  {
+    code: ANOTHER_DUMMY_CODE,
+    codeLang: 'javascript',
+    fileName: 'child-component.ts'
   },
 ]

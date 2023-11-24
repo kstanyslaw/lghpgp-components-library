@@ -4,7 +4,6 @@ import { IGistListItem } from '../../common/interfaces/gist-list-item.interface'
 @Component({
   tag: 'gist-list-item',
   styleUrl: 'gist-list-item.scss',
-  // shadow: true,
 })
 export class GistListItem {
   @Event()
@@ -22,14 +21,14 @@ export class GistListItem {
       <Host>
         <div class={'mb-1'}>
           <metadata-header
-            files={this.gistListItem.filesNumber}
-            forks={this.gistListItem.forks}
-            comments={this.gistListItem.commentsNumber}
-            stars={this.gistListItem.stars}
+            filesNumber={this.gistListItem.filesNumber}
+            forksNumber={this.gistListItem.forks}
+            commentsNumber={this.gistListItem.commentsNumber}
+            starsNumber={this.gistListItem.stars}
             fileName={this.gistListItem.firstFileName}
             userName={this.gistListItem.userName}
             userNameUrl={this.gistListItem.userNameUrl}
-            avatarUrl={this.gistListItem.avatarUrl}
+            userAvatarUrl={this.gistListItem.userAvatarUrl}
             gistUrl={this.gistListItem.gistUrl}
             isSecret={this.gistListItem.isSecret}
             lastActive={this.gistListItem.lastActive}

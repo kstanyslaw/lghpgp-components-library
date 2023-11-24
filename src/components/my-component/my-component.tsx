@@ -1,5 +1,6 @@
 import { Component, Listen, State, h } from '@stencil/core';
-import { DUMMY_CODE, DUMMY_GISTS_LIST } from '../../utils/utils';
+import { DUMMY_CODE, DUMMY_GISTS_LIST, DUMMY_GIST_FILES, DUMMY_GIST_METADATA } from '../../utils/utils';
+import { IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 
 @Component({
   tag: 'my-component',
@@ -25,6 +26,11 @@ export class MyComponent {
   //   console.log('gist choosed id: ', event.detail)
   // }
 
+  @Listen('selectFileInsert')
+  TEST_gistSelectedLog(event: CustomEvent<IGistFileInsert>) {
+      console.log('gist choosed: ', event.detail)
+    }
+
   // get lastPage(): boolean {
   //   return this.currentPage >= 13;
   // }
@@ -39,10 +45,16 @@ export class MyComponent {
     //   currentPage={this.currentPage}
     //   lastPage={this.lastPage}
     // />
-    return <single-file-view
-      code={DUMMY_CODE}
-      codeLang='javascript'
-      filename='promisify.js'
+
+    // return <single-file-view
+    //   code={DUMMY_CODE}
+    //   codeLang='javascript'
+    //   filename='promisify.js'
+    // />
+
+    return <gist-viewer
+      gistMetadata={DUMMY_GIST_METADATA}
+      gistFiles={DUMMY_GIST_FILES}
     />
   }
 }

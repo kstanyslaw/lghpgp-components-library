@@ -6,7 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+import { IGistMetadata } from "./common/interfaces/gist-data.interface";
+import { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+export { IGistMetadata } from "./common/interfaces/gist-data.interface";
+export { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
@@ -27,6 +31,10 @@ export namespace Components {
     interface GistListItem {
         "gistListItem": IGistListItem;
     }
+    interface GistViewer {
+        "gistFiles"?: IGistFile[];
+        "gistMetadata": IGistMetadata;
+    }
     interface GistsList {
         "currentPage": number;
         "gistsList": IGistListItem[];
@@ -37,15 +45,15 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MetadataHeader {
-        "avatarUrl": string;
-        "comments": number;
+        "commentsNumber"?: number;
         "fileName": string;
-        "files": number;
-        "forks": number;
+        "filesNumber"?: number;
+        "forksNumber"?: number;
         "gistUrl": string;
         "isSecret": boolean;
         "lastActive": Date;
-        "stars": number;
+        "starsNumber"?: number;
+        "userAvatarUrl"?: string;
         "userName": string;
         "userNameUrl": string;
     }
@@ -102,6 +110,12 @@ declare global {
         prototype: HTMLGistListItemElement;
         new (): HTMLGistListItemElement;
     };
+    interface HTMLGistViewerElement extends Components.GistViewer, HTMLStencilElement {
+    }
+    var HTMLGistViewerElement: {
+        prototype: HTMLGistViewerElement;
+        new (): HTMLGistViewerElement;
+    };
     interface HTMLGistsListElement extends Components.GistsList, HTMLStencilElement {
     }
     var HTMLGistsListElement: {
@@ -144,11 +158,7 @@ declare global {
         new (): HTMLRelativeTimeElement;
     };
     interface HTMLSingleFileViewElementEventMap {
-        "selectFileInsert": {
-    code: string[],
-    fileName: string,
-    codeLang: string,
-  };
+        "selectFileInsert": IGistFileInsert;
     }
     interface HTMLSingleFileViewElement extends Components.SingleFileView, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSingleFileViewElementEventMap>(type: K, listener: (this: HTMLSingleFileViewElement, ev: SingleFileViewCustomEvent<HTMLSingleFileViewElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -167,6 +177,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
+        "gist-viewer": HTMLGistViewerElement;
         "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
         "metadata-header": HTMLMetadataHeaderElement;
@@ -196,6 +207,10 @@ declare namespace LocalJSX {
         "gistListItem"?: IGistListItem;
         "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
     }
+    interface GistViewer {
+        "gistFiles"?: IGistFile[];
+        "gistMetadata"?: IGistMetadata;
+    }
     interface GistsList {
         "currentPage"?: number;
         "gistsList"?: IGistListItem[];
@@ -207,15 +222,15 @@ declare namespace LocalJSX {
         "onGoToPage"?: (event: ListPaginatorCustomEvent<number>) => void;
     }
     interface MetadataHeader {
-        "avatarUrl"?: string;
-        "comments": number;
+        "commentsNumber"?: number;
         "fileName": string;
-        "files": number;
-        "forks": number;
+        "filesNumber"?: number;
+        "forksNumber"?: number;
         "gistUrl": string;
         "isSecret": boolean;
         "lastActive"?: Date;
-        "stars": number;
+        "starsNumber"?: number;
+        "userAvatarUrl"?: string;
         "userName": string;
         "userNameUrl": string;
     }
@@ -228,15 +243,12 @@ declare namespace LocalJSX {
         "code"?: string[];
         "codeLang"?: string;
         "filename"?: string;
-        "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<{
-    code: string[],
-    fileName: string,
-    codeLang: string,
-  }>) => void;
+        "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<IGistFileInsert>) => void;
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
+        "gist-viewer": GistViewer;
         "gists-list": GistsList;
         "list-paginator": ListPaginator;
         "metadata-header": MetadataHeader;
@@ -257,6 +269,7 @@ declare module "@stencil/core" {
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
             "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
+            "gist-viewer": LocalJSX.GistViewer & JSXBase.HTMLAttributes<HTMLGistViewerElement>;
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
