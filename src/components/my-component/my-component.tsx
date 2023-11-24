@@ -1,5 +1,5 @@
 import { Component, Listen, State, h } from '@stencil/core';
-import { DUMMY_CODE, DUMMY_GISTS_LIST } from '../../utils/utils';
+import { DUMMY_CODE, DUMMY_GISTS_LIST, DUMMY_GIST_FILES, DUMMY_GIST_METADATA } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
@@ -46,6 +46,9 @@ export class MyComponent {
     //   filename='promisify.js'
     // />
 
-    return <gist-viewer />
+    return <gist-viewer
+      gistMetadata={DUMMY_GIST_METADATA}
+      gistFiles={DUMMY_GIST_FILES}
+    />
   }
 }
