@@ -46,9 +46,9 @@ export class MetadataHeader {
           <div class={'avatar'} style={{'background-image': `url(${this.userAvatarUrl})`}}></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
-              <a href={this.userNameUrl}>{this.userName}</a>
+              <a href={this.userNameUrl} class={'link-text'}>{this.userName}</a>
               {' / '}
-              <a href={this.gistUrl}><strong>{this.fileName}</strong></a>
+              <a href={this.gistUrl} class={'link-text'}><strong>{this.fileName}</strong></a>
 
               {this.isSecret && <span title='Only those with the link can see this gist.' class={'label'}>Secret</span>}
             </span>

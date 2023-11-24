@@ -4,12 +4,15 @@
 
 .btn-pagination {
   border-color: transparent;
-  border-radius: 5px;
-  border-width: 1px;
   background: none;
   font-size: inherit;
-  padding: 0.3rem 0.65rem;
+  color: var(--color-text);
+
   &:hover:not(:disabled) {
-    border-color: gray;
+    border-color: var(--border-color);
+  }
+
+  &:disabled {
+    color: var(--color-text-muted);
   }
 }

@@ -71,6 +71,27 @@
   --color-level-5: #266c7d;
   --color-level-6: #3a7e8e;
 
+  --ls-tag-text-opacity: 0.8;
+  --ls-tag-text-hover-opacity: 1;
+  --ls-page-text-size: 1em;
+  --ls-page-title-size: 36px;
+  --ls-main-content-max-width: 810px;
+  --ls-main-content-max-width-wide: 1280px;
+  --ls-font-family: Inter;
+  --ls-scrollbar-width: 6px;
+  --ls-border-radius-low: 4px;
+  --ls-border-radius-medium: 8px;
+  --ls-headbar-height: 3rem;
+  --ls-headbar-inner-top-padding: 0px;
+  --ls-left-sidebar-width: 246px;
+  --ls-left-sidebar-sm-width: 74vw;
+  --ls-left-sidebar-nav-btn-size: 38px;
+  --ls-native-kb-height: 0px;
+  --ls-error-color: var(--color-red-500);
+  --ls-warning-color: var(--color-orange-500);
+  --ls-success-color: var(--color-green-500);
+  --ls-highlight-color-default: var(--ls-secondary-background-color);
+
   /* colors variables */
   --color-black: #000;
   --color-current: currentColor;

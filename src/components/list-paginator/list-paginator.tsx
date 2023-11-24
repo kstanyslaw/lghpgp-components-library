@@ -25,7 +25,7 @@ export class ListPaginator {
         <button
           disabled={this.currentPage === 1}
           onClick={this.clickHandler.bind(this, this.currentPage - 1)}
-          class={'btn-pagination'}
+          class={'btn btn-pagination'}
         >
             Newer
         </button>
@@ -33,7 +33,7 @@ export class ListPaginator {
         <button
           disabled={this.lastPage}
           onClick={this.clickHandler.bind(this, this.currentPage + 1)}
-          class={'btn-pagination'}
+          class={'btn btn-pagination'}
         >
             Older
         </button>

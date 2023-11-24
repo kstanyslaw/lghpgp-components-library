@@ -39,7 +39,7 @@ export class SingleFileView {
             {this.filename}
           </div>
 
-          <button onClick={this.selectFileHandler.bind(this)}>Insert</button>
+          <button onClick={this.selectFileHandler.bind(this)} class={'btn'}>Insert</button>
         </div>
         <code-preview
           code={this.code}

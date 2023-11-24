@@ -2,17 +2,14 @@
 
 :host {
   display: block;
-  color: var(--ls-primary-text-color);
 }
 
-.code {
-  font-family: monospace;
-  // font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; // TO-DO: set to Logseq global var
-  // font-size: 12px; // TO-DO: set to Logseq global var
+code {
+  font-family: var(--font-family__code);
+  font-size: var(--font-size__code);
 }
 
 pre {
-  background-color: var(--ls-primary-background-color);
   counter-reset: line;
   margin: 0;
 }
@@ -24,11 +21,12 @@ pre code {
 
 pre code:before {
   background-color: var(--color-level-1);
+  color: var(--color-text-muted);
   display: inline-block;
   padding: 0 .5em;
   margin-right: .5em;
-  min-width: 2rem;
-  width: 1%;
+  min-width: 2.5rem;
+  width: auto;
   counter-increment: line;
   content: counter(line);
   text-align: end;

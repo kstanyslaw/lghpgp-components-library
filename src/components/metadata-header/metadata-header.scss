@@ -1,20 +1,7 @@
 @import url('../../common/styles/general.scss');
 
 :host {
-  // VARIABLES
-  --color-text: #000000;
-  --color-text-link: blue;
-  --color-text-muted: gray;
-  --text-body-size-small: .7rem;
-  --borderColor-default: grey;
-  --borderWidth-thin: 1px;
-  --background-color: lightgray;
-
-  // SETTINGS
-  // border: 1px solid blueviolet;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--color-text, black);
-  // background-color: var(--background-color, lightgray);
+  display: block;
 }
 
 .avatar {
@@ -22,78 +9,18 @@
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
-  background-color: gray;
+  background-color: var(--background-color__image);
   background-position: center;
   background-size: cover;
 }
 
-// .fg-color-muted {
-//   color: var(--color-text-muted);
-// }
-
-// .fg-small {
-//   font-size: small;
-// }
-
-// .d-flex {
-//   display: flex !important;
-// }
-
-// .d-inline-block {
-//   display: inline-block;
-// }
-
-// .px-lg-2 {
-//   padding: 0 .4rem;
-// }
-
-// .px-2 {
-//   padding: 0 .4rem;
-// }
-
-// .space-between {
-//   justify-content: space-between;
-// }
-
-// .items-center {
-//   align-items: center;
-// }
-
-// .flex-order-1 {
-//   order: 1 !important;
-// }
-
-// .flex-order-2 {
-//   order: 2 !important;
-// }
-
-// .m-0 {
-//   margin: 0;
-// }
-
 .label {
-  border: var(--borderWidth-thin, max(1px, 0.0625rem)) solid var(--borderColor-default, var(--color-border-default, grey));
-  border-radius: 2em;
   display: inline-block;
-  font-size: var(--text-body-size-small, 0.7rem);
-  font-weight: var(--base-text-weight-medium, 500);
+  border: var(--border-width-thin, max(1px, 0.0625rem)) solid var(--border-color, grey);
+  border-radius: 2rem;
+  font-size: var(--font-size__x-small, 0.7rem);
   line-height: 1rem;
-  padding: 0 5px;
+  padding: 0 0.3rem;
   white-space: nowrap;
-  margin-left: 0.2rem;
-}
-
-// .octicon {
-//   display: inline-block;
-//   overflow: visible !important;
-//   padding-right: .1rem;
-//   fill: currentColor;
-// }
-
-a {
-  text-decoration: none;
-  color: var(--color-text-link, blue);
-  &:hover {
-    text-decoration: underline;
-  }
+  margin-left: 0.4rem;
 }

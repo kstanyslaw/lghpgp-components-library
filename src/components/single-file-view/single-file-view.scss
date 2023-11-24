@@ -1,10 +1,10 @@
+@import url('../../common/styles/general.scss');
+
 :host {
-  --border-color: var(--ls-border-color, gray);
-  --border-color__hover: var(--ls-secondary-border-color, lightgray);
+  display:block;
 }
 
 .file-view {
-  font-family: Arial, Helvetica, sans-serif;
   display: block;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -23,11 +23,7 @@
   button {
     background-color: var(--color-level-1);
     border: 1px solid var(--border-color);
-    box-shadow: none;
-    border-radius: 5px;
-    padding: 0.3rem 0.5rem;
     color: var(--ls-primary-text-color);
-    cursor: pointer;
 
     &:hover {
       border-color: var(--border-color__hover);
@@ -41,17 +37,6 @@
 }
 
 .file-view__filename {
-  font-size: small;
+  font-size: var(--font-size__small);
   font-weight: 600;
-}
-
-.octicon {
-  display: inline-block;
-  overflow: visible !important;
-  padding-right: .1rem;
-  fill: currentColor;
-}
-
-.d-flex {
-  display: flex;
 }
