@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import { gitFileSVG } from '../../common/components/svg';
+import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 
 @Component({
   tag: 'single-file-view',
@@ -18,14 +19,10 @@ export class SingleFileView {
   codeLang: string;
 
   @Event()
-  selectFileInsert: EventEmitter<{
-    code: string[],
-    fileName: string,
-    codeLang: string,
-  }>;
+  selectFileInsert: EventEmitter<IGistFileInsert>;
 
   selectFileHandler() {
-    const fileInsert ={
+    const fileInsert: IGistFile ={
       code: this.code,
       fileName: this.filename,
       codeLang: this.codeLang,

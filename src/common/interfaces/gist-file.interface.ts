@@ -3,3 +3,7 @@ export interface IGistFile {
   code: string[];
   codeLang: string;
 }
+
+export interface IGistFileInsert extends IGistFile {
+  gistId?: string;
+}

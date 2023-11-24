@@ -7,10 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "./common/interfaces/gist-data.interface";
-import { IGistFile } from "./common/interfaces/gist-file.interface";
+import { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export { IGistMetadata } from "./common/interfaces/gist-data.interface";
-export { IGistFile } from "./common/interfaces/gist-file.interface";
+export { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export namespace Components {
     /**
      * @param code - A property that takes an array of lines of code
@@ -158,11 +158,7 @@ declare global {
         new (): HTMLRelativeTimeElement;
     };
     interface HTMLSingleFileViewElementEventMap {
-        "selectFileInsert": {
-    code: string[],
-    fileName: string,
-    codeLang: string,
-  };
+        "selectFileInsert": IGistFileInsert;
     }
     interface HTMLSingleFileViewElement extends Components.SingleFileView, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSingleFileViewElementEventMap>(type: K, listener: (this: HTMLSingleFileViewElement, ev: SingleFileViewCustomEvent<HTMLSingleFileViewElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -247,11 +243,7 @@ declare namespace LocalJSX {
         "code"?: string[];
         "codeLang"?: string;
         "filename"?: string;
-        "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<{
-    code: string[],
-    fileName: string,
-    codeLang: string,
-  }>) => void;
+        "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<IGistFileInsert>) => void;
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;

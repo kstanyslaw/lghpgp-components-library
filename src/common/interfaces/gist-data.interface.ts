@@ -1,4 +1,5 @@
 export interface IGistMetadata {
+  gistId: string;
   fileName: string;
   gistUrl: string;
   userName: string;

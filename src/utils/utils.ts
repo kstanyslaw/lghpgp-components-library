@@ -113,6 +113,7 @@ export const DUMMY_GISTS_LIST: IGistListItem[] = [
 ];
 
 export const DUMMY_GIST_METADATA: IGistMetadata = {
+  gistId: 'DummyId',
   filesNumber: 0,
   fileName: 'promisify.js',
   lastActive: new Date("2023-10-24T11:53:42Z"),
