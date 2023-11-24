@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
-import { IGistFile } from '../../common/interfaces/gist-file.interface';
+import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 
 @Component({
   tag: 'gist-viewer',
@@ -13,6 +13,10 @@ export class GistViewer {
 
   @Prop()
   gistFiles?: IGistFile[];
+
+  selectFileInsertInterceptor(event: CustomEvent<IGistFileInsert>) {
+    event.detail.gistId = this.gistMetadata.gistId;
+  }
 
   render() {
     return (
@@ -38,6 +42,7 @@ export class GistViewer {
               code={file.code}
               codeLang={file.codeLang}
               filename={file.fileName}
+              onSelectFileInsert={(event => this.selectFileInsertInterceptor(event))}
             />
           </li>)}
         </ul>
