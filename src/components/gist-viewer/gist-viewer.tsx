@@ -37,7 +37,7 @@ export class GistViewer {
         {!!this.gistFiles ? (
           <ul class={'list-no-decoration'}>
           {this.gistFiles.map((file: IGistFile) =>
-          <li class={'mb-4'}>
+          <li class={'mb-1'}>
             <single-file-view
               code={file.code}
               codeLang={file.codeLang}

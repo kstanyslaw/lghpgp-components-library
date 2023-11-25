@@ -20,7 +20,7 @@ export class GistsList {
     return (
       <Host>
         <ul class={'list-no-decoration'}>
-          {this.gistsList.map((gistItem: IGistListItem) => <li class={'gist-list-item mb-4'}>
+          {this.gistsList.map((gistItem: IGistListItem) => <li class={'gist-list-item mb-5'}>
             <gist-list-item gistListItem={gistItem} />
           </li>)}
         </ul>
