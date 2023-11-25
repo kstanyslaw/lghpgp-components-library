@@ -40,7 +40,7 @@ export class SingleFileView {
           </div>
 
           {/* <button onClick={this.selectFileHandler.bind(this)} class={'btn'}>Insert</button> */}
-          <i class={'btn code-add-icon d-flex'}>
+          <i class={'code-add-icon d-flex'}>
             {listColoumnReverseSVG()}
             {arrowLeftSVG()}
             {peaseOfCodeSVG()}
