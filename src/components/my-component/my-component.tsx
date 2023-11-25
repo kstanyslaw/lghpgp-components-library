@@ -61,7 +61,8 @@ export class MyComponent {
         <button type='button'onClick={() => {this.whatToDisplay = DisplayVariants.Gist}}>Gist with Files</button>
       </div>
 
-      <hr class={'horisontal-line mb-4'}/>
+      <hr class={'horisontal-line mb-1'}/>
+      <h1 class={'items-center mb-4'}> Your {(this.whatToDisplay === DisplayVariants.List) ? 'Gists List' : 'Single Gist' }</h1>
 
       {(this.whatToDisplay === DisplayVariants.List) && <gists-list
         gistsList={DUMMY_GISTS_LIST}

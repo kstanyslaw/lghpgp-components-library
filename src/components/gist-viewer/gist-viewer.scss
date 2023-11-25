@@ -3,3 +3,12 @@
 :host {
   display: block;
 }
+
+.gist-viewer__metadata {
+  .metadata-right span {
+    font-size: var(--font-size__x-large);
+    .label {
+      font-size: var(--font-size__x-small);
+    }
+  }
+}

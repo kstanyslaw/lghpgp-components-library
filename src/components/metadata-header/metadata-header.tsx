@@ -62,7 +62,7 @@ export class MetadataHeader {
             style={{'background-image': `url(${this.userAvatarUrl})`}}
             onClick={this.goToUserGistsHandler.bind(this)}
           ></div>
-          <div class={'d-inline-block px-lg-2'}>
+          <div class={'d-inline-block px-lg-2 metadata-right'}>
             <span>
               <a
                 onClick={this.goToUserGistsHandler.bind(this)}

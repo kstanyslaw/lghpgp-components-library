@@ -29,7 +29,7 @@ export class GistViewer {
           lastActive={this.gistMetadata.lastActive}
           userNameUrl={''}
           userAvatarUrl={this.gistMetadata.userAvatarUrl}
-          class={'mb-4'}
+          class={'mb-4 gist-viewer__metadata'}
         />
 
         <hr class={'horisontal-line mb-4'}/>
@@ -37,7 +37,7 @@ export class GistViewer {
         {!!this.gistFiles ? (
           <ul class={'list-no-decoration'}>
           {this.gistFiles.map((file: IGistFile) =>
-          <li class={'mb-4'}>
+          <li class={'mb-1'}>
             <single-file-view
               code={file.code}
               codeLang={file.codeLang}
