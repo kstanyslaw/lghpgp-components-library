@@ -19,7 +19,7 @@ export function timeString(timestamp:Date): string {
       return 'last year';
 
     // MONTHS
-    case diffTime > (30 * 24 * 60 * 60 * 1000):
+    case diffTime > (32 * 24 * 60 * 60 * 1000):
       return `${Math.floor(diffTime/(30 * 24 * 60 * 60 * 1000))} months ago`;
 
     case diffTime > (7 * 3 * 24 * 60 * 60 * 1000):
@@ -69,7 +69,8 @@ export const DUMMY_CODE: string[] = (`var promisify =
       );
     });`).split('\n');
 
-const ANOTHER_DUMMY_CODE: string[] = (`import { Component } from '@angular/core';
+const ANOTHER_DUMMY_CODE: string[] = (`
+import { Component } from '@angular/core';
 import { ControlContainer, FormGroup } from '@angular/forms';
 
 @Component({
@@ -78,7 +79,16 @@ import { ControlContainer, FormGroup } from '@angular/forms';
   <div [formGroup]="groupNameContainer">
     <input type="text" formControlName="textInput">
   </div>
-  \``).split('\n');
+  \`
+})
+export class ChildComponent {
+
+  constructor(public controlContainer: ControlContainer) { }
+
+  get groupNameContainer() {
+    return this.controlContainer.control as FormGroup<any>;
+  }
+}`).split('\n');
 
 export const DUMMY_GIST_ITEM: IGistListItem = {
   codePreviewRaw: DUMMY_CODE,

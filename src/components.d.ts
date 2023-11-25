@@ -145,6 +145,7 @@ declare global {
     };
     interface HTMLMetadataHeaderElementEventMap {
         "goToGist": string;
+        "goToUserGists": string;
     }
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMetadataHeaderElementEventMap>(type: K, listener: (this: HTMLMetadataHeaderElement, ev: MetadataHeaderCustomEvent<HTMLMetadataHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -245,6 +246,7 @@ declare namespace LocalJSX {
         "isSecret": boolean;
         "lastActive"?: Date;
         "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
+        "onGoToUserGists"?: (event: MetadataHeaderCustomEvent<string>) => void;
         "starsNumber"?: number;
         "userAvatarUrl"?: string;
         "userName": string;

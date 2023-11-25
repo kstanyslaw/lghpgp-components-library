@@ -16,6 +16,15 @@ export class GistListItem {
     this.goToGist.emit(this.gistListItem?.gistId );
   }
 
+  /**
+   * Protection getter:
+   * In gists list every gist item should
+   * display no more than ten lines of code first file
+   */
+  get codePreviewRaw(): string[] {
+    return this.gistListItem.codePreviewRaw.slice(0, 10);
+  }
+
   render() {
     return (
       <Host>
@@ -36,7 +45,7 @@ export class GistListItem {
         </div>
 
         <div class={'code-preview-border'} onClick={this.goToGistHandler.bind(this)}>
-          <code-preview code={this.gistListItem.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
+          <code-preview code={this.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
         </div>
       </Host>
     );
