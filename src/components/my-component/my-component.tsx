@@ -29,6 +29,11 @@ export class MyComponent {
     console.log(event.detail);
   }
 
+  @Listen('goToUserGists')
+  TEST_goToUserGists(event: CustomEvent<string>) {
+    console.log(event.detail);
+  }
+
   @Listen('goToPage')
   TEST_goToPage(event: CustomEvent<number>) {
     this.currentPage = event.detail;

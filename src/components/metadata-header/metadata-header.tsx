@@ -42,7 +42,14 @@ export class MetadataHeader {
   goToGist: EventEmitter<string>;
 
   goToGistHandler() {
-    this.goToGist.emit(this.gistId );
+    this.goToGist.emit(this.gistId);
+  }
+
+  @Event()
+  goToUserGists: EventEmitter<string>;
+
+  goToUserGistsHandler() {
+    this.goToUserGists.emit(this.userNameUrl);
   }
 
   render() {
@@ -50,11 +57,22 @@ export class MetadataHeader {
     return (
       <Host class={'d-flex space-between'}>
         <div class={'d-flex flex-order-1 left'}>
-          <div class={'avatar'} style={{'background-image': `url(${this.userAvatarUrl})`}}></div>
+          <div
+            class={'avatar'}
+            style={{'background-image': `url(${this.userAvatarUrl})`}}
+            onClick={this.goToUserGistsHandler.bind(this)}
+          ></div>
           <div class={'d-inline-block px-lg-2'}>
             <span>
-              <a href={this.userNameUrl} class={'link-text'}>{this.userName}</a>
+              <a
+                onClick={this.goToUserGistsHandler.bind(this)}
+                class={'link-text'}
+              >
+                {this.userName}
+              </a>
+
               {' / '}
+
               <a
                 onClick={this.goToGistHandler.bind(this)}
                 class={'link-text'}
