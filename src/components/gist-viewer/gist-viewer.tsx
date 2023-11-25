@@ -25,7 +25,7 @@ export class GistViewer {
           fileName={this.gistMetadata.fileName}
           isSecret={this.gistMetadata.isSecret}
           userName={this.gistMetadata.userName}
-          gistUrl={''}
+          gistId={this.gistMetadata.gistId}
           lastActive={this.gistMetadata.lastActive}
           userNameUrl={''}
           userAvatarUrl={this.gistMetadata.userAvatarUrl}

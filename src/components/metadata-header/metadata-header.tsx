@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/components/svg';
 
 @Component({
@@ -10,7 +10,7 @@ export class MetadataHeader {
   @Prop()
   fileName!: string;
   @Prop()
-  gistUrl!: string;
+  gistId!: string;
 
   @Prop()
   userName!: string;
@@ -38,6 +38,13 @@ export class MetadataHeader {
   @Prop()
   userAvatarUrl?: string = 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
 
+  @Event()
+  goToGist: EventEmitter<string>;
+
+  goToGistHandler() {
+    this.goToGist.emit(this.gistId );
+  }
+
   render() {
 
     return (
@@ -48,7 +55,12 @@ export class MetadataHeader {
             <span>
               <a href={this.userNameUrl} class={'link-text'}>{this.userName}</a>
               {' / '}
-              <a href={this.gistUrl} class={'link-text'}><strong>{this.fileName}</strong></a>
+              <a
+                onClick={this.goToGistHandler.bind(this)}
+                class={'link-text'}
+              >
+                <strong>{this.fileName}</strong>
+              </a>
 
               {this.isSecret && <span title='Only those with the link can see this gist.' class={'label'}>Secret</span>}
             </span>

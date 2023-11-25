@@ -24,6 +24,11 @@ export class MyComponent {
   @State()
   isListLoading = true;
 
+  @Listen('goToGist')
+  TEST_goToGist(event: CustomEvent<string>) {
+    console.log(event.detail);
+  }
+
   @Listen('goToPage')
   TEST_goToPage(event: CustomEvent<number>) {
     this.currentPage = event.detail;

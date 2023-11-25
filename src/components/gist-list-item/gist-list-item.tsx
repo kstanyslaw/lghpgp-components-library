@@ -7,13 +7,13 @@ import { IGistListItem } from '../../common/interfaces/gist-list-item.interface'
 })
 export class GistListItem {
   @Event()
-  gistSelected: EventEmitter<string>;
+  goToGist: EventEmitter<string>;
 
   @Prop()
   gistListItem: IGistListItem;
 
-  gistSelectedHandler() {
-    this.gistSelected.emit(this.gistListItem?.gistId );
+  goToGistHandler() {
+    this.goToGist.emit(this.gistListItem?.gistId );
   }
 
   render() {
@@ -29,13 +29,13 @@ export class GistListItem {
             userName={this.gistListItem.userName}
             userNameUrl={this.gistListItem.userNameUrl}
             userAvatarUrl={this.gistListItem.userAvatarUrl}
-            gistUrl={this.gistListItem.gistUrl}
+            gistId={this.gistListItem.gistId}
             isSecret={this.gistListItem.isSecret}
             lastActive={this.gistListItem.lastActive}
           />
         </div>
 
-        <div class={'code-preview-border'} onClick={this.gistSelectedHandler.bind(this)}>
+        <div class={'code-preview-border'} onClick={this.goToGistHandler.bind(this)}>
           <code-preview code={this.gistListItem.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
         </div>
       </Host>

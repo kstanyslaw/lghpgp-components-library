@@ -49,7 +49,7 @@ export namespace Components {
         "fileName": string;
         "filesNumber"?: number;
         "forksNumber"?: number;
-        "gistUrl": string;
+        "gistId": string;
         "isSecret": boolean;
         "lastActive": Date;
         "starsNumber"?: number;
@@ -76,6 +76,10 @@ export interface ListPaginatorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLListPaginatorElement;
 }
+export interface MetadataHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMetadataHeaderElement;
+}
 export interface SingleFileViewCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSingleFileViewElement;
@@ -94,7 +98,7 @@ declare global {
         new (): HTMLCodePreviewElement;
     };
     interface HTMLGistListItemElementEventMap {
-        "gistSelected": string;
+        "goToGist": string;
     }
     interface HTMLGistListItemElement extends Components.GistListItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGistListItemElementEventMap>(type: K, listener: (this: HTMLGistListItemElement, ev: GistListItemCustomEvent<HTMLGistListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -139,7 +143,18 @@ declare global {
         prototype: HTMLListPaginatorElement;
         new (): HTMLListPaginatorElement;
     };
+    interface HTMLMetadataHeaderElementEventMap {
+        "goToGist": string;
+    }
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMetadataHeaderElementEventMap>(type: K, listener: (this: HTMLMetadataHeaderElement, ev: MetadataHeaderCustomEvent<HTMLMetadataHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMetadataHeaderElementEventMap>(type: K, listener: (this: HTMLMetadataHeaderElement, ev: MetadataHeaderCustomEvent<HTMLMetadataHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMetadataHeaderElement: {
         prototype: HTMLMetadataHeaderElement;
@@ -205,7 +220,7 @@ declare namespace LocalJSX {
     }
     interface GistListItem {
         "gistListItem"?: IGistListItem;
-        "onGistSelected"?: (event: GistListItemCustomEvent<string>) => void;
+        "onGoToGist"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
         "gistFiles"?: IGistFile[];
@@ -226,9 +241,10 @@ declare namespace LocalJSX {
         "fileName": string;
         "filesNumber"?: number;
         "forksNumber"?: number;
-        "gistUrl": string;
+        "gistId": string;
         "isSecret": boolean;
         "lastActive"?: Date;
+        "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
         "starsNumber"?: number;
         "userAvatarUrl"?: string;
         "userName": string;

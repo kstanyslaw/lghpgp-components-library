@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
-import { gitFileSVG } from '../../common/components/svg';
+import { arrowLeftSVG, gitFileSVG, listColoumnReverseSVG, peaseOfCodeSVG } from '../../common/components/svg';
 import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 
 @Component({
@@ -32,14 +32,19 @@ export class SingleFileView {
 
   render() {
     return (
-      <div class={'file-view'}>
+      <div class={'file-view code-preview-border'} onClick={this.selectFileHandler.bind(this)}>
         <div class={'file-view__header d-flex'}>
           <div class={'file-view__filename d-flex'} >
             {gitFileSVG()}
             {this.filename}
           </div>
 
-          <button onClick={this.selectFileHandler.bind(this)} class={'btn'}>Insert</button>
+          {/* <button onClick={this.selectFileHandler.bind(this)} class={'btn'}>Insert</button> */}
+          <i class={'btn code-add-icon d-flex'}>
+            {listColoumnReverseSVG()}
+            {arrowLeftSVG()}
+            {peaseOfCodeSVG()}
+          </i>
         </div>
         <code-preview
           code={this.code}
