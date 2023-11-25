@@ -12,6 +12,10 @@ export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export { IGistMetadata } from "./common/interfaces/gist-data.interface";
 export { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export namespace Components {
+    interface BackToGistsList {
+    }
+    interface CloseWindow {
+    }
     /**
      * @param code - A property that takes an array of lines of code
      * @param lang - A programing language of this code
@@ -44,6 +48,8 @@ export namespace Components {
         "currentPage": number;
         "lastPage": boolean;
     }
+    interface MainWindow {
+    }
     interface MetadataHeader {
         "commentsNumber"?: number;
         "fileName": string;
@@ -68,6 +74,14 @@ export namespace Components {
         "filename": string;
     }
 }
+export interface BackToGistsListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBackToGistsListElement;
+}
+export interface CloseWindowCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCloseWindowElement;
+}
 export interface GistListItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGistListItemElement;
@@ -85,6 +99,40 @@ export interface SingleFileViewCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSingleFileViewElement;
 }
 declare global {
+    interface HTMLBackToGistsListElementEventMap {
+        "backToGistsListClick": any;
+    }
+    interface HTMLBackToGistsListElement extends Components.BackToGistsList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBackToGistsListElementEventMap>(type: K, listener: (this: HTMLBackToGistsListElement, ev: BackToGistsListCustomEvent<HTMLBackToGistsListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBackToGistsListElementEventMap>(type: K, listener: (this: HTMLBackToGistsListElement, ev: BackToGistsListCustomEvent<HTMLBackToGistsListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBackToGistsListElement: {
+        prototype: HTMLBackToGistsListElement;
+        new (): HTMLBackToGistsListElement;
+    };
+    interface HTMLCloseWindowElementEventMap {
+        "closeWindowClick": any;
+    }
+    interface HTMLCloseWindowElement extends Components.CloseWindow, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCloseWindowElementEventMap>(type: K, listener: (this: HTMLCloseWindowElement, ev: CloseWindowCustomEvent<HTMLCloseWindowElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCloseWindowElementEventMap>(type: K, listener: (this: HTMLCloseWindowElement, ev: CloseWindowCustomEvent<HTMLCloseWindowElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCloseWindowElement: {
+        prototype: HTMLCloseWindowElement;
+        new (): HTMLCloseWindowElement;
+    };
     /**
      * @param code - A property that takes an array of lines of code
      * @param lang - A programing language of this code
@@ -143,6 +191,12 @@ declare global {
         prototype: HTMLListPaginatorElement;
         new (): HTMLListPaginatorElement;
     };
+    interface HTMLMainWindowElement extends Components.MainWindow, HTMLStencilElement {
+    }
+    var HTMLMainWindowElement: {
+        prototype: HTMLMainWindowElement;
+        new (): HTMLMainWindowElement;
+    };
     interface HTMLMetadataHeaderElementEventMap {
         "goToGist": string;
         "goToUserGists": string;
@@ -191,11 +245,14 @@ declare global {
         new (): HTMLSingleFileViewElement;
     };
     interface HTMLElementTagNameMap {
+        "back-to-gists-list": HTMLBackToGistsListElement;
+        "close-window": HTMLCloseWindowElement;
         "code-preview": HTMLCodePreviewElement;
         "gist-list-item": HTMLGistListItemElement;
         "gist-viewer": HTMLGistViewerElement;
         "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
+        "main-window": HTMLMainWindowElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -203,6 +260,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BackToGistsList {
+        "onBackToGistsListClick"?: (event: BackToGistsListCustomEvent<any>) => void;
+    }
+    interface CloseWindow {
+        "onCloseWindowClick"?: (event: CloseWindowCustomEvent<any>) => void;
+    }
     /**
      * @param code - A property that takes an array of lines of code
      * @param lang - A programing language of this code
@@ -237,6 +300,8 @@ declare namespace LocalJSX {
         "lastPage"?: boolean;
         "onGoToPage"?: (event: ListPaginatorCustomEvent<number>) => void;
     }
+    interface MainWindow {
+    }
     interface MetadataHeader {
         "commentsNumber"?: number;
         "fileName": string;
@@ -264,11 +329,14 @@ declare namespace LocalJSX {
         "onSelectFileInsert"?: (event: SingleFileViewCustomEvent<IGistFileInsert>) => void;
     }
     interface IntrinsicElements {
+        "back-to-gists-list": BackToGistsList;
+        "close-window": CloseWindow;
         "code-preview": CodePreview;
         "gist-list-item": GistListItem;
         "gist-viewer": GistViewer;
         "gists-list": GistsList;
         "list-paginator": ListPaginator;
+        "main-window": MainWindow;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -279,6 +347,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "back-to-gists-list": LocalJSX.BackToGistsList & JSXBase.HTMLAttributes<HTMLBackToGistsListElement>;
+            "close-window": LocalJSX.CloseWindow & JSXBase.HTMLAttributes<HTMLCloseWindowElement>;
             /**
              * @param code - A property that takes an array of lines of code
              * @param lang - A programing language of this code
@@ -290,6 +360,7 @@ declare module "@stencil/core" {
             "gist-viewer": LocalJSX.GistViewer & JSXBase.HTMLAttributes<HTMLGistViewerElement>;
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
+            "main-window": LocalJSX.MainWindow & JSXBase.HTMLAttributes<HTMLMainWindowElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
