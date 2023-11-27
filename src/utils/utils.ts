@@ -1,6 +1,7 @@
 import { IGistListItem } from "../common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "../common/interfaces/gist-data.interface";
 import { IGistFile } from "../common/interfaces/gist-file.interface";
+// import { Octokit } from 'octokit';
 
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -19,7 +20,7 @@ export function timeString(timestamp:Date): string {
       return 'last year';
 
     // MONTHS
-    case diffTime > (32 * 24 * 60 * 60 * 1000):
+    case diffTime > (61 * 24 * 60 * 60 * 1000):
       return `${Math.floor(diffTime/(30 * 24 * 60 * 60 * 1000))} months ago`;
 
     case diffTime > (7 * 3 * 24 * 60 * 60 * 1000):
@@ -57,6 +58,15 @@ export function timeString(timestamp:Date): string {
       return 'a few seconds ago';
   }
 }
+
+// export async function fetchGistsList() {
+//   const octokit = new Octokit({ auth: '' });
+//   const headers = {
+//     'Accept': 'application/vnd.github+json',
+//     'X-GitHub-Api-Version': '2022-11-28'
+//   };
+//   return await octokit.request('GET /gists', { headers });
+// }
 
 export const DUMMY_CODE: string[] = (`var promisify =
 (fn) =>
