@@ -1,7 +1,7 @@
 import { IGistListItem } from "../common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "../common/interfaces/gist-data.interface";
 import { IGistFile } from "../common/interfaces/gist-file.interface";
-// import { Octokit } from 'octokit';
+import { TOKEN } from "./git-token";
 
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -59,14 +59,24 @@ export function timeString(timestamp:Date): string {
   }
 }
 
-// export async function fetchGistsList() {
-//   const octokit = new Octokit({ auth: '' });
-//   const headers = {
-//     'Accept': 'application/vnd.github+json',
-//     'X-GitHub-Api-Version': '2022-11-28'
-//   };
-//   return await octokit.request('GET /gists', { headers });
-// }
+export async function fetchGistsList() {
+  return await getGists(TOKEN);
+}
+
+const getGists = async (token: string): Promise<string> => {
+  const githubGistURL = 'https://api.github.com/gists';
+  const response = await fetch(githubGistURL, {
+    method: 'GET',
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "Authorization": `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28"
+    }
+  });
+  console.log(await response.json());
+
+  return  'no id :(';
+};
 
 export const DUMMY_CODE: string[] = (`var promisify =
 (fn) =>
