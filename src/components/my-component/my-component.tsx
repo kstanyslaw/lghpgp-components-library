@@ -1,4 +1,5 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
+import { fetchGistsList } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
@@ -10,9 +11,24 @@ export class MyComponent {
   @State()
   isMainWindowOpen: boolean = false;
 
+  @State()
+  isLoading: boolean = false;
+
   @Listen('closeWindowClick')
   closeWindowClickHandler() {
     this.isMainWindowOpen = false;
+  }
+
+  @Listen('selectFileInsert')
+  TEST_gistSelectedLog() {
+    this.isMainWindowOpen = false;
+  }
+
+  async openWindowClickHandler() {
+    this.isLoading = true;
+    this.isMainWindowOpen = true;
+    await fetchGistsList();
+    this.isLoading = false;
   }
 
 
@@ -25,7 +41,7 @@ export class MyComponent {
           : <button
               type="button"
               class={'btn items-center'}
-              onClick={() => {this.isMainWindowOpen = true}}
+              onClick={this.openWindowClickHandler.bind(this)}
             >
               Open Main Window
             </button>

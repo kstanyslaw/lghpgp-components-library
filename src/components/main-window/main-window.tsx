@@ -19,14 +19,21 @@ export class MainWindow {
   @State()
   currentPage: number = 1;
 
+  @Listen('backToGistsListClick')
+  TEST_backToGistsListClick() {
+    this.whatToDisplay = DisplayVariants.List;
+  }
+
   @Listen('goToGist')
   TEST_goToGist(event: CustomEvent<string>) {
     console.log(event.detail);
+    this.whatToDisplay = DisplayVariants.Gist;
   }
 
   @Listen('goToUserGists')
   TEST_goToUserGists(event: CustomEvent<string>) {
     console.log(event.detail);
+    this.whatToDisplay = DisplayVariants.List;
   }
 
   @Listen('goToPage')
@@ -37,8 +44,9 @@ export class MainWindow {
 
   @Listen('selectFileInsert')
   TEST_gistSelectedLog(event: CustomEvent<IGistFileInsert>) {
-      console.log('gist choosed: ', event.detail)
-    }
+    console.log('gist choosed: ', event.detail);
+    // To-Do onClosePlugin ???
+  }
 
   get lastPage(): boolean {
     return this.currentPage >= 13;
