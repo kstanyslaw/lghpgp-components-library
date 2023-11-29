@@ -15,3 +15,10 @@
     -moz-box-shadow: 0px 0px 5px 1px var(--border-color__hover);
   }
 }
+
+.gist-list-item {
+  .gist-description {
+    margin: 0 2rem;
+    padding: 0 0.4rem;
+  }
+}
