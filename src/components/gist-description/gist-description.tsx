@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'gist-description',
@@ -14,7 +14,7 @@ export class GistDescription {
   description: string;
 
   render() {
-    return (<p class={'gist-description fg-small fg-color-muted my-0'}> {this.description} </p>);
+    return (<p class={'gist-description my-0'}> {this.description} </p>);
   }
 
 }
