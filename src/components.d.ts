@@ -28,6 +28,9 @@ export namespace Components {
          */
         "codeLang": string;
     }
+    interface GistDescription {
+        "description": string;
+    }
     interface GistListItem {
         "gistListItem": IGistListItem;
     }
@@ -96,6 +99,12 @@ declare global {
     var HTMLCodePreviewElement: {
         prototype: HTMLCodePreviewElement;
         new (): HTMLCodePreviewElement;
+    };
+    interface HTMLGistDescriptionElement extends Components.GistDescription, HTMLStencilElement {
+    }
+    var HTMLGistDescriptionElement: {
+        prototype: HTMLGistDescriptionElement;
+        new (): HTMLGistDescriptionElement;
     };
     interface HTMLGistListItemElementEventMap {
         "goToGist": string;
@@ -192,6 +201,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "code-preview": HTMLCodePreviewElement;
+        "gist-description": HTMLGistDescriptionElement;
         "gist-list-item": HTMLGistListItemElement;
         "gist-viewer": HTMLGistViewerElement;
         "gists-list": HTMLGistsListElement;
@@ -218,6 +228,9 @@ declare namespace LocalJSX {
           * @type {string} - Code language
          */
         "codeLang"?: string;
+    }
+    interface GistDescription {
+        "description"?: string;
     }
     interface GistListItem {
         "gistListItem"?: IGistListItem;
@@ -265,6 +278,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "code-preview": CodePreview;
+        "gist-description": GistDescription;
         "gist-list-item": GistListItem;
         "gist-viewer": GistViewer;
         "gists-list": GistsList;
@@ -286,6 +300,7 @@ declare module "@stencil/core" {
              * Uses {index + 1} to display the line number.
              */
             "code-preview": LocalJSX.CodePreview & JSXBase.HTMLAttributes<HTMLCodePreviewElement>;
+            "gist-description": LocalJSX.GistDescription & JSXBase.HTMLAttributes<HTMLGistDescriptionElement>;
             "gist-list-item": LocalJSX.GistListItem & JSXBase.HTMLAttributes<HTMLGistListItemElement>;
             "gist-viewer": LocalJSX.GistViewer & JSXBase.HTMLAttributes<HTMLGistViewerElement>;
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;

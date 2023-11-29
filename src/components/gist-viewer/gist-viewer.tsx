@@ -33,9 +33,10 @@ export class GistViewer {
         />
 
         <hr class={'horisontal-line mb-4'}/>
+        <gist-description description={this.gistMetadata.description} />
 
         {!!this.gistFiles ? (
-          <ul class={'list-no-decoration'}>
+          <ul class={'list-no-decoration my-1'}>
           {this.gistFiles.map((file: IGistFile) =>
           <li class={'mb-1'}>
             <single-file-view
