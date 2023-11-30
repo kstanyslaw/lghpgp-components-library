@@ -42,6 +42,8 @@ export class GistListItem {
             isSecret={this.gistListItem.isSecret}
             lastActive={this.gistListItem.lastActive}
           />
+
+          <gist-description class={'fg-small fg-color-muted'} description={this.gistListItem.description} />
         </div>
 
         <div class={'code-preview-border'} onClick={this.goToGistHandler.bind(this)}>
