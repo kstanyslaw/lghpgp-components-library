@@ -6,6 +6,8 @@
   --border-color: var(--ls-border-color, gray);
   --border-color__hover: var(--ls-secondary-border-color, lightgray);
   --background-color: var(--ls-primary-background-color);
+  --background-color-secondary: var(--ls-secondary-background-color);
+  --background-color-tertiary: var(--ls-tertiary-background-color);
   --background-color__image: var(--ls-quaternary-background-color);
   --border-width-thin: 1px;
   --font-family: var(--ls-font-family);
@@ -25,6 +27,10 @@
   overflow: visible;
   fill: currentColor;
   margin-right: 0.2rem;
+}
+
+.svg-icon {
+  vertical-align: middle;
 }
 
 .fg-color-muted {
@@ -53,6 +59,10 @@
 
 .space-between {
   justify-content: space-between;
+}
+
+.flex-start {
+  justify-content: flex-start;
 }
 
 .items-center {
@@ -98,7 +108,11 @@
   margin-left: 2rem;
 }
 
-.items-center {
+.ml-2 {
+  margin-left: 1rem;
+}
+
+.text-center {
   text-align: center;
 }
 

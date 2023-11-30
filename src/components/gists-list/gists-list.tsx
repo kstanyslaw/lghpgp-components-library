@@ -25,7 +25,7 @@ export class GistsList {
           </li>)}
         </ul>
 
-        <div class={'items-center'}>
+        <div class={'text-center'}>
           <list-paginator lastPage={false} currentPage={this.currentPage}/>
         </div>
       </Host>

@@ -21,18 +21,6 @@ export class GistViewer {
   render() {
     return (
       <Host>
-        <metadata-header
-          fileName={this.gistMetadata.fileName}
-          isSecret={this.gistMetadata.isSecret}
-          userName={this.gistMetadata.userName}
-          gistId={this.gistMetadata.gistId}
-          lastActive={this.gistMetadata.lastActive}
-          userNameUrl={''}
-          userAvatarUrl={this.gistMetadata.userAvatarUrl}
-          class={'mb-4 gist-viewer__metadata'}
-        />
-
-        <hr class={'horisontal-line mb-4'}/>
         <gist-description description={this.gistMetadata.description} />
 
         {!!this.gistFiles ? (
