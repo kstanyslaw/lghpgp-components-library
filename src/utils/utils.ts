@@ -60,11 +60,11 @@ export function timeString(timestamp:Date): string {
 }
 
 export async function fetchGistsList() {
-  return await getGists(TOKEN);
+  return await getGists(TOKEN, 'gorborukov');
 }
 
-const getGists = async (token: string): Promise<string> => {
-  const githubGistURL = 'https://api.github.com/gists';
+const getGists = async (token: string, username: string): Promise<string> => {
+  const githubGistURL = `https://api.github.com/users/${username}/gists`;
   const response = await fetch(githubGistURL, {
     method: 'GET',
     headers: {
