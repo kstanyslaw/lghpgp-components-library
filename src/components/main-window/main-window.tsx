@@ -54,20 +54,31 @@ export class MainWindow {
 
   render() {
 
+    const backButtonTitle = `Back to ${DUMMY_GIST_METADATA.userName} gists`;
+
     return <Host>
-      {/* <div class={'items-center'}>
-        <button type='button' onClick={() => {this.whatToDisplay = DisplayVariants.List}}>List of All Gists</button>
-        <button type='button'onClick={() => {this.whatToDisplay = DisplayVariants.Gist}}>Gist with Files</button>
-        <hr class={'horisontal-line mb-1'}/>
-      </div> */}
-
-
       <div class={'d-flex items-center space-between'}>
-        <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} style={{'visibility': (this.whatToDisplay === DisplayVariants.Gist) ? 'visible' : 'hidden'}}/>
-        <h1>Your {(this.whatToDisplay === DisplayVariants.List) ? 'Gists List' : 'Single Gist' }</h1>
+        <div class={'d-flex items-center flex-start'}>
+          <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} hidden={(this.whatToDisplay === DisplayVariants.List)} title={backButtonTitle}/>
+
+          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userName} — all gists </h1> }
+
+          {(this.whatToDisplay === DisplayVariants.Gist) && <metadata-header
+          fileName={DUMMY_GIST_METADATA.fileName}
+          isSecret={DUMMY_GIST_METADATA.isSecret}
+          userName={DUMMY_GIST_METADATA.userName}
+          gistId={DUMMY_GIST_METADATA.gistId}
+          lastActive={DUMMY_GIST_METADATA.lastActive}
+          userNameUrl={''}
+          userAvatarUrl={DUMMY_GIST_METADATA.userAvatarUrl}
+          class={'gist-viewer__metadata ml-2'}
+        />}
+        </div>
+
+
         <close-window class={'main-window__icon main-window__icon-close'}/>
       </div>
-      <hr class={'horisontal-line mb-2'}/>
+      <hr class={'horisontal-line mb-4'}/>
 
       {(this.whatToDisplay === DisplayVariants.List) && <gists-list
         gistsList={DUMMY_GISTS_LIST}

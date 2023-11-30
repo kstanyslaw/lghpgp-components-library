@@ -9,7 +9,7 @@ import { fetchGistsList } from '../../utils/utils';
 export class MyComponent {
 
   @State()
-  isMainWindowOpen: boolean = false;
+  isMainWindowOpen: boolean = true;
 
   @State()
   isLoading: boolean = false;
@@ -27,7 +27,7 @@ export class MyComponent {
   async openWindowClickHandler() {
     this.isLoading = true;
     this.isMainWindowOpen = true;
-    await fetchGistsList();
+    // await fetchGistsList();
     this.isLoading = false;
   }
 

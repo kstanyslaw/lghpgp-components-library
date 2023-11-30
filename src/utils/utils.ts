@@ -89,8 +89,7 @@ export const DUMMY_CODE: string[] = (`var promisify =
       );
     });`).split('\n');
 
-const ANOTHER_DUMMY_CODE: string[] = (`
-import { Component } from '@angular/core';
+const ANOTHER_DUMMY_CODE: string[] = (`import { Component } from '@angular/core';
 import { ControlContainer, FormGroup } from '@angular/forms';
 
 @Component({
