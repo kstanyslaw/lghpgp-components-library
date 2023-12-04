@@ -23,5 +23,9 @@ export interface IGistListItem {
   * @type {string[]} - an array of first ten rows of the first file in the gist just *  for preview what it is
   */
   codePreviewRaw: string[];
+
+  /**
+   * @type {string} codeLang - code programming language
+   */
   codeLang: string;
 }
