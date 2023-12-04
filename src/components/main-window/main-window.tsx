@@ -60,7 +60,7 @@ export class MainWindow {
     const backButtonTitle = `Back to ${DUMMY_GIST_METADATA.userLogin} gists`;
 
     return <Host>
-      <div class={'d-flex items-center space-between'}>
+      <div class={'d-flex items-center space-between main-window-header'}>
         <div class={'d-flex items-center flex-start'}>
           <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} hidden={(this.whatToDisplay === DisplayVariants.List)} title={backButtonTitle}/>
 

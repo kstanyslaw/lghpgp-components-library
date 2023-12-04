@@ -43,3 +43,12 @@
   background-color: var(--background-color-tertiary);
   border-color: transparent;
 }
+
+.main-window-header {
+  .files,
+  .forks,
+  .comments,
+  .stars {
+    display: none;
+  }
+}
