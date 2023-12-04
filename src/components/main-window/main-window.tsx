@@ -57,23 +57,17 @@ export class MainWindow {
 
   render() {
 
-    const backButtonTitle = `Back to ${DUMMY_GIST_METADATA.userName} gists`;
+    const backButtonTitle = `Back to ${DUMMY_GIST_METADATA.userLogin} gists`;
 
     return <Host>
       <div class={'d-flex items-center space-between'}>
         <div class={'d-flex items-center flex-start'}>
           <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} hidden={(this.whatToDisplay === DisplayVariants.List)} title={backButtonTitle}/>
 
-          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userName} — all gists <span class={'label gist-badge'} title={!this.allGists ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGists ?? '???'} </span> </h1> }
+          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userLogin} — all gists <span class={'label gist-badge'} title={!this.allGists ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGists ?? '???'} </span> </h1> }
 
           {(this.whatToDisplay === DisplayVariants.Gist) && <metadata-header
-          fileName={DUMMY_GIST_METADATA.fileName}
-          isSecret={DUMMY_GIST_METADATA.isSecret}
-          userName={DUMMY_GIST_METADATA.userName}
-          gistId={DUMMY_GIST_METADATA.gistId}
-          lastActive={DUMMY_GIST_METADATA.lastActive}
-          userNameUrl={''}
-          userAvatarUrl={DUMMY_GIST_METADATA.userAvatarUrl}
+          gistMetadata={DUMMY_GIST_METADATA}
           class={'gist-viewer__metadata ml-2'}
         />}
         </div>
@@ -91,6 +85,7 @@ export class MainWindow {
 
       {(this.whatToDisplay === DisplayVariants.Gist) && <gist-viewer
         gistMetadata={DUMMY_GIST_METADATA}
+        description={DUMMY_GISTS_LIST[0].description}
         gistFiles={DUMMY_GIST_FILES}
       />}
     </Host>
