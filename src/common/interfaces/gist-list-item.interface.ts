@@ -15,12 +15,13 @@ export interface IGistListItem {
   gistMetadata: IGistMetadata;
 
   /**
-   * @type {string[]} - an array of first ten rows of the first file in the gist just * for preview what it is
-   */
-  /**
    * @type {string} description - gist description
-   */
+  */
   description: string;
+
+  /**
+  * @type {string[]} - an array of first ten rows of the first file in the gist just *  for preview what it is
+  */
   codePreviewRaw: string[];
   codeLang: string;
 }
