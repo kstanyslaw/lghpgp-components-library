@@ -12,6 +12,9 @@ export class GistViewer {
   gistMetadata: IGistMetadata;
 
   @Prop()
+  description: string;
+
+  @Prop()
   gistFiles?: IGistFile[];
 
   selectFileInsertInterceptor(event: CustomEvent<IGistFileInsert>) {
@@ -21,7 +24,7 @@ export class GistViewer {
   render() {
     return (
       <Host>
-        <gist-description description={this.gistMetadata.description} />
+        <gist-description description={this.description} />
 
         {!!this.gistFiles ? (
           <ul class={'list-no-decoration my-1'}>
