@@ -19,6 +19,9 @@ export class MainWindow {
   @State()
   currentPage: number = 1;
 
+  @State()
+  allGists: number | null = 48;
+
   @Listen('backToGistsListClick')
   TEST_backToGistsListClick() {
     this.whatToDisplay = DisplayVariants.List;
@@ -61,7 +64,7 @@ export class MainWindow {
         <div class={'d-flex items-center flex-start'}>
           <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} hidden={(this.whatToDisplay === DisplayVariants.List)} title={backButtonTitle}/>
 
-          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userName} — all gists </h1> }
+          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userName} — all gists <span class={'label gist-badge'} title={!this.allGists ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGists ?? '???'} </span> </h1> }
 
           {(this.whatToDisplay === DisplayVariants.Gist) && <metadata-header
           fileName={DUMMY_GIST_METADATA.fileName}

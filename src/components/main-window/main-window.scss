@@ -34,3 +34,12 @@
     }
   }
 }
+
+.label.gist-badge {
+  font-size: var(--font-size__x-large);
+  font-weight: normal;
+  padding: 0.5rem;
+  margin-left: 0;
+  background-color: var(--background-color-tertiary);
+  border-color: transparent;
+}

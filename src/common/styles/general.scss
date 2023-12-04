@@ -143,3 +143,15 @@ a {
   border-width: 1px;
   padding: .3rem .65rem;
 }
+
+.label {
+  display: inline-block;
+  border: var(--border-width-thin, max(1px, 0.0625rem)) solid var(--border-color, grey);
+  border-radius: 2rem;
+  font-size: var(--font-size__x-small, 0.7rem);
+  line-height: 1rem;
+  padding: 0 0.3rem;
+  white-space: nowrap;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
