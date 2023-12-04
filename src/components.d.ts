@@ -8,9 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "./common/interfaces/gist-data.interface";
 import { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
+import { IGistMetadata as IGistMetadata1 } from "./components";
 export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export { IGistMetadata } from "./common/interfaces/gist-data.interface";
 export { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
+export { IGistMetadata as IGistMetadata1 } from "./components";
 export namespace Components {
     interface BackToGistsList {
     }
@@ -39,6 +41,7 @@ export namespace Components {
         "gistListItem": IGistListItem;
     }
     interface GistViewer {
+        "description": string;
         "gistFiles"?: IGistFile[];
         "gistMetadata": IGistMetadata;
     }
@@ -54,17 +57,7 @@ export namespace Components {
     interface MainWindow {
     }
     interface MetadataHeader {
-        "commentsNumber"?: number;
-        "fileName": string;
-        "filesNumber"?: number;
-        "forksNumber"?: number;
-        "gistId": string;
-        "isSecret": boolean;
-        "lastActive": Date;
-        "starsNumber"?: number;
-        "userAvatarUrl"?: string;
-        "userName": string;
-        "userNameUrl": string;
+        "gistMetadata": IGistMetadata1;
     }
     interface MyComponent {
     }
@@ -300,6 +293,7 @@ declare namespace LocalJSX {
         "onGoToGist"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
+        "description"?: string;
         "gistFiles"?: IGistFile[];
         "gistMetadata"?: IGistMetadata;
     }
@@ -316,19 +310,9 @@ declare namespace LocalJSX {
     interface MainWindow {
     }
     interface MetadataHeader {
-        "commentsNumber"?: number;
-        "fileName": string;
-        "filesNumber"?: number;
-        "forksNumber"?: number;
-        "gistId": string;
-        "isSecret": boolean;
-        "lastActive"?: Date;
+        "gistMetadata"?: IGistMetadata1;
         "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
         "onGoToUserGists"?: (event: MetadataHeaderCustomEvent<string>) => void;
-        "starsNumber"?: number;
-        "userAvatarUrl"?: string;
-        "userName": string;
-        "userNameUrl": string;
     }
     interface MyComponent {
     }

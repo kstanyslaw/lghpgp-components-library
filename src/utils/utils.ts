@@ -110,51 +110,52 @@ export class ChildComponent {
 }`).split('\n');
 
 export const DUMMY_GIST_ITEM: IGistListItem = {
+  gistMetadata: {
+    gistId: "DummyID",
+    firstFileName: 'promisify.js',
+    userLogin: "kstanylsaw",
+    lastActive: new Date("2023-10-24T11:53:42Z"),
+    isUpdated: false,
+    isSecret: true,
+    filesNumber: 0,
+    forksNumber: 1,
+    commentsNumber: 0,
+    starsNumber: 2,
+    userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
+  },
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   codePreviewRaw: DUMMY_CODE,
-  filesNumber: 0,
-  firstFileName: 'promisify.js',
   codeLang: 'javascript',
-  lastActive: new Date("2023-10-24T11:53:42Z"),
-  description: "Dummy description",
-  forks: 1,
-  commentsNumber: 0,
-  stars: 2,
-  userName: "kstanylsaw",
-  userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
-  gistUrl: "",
-  userNameUrl: "",
-  isSecret: true,
-  isUpdated: false,
-  gistId: "DummyID"
 }
 
 export const DUMMY_GISTS_LIST: IGistListItem[] = [
   DUMMY_GIST_ITEM,
   {
     ...DUMMY_GIST_ITEM,
-    firstFileName: 'child.component.ts',
-    filesNumber: 2,
-    isSecret: false,
-    gistId: 'Another DummyID',
-    lastActive: new Date(),
+    gistMetadata:{
+      ...DUMMY_GIST_ITEM.gistMetadata,
+      firstFileName: 'child.component.ts',
+      filesNumber: 2,
+      isSecret: false,
+      gistId: 'Another DummyID',
+      lastActive: new Date(),
+    },
     codePreviewRaw: ANOTHER_DUMMY_CODE
   },
 ];
 
 export const DUMMY_GIST_METADATA: IGistMetadata = {
   gistId: 'DummyId',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  filesNumber: 0,
-  fileName: 'promisify.js',
+  firstFileName: 'promisify.js',
+  userLogin: "kstanylsaw",
   lastActive: new Date("2023-10-24T11:53:42Z"),
+  isUpdated: true,
+  isSecret: true,
+  filesNumber: 0,
   forksNumber: 1,
   commentsNumber: 0,
   starsNumber: 2,
-  userName: "kstanylsaw",
   userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
-  gistUrl: "",
-  userNameUrl: "",
-  isSecret: true,
 }
 
 export const DUMMY_GIST_FILES: IGistFile[] = [

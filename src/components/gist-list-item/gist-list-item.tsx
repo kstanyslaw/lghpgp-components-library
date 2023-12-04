@@ -13,7 +13,8 @@ export class GistListItem {
   gistListItem: IGistListItem;
 
   goToGistHandler() {
-    this.goToGist.emit(this.gistListItem?.gistId );
+    const gistId = this.gistListItem.gistMetadata.gistId;
+    this.goToGist.emit(gistId );
   }
 
   /**
@@ -29,21 +30,12 @@ export class GistListItem {
     return (
       <Host>
         <div class={'mb-1'}>
-          <metadata-header
-            filesNumber={this.gistListItem.filesNumber}
-            forksNumber={this.gistListItem.forks}
-            commentsNumber={this.gistListItem.commentsNumber}
-            starsNumber={this.gistListItem.stars}
-            fileName={this.gistListItem.firstFileName}
-            userName={this.gistListItem.userName}
-            userNameUrl={this.gistListItem.userNameUrl}
-            userAvatarUrl={this.gistListItem.userAvatarUrl}
-            gistId={this.gistListItem.gistId}
-            isSecret={this.gistListItem.isSecret}
-            lastActive={this.gistListItem.lastActive}
-          />
+          <metadata-header gistMetadata={this.gistListItem.gistMetadata} />
 
-          <gist-description class={'fg-small fg-color-muted'} description={this.gistListItem.description} />
+          <gist-description
+            class={'fg-small fg-color-muted'}
+            description={this.gistListItem.description}
+          />
         </div>
 
         <div class={'code-preview-border'} onClick={this.goToGistHandler.bind(this)}>
