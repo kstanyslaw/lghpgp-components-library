@@ -1,5 +1,8 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
 import { fetchGistsList } from '../../utils/utils';
+import { IGistFileInsert } from '../../common/interfaces/gist-file.interface';
+import { DisplayVariants } from '../../common/enums/display-variants.enum';
+import { DUMMY_GIST_FILES, DUMMY_GIST_ITEM, DUMMY_GIST_METADATA, DUMMY_GISTS_LIST, DUMMY_USER } from '../../utils/dummy-data';
 
 @Component({
   tag: 'my-component',
@@ -9,10 +12,16 @@ import { fetchGistsList } from '../../utils/utils';
 export class MyComponent {
 
   @State()
+  whatToDisplay: DisplayVariants = DisplayVariants.List;
+
+  @State()
   isMainWindowOpen: boolean = true;
 
   @State()
   isLoading: boolean = false;
+
+  @State()
+  currentPage: number = 1;
 
   @Listen('closeWindowClick')
   closeWindowClickHandler() {
@@ -20,8 +29,33 @@ export class MyComponent {
   }
 
   @Listen('selectFileInsert')
-  TEST_gistSelectedLog() {
+  TEST_gistSelectedLog(event: CustomEvent<IGistFileInsert>) {
     this.isMainWindowOpen = false;
+    console.log('gist choosed: ', event.detail);
+    // To-Do onClosePlugin ???
+  }
+
+  @Listen('backToGistsListClick')
+  TEST_backToGistsListClick() {
+    this.whatToDisplay = DisplayVariants.List;
+  }
+
+  @Listen('goToGist')
+  TEST_goToGist(event: CustomEvent<string>) {
+    console.log(event.detail);
+    this.whatToDisplay = DisplayVariants.Gist;
+  }
+
+  @Listen('goToUserGists')
+  TEST_goToUserGists(event: CustomEvent<string>) {
+    console.log(event.detail);
+    this.whatToDisplay = DisplayVariants.List;
+  }
+
+  @Listen('goToPage')
+  TEST_goToPage(event: CustomEvent<number>) {
+    this.currentPage = event.detail;
+    console.log(this.currentPage);
   }
 
   async openWindowClickHandler() {
@@ -31,13 +65,35 @@ export class MyComponent {
     this.isLoading = false;
   }
 
+  get lastPageReached(): boolean {
+    return this.currentPage >= 13;
+  }
+
+  get userMetadata() {
+    return {
+      userLogin: 'kstanyslaw'
+    }
+  }
+
 
   render() {
 
     return <Host>
       {
         this.isMainWindowOpen
-          ? <main-window />
+          ? <main-window
+            whatToDisplay={this.whatToDisplay}
+            userMetadata={DUMMY_USER}
+
+            gistsList={DUMMY_GISTS_LIST}
+            currentPage={this.currentPage}
+            lastPageReached={this.lastPageReached}
+            allGistsNumber={48}
+
+            gistFiles={DUMMY_GIST_FILES}
+            gistMetadata={DUMMY_GIST_METADATA}
+            description={DUMMY_GIST_ITEM.description}
+          />
           : <button
               type="button"
               class={'btn items-center'}

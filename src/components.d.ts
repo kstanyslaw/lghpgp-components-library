@@ -8,11 +8,15 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "./common/interfaces/gist-data.interface";
 import { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
+import { DisplayVariants } from "./common/enums/display-variants.enum";
 import { IGistMetadata as IGistMetadata1 } from "./components";
+import { IUserData } from "./common/interfaces/user-metadata.interface";
 export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
 export { IGistMetadata } from "./common/interfaces/gist-data.interface";
 export { IGistFile, IGistFileInsert } from "./common/interfaces/gist-file.interface";
+export { DisplayVariants } from "./common/enums/display-variants.enum";
 export { IGistMetadata as IGistMetadata1 } from "./components";
+export { IUserData } from "./common/interfaces/user-metadata.interface";
 export namespace Components {
     interface BackToGistsList {
     }
@@ -55,9 +59,19 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MainWindow {
+        "allGistsNumber": number | null;
+        "currentPage": number;
+        "description"?: string;
+        "gistFiles"?: IGistFile[];
+        "gistMetadata"?: IGistMetadata;
+        "gistsList"?: IGistListItem[];
+        "lastPageReached": boolean;
+        "userMetadata": any;
+        "whatToDisplay": DisplayVariants;
     }
     interface MetadataHeader {
         "gistMetadata": IGistMetadata1;
+        "userData": IUserData;
     }
     interface MyComponent {
     }
@@ -308,11 +322,21 @@ declare namespace LocalJSX {
         "onGoToPage"?: (event: ListPaginatorCustomEvent<number>) => void;
     }
     interface MainWindow {
+        "allGistsNumber"?: number | null;
+        "currentPage"?: number;
+        "description"?: string;
+        "gistFiles"?: IGistFile[];
+        "gistMetadata"?: IGistMetadata;
+        "gistsList"?: IGistListItem[];
+        "lastPageReached"?: boolean;
+        "userMetadata"?: any;
+        "whatToDisplay"?: DisplayVariants;
     }
     interface MetadataHeader {
         "gistMetadata"?: IGistMetadata1;
         "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
         "onGoToUserGists"?: (event: MetadataHeaderCustomEvent<string>) => void;
+        "userData"?: IUserData;
     }
     interface MyComponent {
     }

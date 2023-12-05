@@ -82,6 +82,21 @@
   margin: 0;
 }
 
+// $marginSteps: (
+//   '0': 0,
+//   '1': 0.5rem,
+//   '2': 1rem,
+//   '3': 1.5rem,
+//   '4': 2rem,
+//   '5': 2.5rem
+// );
+
+// @each $step, $value in $marginSteps {
+//   .mb-#{$step} {
+//     margin-bottom: $value;
+//   }
+// }
+
 .mb-1 {
   margin-bottom: .5rem;
 }

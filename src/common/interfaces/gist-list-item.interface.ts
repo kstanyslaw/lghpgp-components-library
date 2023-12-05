@@ -1,10 +1,9 @@
 import { IGistMetadata } from "./gist-data.interface";
+import { IGistFile } from "./gist-file.interface";
+import { IUserData } from "./user-metadata.interface";
 
 /**
  * @param {string} description - gist description
- * @param {string[]} codePreviewRaw - an array of first ten rows of the first
- * file in the gist just for preview what it is
- * @param {string} codeLang - first file code language
  */
 export interface IGistListItem {
 
@@ -15,17 +14,17 @@ export interface IGistListItem {
   gistMetadata: IGistMetadata;
 
   /**
+   * @type {IUserMetadata} ownerData - information about the user - the owner of the gist
+   */
+  ownerData: IUserData;
+
+  /**
    * @type {string} description - gist description
   */
   description: string;
 
   /**
-  * @type {string[]} - an array of first ten rows of the first file in the gist just *  for preview what it is
-  */
-  codePreviewRaw: string[];
-
-  /**
-   * @type {string} codeLang - code programming language
+   * @type {IGistFile[]} files - array of files in gist
    */
-  codeLang: string;
+  files: IGistFile[];
 }

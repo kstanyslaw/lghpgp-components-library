@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/components/svg';
 import { IGistMetadata } from '../../components';
+import { IUserData } from '../../common/interfaces/user-metadata.interface';
 
 @Component({
   tag: 'metadata-header',
@@ -11,6 +12,9 @@ export class MetadataHeader {
 
   @Prop()
   gistMetadata: IGistMetadata;
+
+  @Prop()
+  userData: IUserData;
 
   @Event()
   goToGist: EventEmitter<string>;
@@ -23,22 +27,25 @@ export class MetadataHeader {
   goToUserGists: EventEmitter<string>;
 
   goToUserGistsHandler() {
-    this.goToUserGists.emit(this.gistMetadata.userLogin);
+    this.goToUserGists.emit(this.userData.userLogin);
   }
 
   render() {
 
     let {
       firstFileName,
-      userLogin,
       lastActive,
       isSecret,
       filesNumber,
       forksNumber,
       commentsNumber,
       starsNumber,
-      userAvatarUrl
     } = this.gistMetadata;
+
+    let {
+      userAvatarUrl,
+      userLogin
+    } = this.userData;
 
     userAvatarUrl = userAvatarUrl ?? 'https://www.clipartmax.com/png/small/343-3438895_kara-strong-black-and-white-profile.png';
 

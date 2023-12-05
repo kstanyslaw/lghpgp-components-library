@@ -23,14 +23,21 @@ export class GistListItem {
    * display no more than ten lines of code first file
    */
   get codePreviewRaw(): string[] {
-    return this.gistListItem.codePreviewRaw.slice(0, 10);
+    return this.gistListItem.files[0].code.slice(0, 10);
+  }
+
+  get codeLang(): string {
+    return this.gistListItem.files[0].codeLang;
   }
 
   render() {
     return (
       <Host>
         <div class={'mb-1'}>
-          <metadata-header gistMetadata={this.gistListItem.gistMetadata} />
+          <metadata-header
+            gistMetadata={this.gistListItem.gistMetadata}
+            userData={this.gistListItem.ownerData}
+          />
 
           <gist-description
             class={'fg-small fg-color-muted'}
@@ -39,7 +46,7 @@ export class GistListItem {
         </div>
 
         <div class={'code-preview-border'} onClick={this.goToGistHandler.bind(this)}>
-          <code-preview code={this.codePreviewRaw} codeLang={this.gistListItem.codeLang}/>
+          <code-preview code={this.codePreviewRaw} codeLang={this.codeLang}/>
         </div>
       </Host>
     );

@@ -1,7 +1,6 @@
 /**
  * @param {string} gistId -gist ID
  * @param {string} firstFileName - name of first file in gist that used for gist's title btw
- * @param {string} userLogin - user login
  * @param {Date} lastActive - date and time of last manipulation with file
  * @param {boolean} isUpdated - flag that says if the gist was updated or only created
  * @param {boolean} isSecret - flag that says is the gist secret
@@ -9,7 +8,6 @@
  * @param {number} forksNumber - number of forks in the gist
  * @param {number} commentsNumber - number of comments in the gist
  * @param {number} starsNumber - number of stars in the gist
- * @param {string} userAvatarUrl - a link to user avatar (if avaliable)
  */
 export interface IGistMetadata {
   /**
@@ -21,11 +19,6 @@ export interface IGistMetadata {
    * @type {string} firstFileName - name of first file in gist that used for gist's title btw
    */
   firstFileName: string;
-
-  /**
-   * @type {string} userLogin - user login
-   */
-  userLogin: string;
 
   /**
    * @type {Date} lastActive - date and time of last manipulation with file
@@ -62,8 +55,4 @@ export interface IGistMetadata {
    */
   starsNumber?: number;
 
-  /**
-   * @type {string} userAvatarUrl - a link to user avatar (if avaliable)
-   */
-  userAvatarUrl?: string;
 }

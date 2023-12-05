@@ -1,11 +1,8 @@
-import { Component, Listen, State, h, Host } from '@stencil/core';
-import { DUMMY_GISTS_LIST, DUMMY_GIST_FILES, DUMMY_GIST_METADATA } from '../../utils/utils';
-import { IGistFileInsert } from '../../common/interfaces/gist-file.interface';
-
-enum DisplayVariants {
-  List,
-  Gist,
-}
+import { Component, h, Host, Prop } from '@stencil/core';
+import { IGistFile } from '../../common/interfaces/gist-file.interface';
+import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
+import { DisplayVariants } from '../../common/enums/display-variants.enum';
 
 @Component({
   tag: 'main-window',
@@ -13,63 +10,51 @@ enum DisplayVariants {
 })
 export class MainWindow {
 
-  @State()
+  @Prop()
   whatToDisplay: DisplayVariants = DisplayVariants.List;
 
-  @State()
+  @Prop()
+  userMetadata: any;
+
+  // If selected LIST
+  @Prop()
+  gistsList?: IGistListItem[];
+
+  @Prop()
   currentPage: number = 1;
 
-  @State()
-  allGists: number | null = 48;
+  @Prop()
+  lastPageReached: boolean = false;
 
-  @Listen('backToGistsListClick')
-  TEST_backToGistsListClick() {
-    this.whatToDisplay = DisplayVariants.List;
-  }
+  @Prop()
+  allGistsNumber: number | null = null;
 
-  @Listen('goToGist')
-  TEST_goToGist(event: CustomEvent<string>) {
-    console.log(event.detail);
-    this.whatToDisplay = DisplayVariants.Gist;
-  }
+  // If selected GIST
+  @Prop()
+  gistFiles?: IGistFile[];
 
-  @Listen('goToUserGists')
-  TEST_goToUserGists(event: CustomEvent<string>) {
-    console.log(event.detail);
-    this.whatToDisplay = DisplayVariants.List;
-  }
+  @Prop()
+  gistMetadata?: IGistMetadata;
 
-  @Listen('goToPage')
-  TEST_goToPage(event: CustomEvent<number>) {
-    this.currentPage = event.detail;
-    console.log(this.currentPage);
-  }
-
-  @Listen('selectFileInsert')
-  TEST_gistSelectedLog(event: CustomEvent<IGistFileInsert>) {
-    console.log('gist choosed: ', event.detail);
-    // To-Do onClosePlugin ???
-  }
-
-  get lastPage(): boolean {
-    return this.currentPage >= 13;
-  }
+  @Prop()
+  description?: string;
 
   render() {
 
-    const backButtonTitle = `Back to ${DUMMY_GIST_METADATA.userLogin} gists`;
+    const backButtonTitle = `Back to ${this.userMetadata.userLogin} gists`;
 
     return <Host>
       <div class={'d-flex items-center space-between main-window-header'}>
+
+        {/* NEED TO CHANGE TO SLOT  */}
         <div class={'d-flex items-center flex-start'}>
-          <back-to-gists-list class={'btn main-window__icon main-window__icon-back'} hidden={(this.whatToDisplay === DisplayVariants.List)} title={backButtonTitle}/>
+          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {this.userMetadata.userLogin} — all gists <span class={'label gist-badge'} title={!this.allGistsNumber ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGistsNumber ?? '???'} </span> </h1> }
 
-          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {DUMMY_GIST_METADATA.userLogin} — all gists <span class={'label gist-badge'} title={!this.allGists ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGists ?? '???'} </span> </h1> }
-
-          {(this.whatToDisplay === DisplayVariants.Gist) && <metadata-header
-          gistMetadata={DUMMY_GIST_METADATA}
-          class={'gist-viewer__metadata ml-2'}
-        />}
+          {(this.whatToDisplay === DisplayVariants.Gist) && (
+          <div class={'d-flex items-center flex-start'}><back-to-gists-list class={'btn main-window__icon main-window__icon-back'} title={backButtonTitle} /><metadata-header
+              gistMetadata={this.gistMetadata}
+              userData={this.userMetadata} // NEED TO CHANGE
+              class={'gist-viewer__metadata ml-2'} /></div>)}
         </div>
 
 
@@ -77,16 +62,17 @@ export class MainWindow {
       </div>
       <hr class={'horisontal-line mb-4'}/>
 
+      {/* NEED TO CHANGE TO SLOT  */}
       {(this.whatToDisplay === DisplayVariants.List) && <gists-list
-        gistsList={DUMMY_GISTS_LIST}
+        gistsList={this.gistsList}
         currentPage={this.currentPage}
-        lastPage={this.lastPage}
+        lastPage={this.lastPageReached}
       />}
 
       {(this.whatToDisplay === DisplayVariants.Gist) && <gist-viewer
-        gistMetadata={DUMMY_GIST_METADATA}
-        description={DUMMY_GISTS_LIST[0].description}
-        gistFiles={DUMMY_GIST_FILES}
+        gistMetadata={this.gistMetadata}
+        description={this.description}
+        gistFiles={this.gistFiles}
       />}
     </Host>
   }
