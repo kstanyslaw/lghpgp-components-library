@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
-import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
+import { IGistItem } from '../../common/interfaces';
 
 @Component({
   tag: 'main-window',
@@ -16,7 +16,7 @@ export class MainWindow {
 
   // If selected LIST
   @Prop()
-  gistsList?: IGistListItem[];
+  gistsList?: IGistItem[];
 
   @Prop()
   currentPage: number = 1;
@@ -29,7 +29,7 @@ export class MainWindow {
 
   // If selected GIST
   @Prop()
-  singleGist?: IGistListItem;
+  singleGist?: IGistItem;
 
   render() {
 

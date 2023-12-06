@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
+import { IGistItem } from '../../common/interfaces';
 
 @Component({
   tag: 'gists-list',
@@ -8,7 +8,7 @@ import { IGistListItem } from '../../common/interfaces/gist-list-item.interface'
 })
 export class GistsList {
   @Prop()
-  gistsList: IGistListItem[];
+  gistsList: IGistItem[];
 
   @Prop()
   currentPage: number;
@@ -20,7 +20,7 @@ export class GistsList {
     return (
       <Host>
         <ul class={'list-no-decoration'}>
-          {this.gistsList.map((gistItem: IGistListItem) => <li class={'gist-list-item mb-5'}>
+          {this.gistsList.map((gistItem: IGistItem) => <li class={'gist-list-item mb-5'}>
             <gist-list-item gistListItem={gistItem} />
           </li>)}
         </ul>

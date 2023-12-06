@@ -1,7 +1,7 @@
-import { IGistListItem } from "../common/interfaces/gist-list-item.interface";
+import { IGistItem } from "../common/interfaces/gist-list-item.interface";
 import { IGistMetadata } from "../common/interfaces/gist-data.interface";
 import { IGistFile } from "../common/interfaces/gist-file.interface";
-import { IUserData } from "../common/interfaces/user-metadata.interface";
+import { IUserData } from "../common/interfaces/user-data.interface";
 
 export const DUMMY_CODE: string[] = (`var promisify =
 (fn) =>
@@ -39,7 +39,7 @@ export const DUMMY_USER: IUserData = {
   userAvatarUrl: "https://avatars.githubusercontent.com/u/15340653?s=60&v=4",
 }
 
-export const DUMMY_GIST_ITEM: IGistListItem = {
+export const DUMMY_GIST_ITEM: IGistItem = {
   gistMetadata: {
     gistId: "DummyID",
     firstFileName: 'promisify.js',
@@ -60,7 +60,7 @@ export const DUMMY_GIST_ITEM: IGistListItem = {
   }]
 }
 
-export const DUMMY_GISTS_LIST: IGistListItem[] = [
+export const DUMMY_GISTS_LIST: IGistItem[] = [
   DUMMY_GIST_ITEM,
   {
     ...DUMMY_GIST_ITEM,

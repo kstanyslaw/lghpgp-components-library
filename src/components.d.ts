@@ -5,16 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+import { IGistFileInsert, IGistItem, IGistMetadata, IUserData } from "./common/interfaces";
 import { DisplayVariants } from "./common/enums/display-variants.enum";
-import { IGistMetadata } from "./common/interfaces/gist-data.interface";
-import { IUserData } from "./common/interfaces/user-metadata.interface";
-import { IGistFileInsert } from "./common/interfaces/gist-file.interface";
-export { IGistListItem } from "./common/interfaces/gist-list-item.interface";
+export { IGistFileInsert, IGistItem, IGistMetadata, IUserData } from "./common/interfaces";
 export { DisplayVariants } from "./common/enums/display-variants.enum";
-export { IGistMetadata } from "./common/interfaces/gist-data.interface";
-export { IUserData } from "./common/interfaces/user-metadata.interface";
-export { IGistFileInsert } from "./common/interfaces/gist-file.interface";
 export namespace Components {
     interface BackToGistsList {
     }
@@ -40,14 +34,14 @@ export namespace Components {
         "description": string;
     }
     interface GistListItem {
-        "gistListItem": IGistListItem;
+        "gistListItem": IGistItem;
     }
     interface GistViewer {
-        "singleGist": IGistListItem;
+        "singleGist": IGistItem;
     }
     interface GistsList {
         "currentPage": number;
-        "gistsList": IGistListItem[];
+        "gistsList": IGistItem[];
         "lastPage": boolean;
     }
     interface ListPaginator {
@@ -57,9 +51,9 @@ export namespace Components {
     interface MainWindow {
         "allGistsNumber": number | null;
         "currentPage": number;
-        "gistsList"?: IGistListItem[];
+        "gistsList"?: IGistItem[];
         "lastPageReached": boolean;
-        "singleGist"?: IGistListItem;
+        "singleGist"?: IGistItem;
         "userMetadata": any;
         "whatToDisplay": DisplayVariants;
     }
@@ -297,15 +291,15 @@ declare namespace LocalJSX {
         "description"?: string;
     }
     interface GistListItem {
-        "gistListItem"?: IGistListItem;
+        "gistListItem"?: IGistItem;
         "onGoToGist"?: (event: GistListItemCustomEvent<string>) => void;
     }
     interface GistViewer {
-        "singleGist"?: IGistListItem;
+        "singleGist"?: IGistItem;
     }
     interface GistsList {
         "currentPage"?: number;
-        "gistsList"?: IGistListItem[];
+        "gistsList"?: IGistItem[];
         "lastPage"?: boolean;
     }
     interface ListPaginator {
@@ -316,9 +310,9 @@ declare namespace LocalJSX {
     interface MainWindow {
         "allGistsNumber"?: number | null;
         "currentPage"?: number;
-        "gistsList"?: IGistListItem[];
+        "gistsList"?: IGistItem[];
         "lastPageReached"?: boolean;
-        "singleGist"?: IGistListItem;
+        "singleGist"?: IGistItem;
         "userMetadata"?: any;
         "whatToDisplay"?: DisplayVariants;
     }

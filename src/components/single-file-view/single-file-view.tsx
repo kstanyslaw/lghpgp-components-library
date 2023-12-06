@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { IGistFile, IGistFileInsert } from '../../common/interfaces';
 import { arrowLeftSVG, gitFileSVG, listColoumnReverseSVG, peaseOfCodeSVG } from '../../common/components/svg';
-import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 
 @Component({
   tag: 'single-file-view',

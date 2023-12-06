@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
+import { IGistItem } from '../../common/interfaces';
 
 @Component({
   tag: 'gist-list-item',
@@ -10,7 +10,7 @@ export class GistListItem {
   goToGist: EventEmitter<string>;
 
   @Prop()
-  gistListItem: IGistListItem;
+  gistListItem: IGistItem;
 
   goToGistHandler() {
     const gistId = this.gistListItem.gistMetadata.gistId;

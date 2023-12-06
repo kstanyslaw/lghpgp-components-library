@@ -1,6 +1,6 @@
 import { IGistMetadata } from "./gist-data.interface";
 import { IGistFile } from "./gist-file.interface";
-import { IUserData } from "./user-metadata.interface";
+import { IUserData } from "./user-data.interface";
 
 /**
  * @param {string} description - gist description
@@ -9,7 +9,7 @@ import { IUserData } from "./user-metadata.interface";
  * @param {IUserMetadata} ownerData - information about the user - the owner of the gist
  * @param {IGistFile[]} files - array of files in gist
  */
-export interface IGistListItem {
+export interface IGistItem {
 
   /**
    * @type {IGistMetadata} gistMetadata - gist ID, description and other

@@ -1,6 +1,6 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
 // import { fetchGistsList } from '../../utils/utils';
-import { IGistFileInsert } from '../../common/interfaces/gist-file.interface';
+import { IGistFileInsert } from '../../common/interfaces';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
 import { DUMMY_GIST_FILES, DUMMY_GIST_ITEM, DUMMY_GIST_METADATA, DUMMY_GISTS_LIST, DUMMY_USER } from '../../utils/dummy-data';
 
