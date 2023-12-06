@@ -1,6 +1,7 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
 import { IGistItem } from '../../common/interfaces';
+import { mainWindowContentFactory, mainWindowHeaderFactory } from './main-window.factory';
 
 @Component({
   tag: 'main-window',
@@ -31,40 +32,39 @@ export class MainWindow {
   @Prop()
   singleGist?: IGistItem;
 
+  get windowHeader(): HTMLElement {
+    const headerEl = mainWindowHeaderFactory(
+      this.whatToDisplay,
+      false,
+      this.userMetadata,
+      this.allGistsNumber,
+      'kstanyslaw',
+      this.singleGist
+    );
+
+    return headerEl;
+  }
+
+  get windowContent(): HTMLElement {
+    const contentEl = mainWindowContentFactory(
+      this.whatToDisplay,
+      false,
+      this.gistsList,
+      this.currentPage,
+      this.lastPageReached,
+      this.singleGist
+    );
+
+    return contentEl;
+  }
+
   render() {
 
-    const backButtonTitle = `Back to ${this.userMetadata.userLogin} gists`;
+    return <main-window-layout>
+      {this.windowHeader}
 
-    return <Host>
-      <div class={'d-flex items-center space-between main-window-header'}>
-
-        {/* NEED TO CHANGE TO SLOT  */}
-        <div class={'d-flex items-center flex-start'}>
-          {(this.whatToDisplay === DisplayVariants.List) && <h1 class={'my-0'}> {this.userMetadata.userLogin} — all gists <span class={'label gist-badge'} title={!this.allGistsNumber ? 'Your token does not have enougth permissions to get your gists number.\nGo to http://github.com/settings/tokens and check "read:user" flag.' : null}> {this.allGistsNumber ?? '???'} </span> </h1> }
-
-          {(this.whatToDisplay === DisplayVariants.Gist) && (
-          <div class={'d-flex items-center flex-start'}><back-to-gists-list class={'btn main-window__icon main-window__icon-back'} title={backButtonTitle} /><metadata-header
-              gistMetadata={this.singleGist.gistMetadata}
-              userData={this.singleGist.ownerData}
-              class={'gist-viewer__metadata ml-2'} /></div>)}
-        </div>
-
-
-        <close-window class={'main-window__icon main-window__icon-close'}/>
-      </div>
-      <hr class={'horisontal-line mb-4'}/>
-
-      {/* NEED TO CHANGE TO SLOT  */}
-      {(this.whatToDisplay === DisplayVariants.List) && <gists-list
-        gistsList={this.gistsList}
-        currentPage={this.currentPage}
-        lastPage={this.lastPageReached}
-      />}
-
-      {(this.whatToDisplay === DisplayVariants.Gist) && <gist-viewer
-        singleGist={this.singleGist}
-      />}
-    </Host>
+      {this.windowContent}
+    </main-window-layout>
   }
 
 }

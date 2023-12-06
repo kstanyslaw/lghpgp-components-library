@@ -57,6 +57,8 @@ export namespace Components {
         "userMetadata": any;
         "whatToDisplay": DisplayVariants;
     }
+    interface MainWindowLayout {
+    }
     interface MetadataHeader {
         "gistMetadata": IGistMetadata;
         "userData": IUserData;
@@ -201,6 +203,12 @@ declare global {
         prototype: HTMLMainWindowElement;
         new (): HTMLMainWindowElement;
     };
+    interface HTMLMainWindowLayoutElement extends Components.MainWindowLayout, HTMLStencilElement {
+    }
+    var HTMLMainWindowLayoutElement: {
+        prototype: HTMLMainWindowLayoutElement;
+        new (): HTMLMainWindowLayoutElement;
+    };
     interface HTMLMetadataHeaderElementEventMap {
         "goToGist": string;
         "goToUserGists": string;
@@ -258,6 +266,7 @@ declare global {
         "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
         "main-window": HTMLMainWindowElement;
+        "main-window-layout": HTMLMainWindowLayoutElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -316,6 +325,8 @@ declare namespace LocalJSX {
         "userMetadata"?: any;
         "whatToDisplay"?: DisplayVariants;
     }
+    interface MainWindowLayout {
+    }
     interface MetadataHeader {
         "gistMetadata"?: IGistMetadata;
         "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
@@ -343,6 +354,7 @@ declare namespace LocalJSX {
         "gists-list": GistsList;
         "list-paginator": ListPaginator;
         "main-window": MainWindow;
+        "main-window-layout": MainWindowLayout;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -368,6 +380,7 @@ declare module "@stencil/core" {
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "main-window": LocalJSX.MainWindow & JSXBase.HTMLAttributes<HTMLMainWindowElement>;
+            "main-window-layout": LocalJSX.MainWindowLayout & JSXBase.HTMLAttributes<HTMLMainWindowLayoutElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
