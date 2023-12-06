@@ -1,8 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { IGistFile } from '../../common/interfaces/gist-file.interface';
-import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
-import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
   tag: 'main-window',
@@ -31,13 +29,7 @@ export class MainWindow {
 
   // If selected GIST
   @Prop()
-  gistFiles?: IGistFile[];
-
-  @Prop()
-  gistMetadata?: IGistMetadata;
-
-  @Prop()
-  description?: string;
+  singleGist?: IGistListItem;
 
   render() {
 
@@ -52,8 +44,8 @@ export class MainWindow {
 
           {(this.whatToDisplay === DisplayVariants.Gist) && (
           <div class={'d-flex items-center flex-start'}><back-to-gists-list class={'btn main-window__icon main-window__icon-back'} title={backButtonTitle} /><metadata-header
-              gistMetadata={this.gistMetadata}
-              userData={this.userMetadata} // NEED TO CHANGE
+              gistMetadata={this.singleGist.gistMetadata}
+              userData={this.singleGist.ownerData}
               class={'gist-viewer__metadata ml-2'} /></div>)}
         </div>
 
@@ -70,9 +62,7 @@ export class MainWindow {
       />}
 
       {(this.whatToDisplay === DisplayVariants.Gist) && <gist-viewer
-        gistMetadata={this.gistMetadata}
-        description={this.description}
-        gistFiles={this.gistFiles}
+        singleGist={this.singleGist}
       />}
     </Host>
   }

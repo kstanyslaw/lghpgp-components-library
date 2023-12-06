@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/components/svg';
-import { IGistMetadata } from '../../components';
+import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
 import { IUserData } from '../../common/interfaces/user-metadata.interface';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { IGistMetadata } from '../../common/interfaces/gist-data.interface';
 import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.interface';
+import { IGistListItem } from '../../common/interfaces/gist-list-item.interface';
 
 @Component({
   tag: 'gist-viewer',
@@ -9,26 +9,26 @@ import { IGistFile, IGistFileInsert } from '../../common/interfaces/gist-file.in
 })
 export class GistViewer {
   @Prop()
-  gistMetadata: IGistMetadata;
-
-  @Prop()
-  description: string;
-
-  @Prop()
-  gistFiles?: IGistFile[];
+  singleGist: IGistListItem
 
   selectFileInsertInterceptor(event: CustomEvent<IGistFileInsert>) {
-    event.detail.gistId = this.gistMetadata.gistId;
+    event.detail.gistId = this.singleGist.gistMetadata.gistId;
   }
 
   render() {
+
+    let {
+      files,
+      description
+    } = this.singleGist;
+
     return (
       <Host>
-        <gist-description description={this.description} />
+        <gist-description description={description} />
 
-        {!!this.gistFiles ? (
+        {!!files ? (
           <ul class={'list-no-decoration my-1'}>
-          {this.gistFiles.map((file: IGistFile) =>
+          {files.map((file: IGistFile) =>
           <li class={'mb-1'}>
             <single-file-view
               code={file.code}

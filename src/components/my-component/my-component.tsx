@@ -1,5 +1,5 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
-import { fetchGistsList } from '../../utils/utils';
+// import { fetchGistsList } from '../../utils/utils';
 import { IGistFileInsert } from '../../common/interfaces/gist-file.interface';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
 import { DUMMY_GIST_FILES, DUMMY_GIST_ITEM, DUMMY_GIST_METADATA, DUMMY_GISTS_LIST, DUMMY_USER } from '../../utils/dummy-data';
@@ -78,6 +78,13 @@ export class MyComponent {
 
   render() {
 
+    const singleGist = {
+      description: DUMMY_GIST_ITEM.description,
+      gistMetadata: DUMMY_GIST_METADATA,
+      files: DUMMY_GIST_FILES,
+      ownerData: DUMMY_USER,
+    };
+
     return <Host>
       {
         this.isMainWindowOpen
@@ -90,9 +97,7 @@ export class MyComponent {
             lastPageReached={this.lastPageReached}
             allGistsNumber={48}
 
-            gistFiles={DUMMY_GIST_FILES}
-            gistMetadata={DUMMY_GIST_METADATA}
-            description={DUMMY_GIST_ITEM.description}
+            singleGist={singleGist}
           />
           : <button
               type="button"

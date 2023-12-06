@@ -1,9 +1,5 @@
 import { TOKEN } from "./git-token";
 
-export function format(first: string, middle: string, last: string): string {
-  return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
-}
-
 export function timeString(timestamp:Date): string {
   const milliseconds = timestamp.getTime();
   const diffTime = (new Date()).getTime() - milliseconds;
