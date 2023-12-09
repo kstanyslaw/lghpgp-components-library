@@ -11,6 +11,7 @@ export { IGistFileInsert, IGistItem, IGistMetadata, IUserData } from "./common/i
 export { DisplayVariants } from "./common/enums/display-variants.enum";
 export namespace Components {
     interface BackToGistsList {
+        "userLogin": string;
     }
     interface CloseWindow {
     }
@@ -49,13 +50,17 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MainWindow {
-        "allGistsNumber": number | null;
-        "currentPage": number;
+        "allGistsNumber"?: number | null;
+        "backToUserLogin"?: string;
+        "currentPage"?: number;
         "gistsList"?: IGistItem[];
-        "lastPageReached": boolean;
+        "isLoading": boolean;
+        "lastPageReached"?: boolean;
         "singleGist"?: IGistItem;
-        "userMetadata": any;
+        "userMetadata"?: IUserData;
         "whatToDisplay": DisplayVariants;
+    }
+    interface MainWindowLayout {
     }
     interface MetadataHeader {
         "gistMetadata": IGistMetadata;
@@ -201,6 +206,12 @@ declare global {
         prototype: HTMLMainWindowElement;
         new (): HTMLMainWindowElement;
     };
+    interface HTMLMainWindowLayoutElement extends Components.MainWindowLayout, HTMLStencilElement {
+    }
+    var HTMLMainWindowLayoutElement: {
+        prototype: HTMLMainWindowLayoutElement;
+        new (): HTMLMainWindowLayoutElement;
+    };
     interface HTMLMetadataHeaderElementEventMap {
         "goToGist": string;
         "goToUserGists": string;
@@ -258,6 +269,7 @@ declare global {
         "gists-list": HTMLGistsListElement;
         "list-paginator": HTMLListPaginatorElement;
         "main-window": HTMLMainWindowElement;
+        "main-window-layout": HTMLMainWindowLayoutElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
         "relative-time": HTMLRelativeTimeElement;
@@ -267,6 +279,7 @@ declare global {
 declare namespace LocalJSX {
     interface BackToGistsList {
         "onBackToGistsListClick"?: (event: BackToGistsListCustomEvent<any>) => void;
+        "userLogin"?: string;
     }
     interface CloseWindow {
         "onCloseWindowClick"?: (event: CloseWindowCustomEvent<any>) => void;
@@ -309,12 +322,16 @@ declare namespace LocalJSX {
     }
     interface MainWindow {
         "allGistsNumber"?: number | null;
+        "backToUserLogin"?: string;
         "currentPage"?: number;
         "gistsList"?: IGistItem[];
+        "isLoading"?: boolean;
         "lastPageReached"?: boolean;
         "singleGist"?: IGistItem;
-        "userMetadata"?: any;
+        "userMetadata"?: IUserData;
         "whatToDisplay"?: DisplayVariants;
+    }
+    interface MainWindowLayout {
     }
     interface MetadataHeader {
         "gistMetadata"?: IGistMetadata;
@@ -343,6 +360,7 @@ declare namespace LocalJSX {
         "gists-list": GistsList;
         "list-paginator": ListPaginator;
         "main-window": MainWindow;
+        "main-window-layout": MainWindowLayout;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
         "relative-time": RelativeTime;
@@ -368,6 +386,7 @@ declare module "@stencil/core" {
             "gists-list": LocalJSX.GistsList & JSXBase.HTMLAttributes<HTMLGistsListElement>;
             "list-paginator": LocalJSX.ListPaginator & JSXBase.HTMLAttributes<HTMLListPaginatorElement>;
             "main-window": LocalJSX.MainWindow & JSXBase.HTMLAttributes<HTMLMainWindowElement>;
+            "main-window-layout": LocalJSX.MainWindowLayout & JSXBase.HTMLAttributes<HTMLMainWindowLayoutElement>;
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;

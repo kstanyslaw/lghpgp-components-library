@@ -89,16 +89,16 @@ export class MyComponent {
       {
         this.isMainWindowOpen
           ? <main-window
-            whatToDisplay={this.whatToDisplay}
-            userMetadata={DUMMY_USER}
+              whatToDisplay={this.whatToDisplay}
+              userMetadata={DUMMY_USER}
 
-            gistsList={DUMMY_GISTS_LIST}
-            currentPage={this.currentPage}
-            lastPageReached={this.lastPageReached}
-            allGistsNumber={48}
+              gistsList={DUMMY_GISTS_LIST}
+              currentPage={this.currentPage}
+              lastPageReached={this.lastPageReached}
+              allGistsNumber={48}
 
-            singleGist={singleGist}
-          />
+              singleGist={singleGist}
+            />
           : <button
               type="button"
               class={'btn items-center'}

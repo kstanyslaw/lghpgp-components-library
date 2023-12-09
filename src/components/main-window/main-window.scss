@@ -33,6 +33,10 @@
       font-size: var(--font-size__x-small);
     }
   }
+
+  ul {
+    display: none;
+  }
 }
 
 .label.gist-badge {
@@ -42,13 +46,4 @@
   margin-left: 0;
   background-color: var(--background-color-tertiary);
   border-color: transparent;
-}
-
-.main-window-header {
-  .files,
-  .forks,
-  .comments,
-  .stars {
-    display: none;
-  }
 }
