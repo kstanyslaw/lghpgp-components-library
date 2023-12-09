@@ -1,14 +1,13 @@
 import { Component, h, Prop } from '@stencil/core';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
 import { IGistItem } from '../../common/interfaces';
-import { mainWindowContentFactory, mainWindowHeaderFactory } from './main-window.factory';
+import { mainWindowFactory } from './main-window.factory';
 
 @Component({
   tag: 'main-window',
   styleUrl: 'main-window.scss',
 })
 export class MainWindow {
-
   @Prop()
   whatToDisplay: DisplayVariants = DisplayVariants.List;
 
@@ -32,38 +31,27 @@ export class MainWindow {
   @Prop()
   singleGist?: IGistItem;
 
-  get windowHeader(): HTMLElement {
-    const headerEl = mainWindowHeaderFactory(
+  get windowElements(): {headerEl: HTMLElement, contentEl: HTMLElement} {
+    return mainWindowFactory(
       this.whatToDisplay,
       false,
       this.userMetadata,
       this.allGistsNumber,
       'kstanyslaw',
-      this.singleGist
-    );
-
-    return headerEl;
-  }
-
-  get windowContent(): HTMLElement {
-    const contentEl = mainWindowContentFactory(
-      this.whatToDisplay,
-      false,
       this.gistsList,
       this.currentPage,
       this.lastPageReached,
       this.singleGist
     );
-
-    return contentEl;
   }
 
   render() {
+    const { headerEl, contentEl } = this.windowElements;
 
     return <main-window-layout>
-      {this.windowHeader}
+      {headerEl}
 
-      {this.windowContent}
+      {contentEl}
     </main-window-layout>
   }
 

@@ -11,6 +11,7 @@ export { IGistFileInsert, IGistItem, IGistMetadata, IUserData } from "./common/i
 export { DisplayVariants } from "./common/enums/display-variants.enum";
 export namespace Components {
     interface BackToGistsList {
+        "userLogin": string;
     }
     interface CloseWindow {
     }
@@ -276,6 +277,7 @@ declare global {
 declare namespace LocalJSX {
     interface BackToGistsList {
         "onBackToGistsListClick"?: (event: BackToGistsListCustomEvent<any>) => void;
+        "userLogin"?: string;
     }
     interface CloseWindow {
         "onCloseWindowClick"?: (event: CloseWindowCustomEvent<any>) => void;
