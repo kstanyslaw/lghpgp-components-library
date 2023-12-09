@@ -11,6 +11,7 @@ export { IGistFileInsert, IGistItem, IGistMetadata, IUserData } from "./common/i
 export { DisplayVariants } from "./common/enums/display-variants.enum";
 export namespace Components {
     interface BackToGistsList {
+        "userLogin": string;
     }
     interface CloseWindow {
     }
@@ -49,12 +50,14 @@ export namespace Components {
         "lastPage": boolean;
     }
     interface MainWindow {
-        "allGistsNumber": number | null;
-        "currentPage": number;
+        "allGistsNumber"?: number | null;
+        "backToUserLogin"?: string;
+        "currentPage"?: number;
         "gistsList"?: IGistItem[];
-        "lastPageReached": boolean;
+        "isLoading": boolean;
+        "lastPageReached"?: boolean;
         "singleGist"?: IGistItem;
-        "userMetadata": any;
+        "userMetadata"?: IUserData;
         "whatToDisplay": DisplayVariants;
     }
     interface MainWindowLayout {
@@ -276,6 +279,7 @@ declare global {
 declare namespace LocalJSX {
     interface BackToGistsList {
         "onBackToGistsListClick"?: (event: BackToGistsListCustomEvent<any>) => void;
+        "userLogin"?: string;
     }
     interface CloseWindow {
         "onCloseWindowClick"?: (event: CloseWindowCustomEvent<any>) => void;
@@ -318,11 +322,13 @@ declare namespace LocalJSX {
     }
     interface MainWindow {
         "allGistsNumber"?: number | null;
+        "backToUserLogin"?: string;
         "currentPage"?: number;
         "gistsList"?: IGistItem[];
+        "isLoading"?: boolean;
         "lastPageReached"?: boolean;
         "singleGist"?: IGistItem;
-        "userMetadata"?: any;
+        "userMetadata"?: IUserData;
         "whatToDisplay"?: DisplayVariants;
     }
     interface MainWindowLayout {

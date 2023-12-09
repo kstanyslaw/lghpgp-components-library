@@ -1,69 +1,63 @@
 import { Component, h, Prop } from '@stencil/core';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
-import { IGistItem } from '../../common/interfaces';
-import { mainWindowContentFactory, mainWindowHeaderFactory } from './main-window.factory';
+import { IGistItem, IUserData } from '../../common/interfaces';
+import { mainWindowFactory } from './main-window.factory';
 
 @Component({
   tag: 'main-window',
   styleUrl: 'main-window.scss',
 })
 export class MainWindow {
-
   @Prop()
   whatToDisplay: DisplayVariants = DisplayVariants.List;
 
   @Prop()
-  userMetadata: any;
+  isLoading: boolean;
 
   // If selected LIST
+  @Prop()
+  userMetadata?: IUserData;
+
   @Prop()
   gistsList?: IGistItem[];
 
   @Prop()
-  currentPage: number = 1;
+  currentPage?: number = 1;
 
   @Prop()
-  lastPageReached: boolean = false;
+  lastPageReached?: boolean = false;
 
   @Prop()
-  allGistsNumber: number | null = null;
+  allGistsNumber?: number | null = null;
 
   // If selected GIST
   @Prop()
   singleGist?: IGistItem;
 
-  get windowHeader(): HTMLElement {
-    const headerEl = mainWindowHeaderFactory(
+  @Prop()
+  backToUserLogin?: string;
+
+  get windowElements(): {headerEl: HTMLElement, contentEl: HTMLElement} {
+    return mainWindowFactory(
       this.whatToDisplay,
-      false,
+      this.isLoading,
       this.userMetadata,
       this.allGistsNumber,
-      'kstanyslaw',
-      this.singleGist
-    );
-
-    return headerEl;
-  }
-
-  get windowContent(): HTMLElement {
-    const contentEl = mainWindowContentFactory(
-      this.whatToDisplay,
-      false,
+      this.backToUserLogin,
       this.gistsList,
       this.currentPage,
       this.lastPageReached,
       this.singleGist
     );
-
-    return contentEl;
   }
 
   render() {
+    const { headerEl, contentEl } = this.windowElements;
 
     return <main-window-layout>
-      {this.windowHeader}
+      {headerEl}
 
-      {this.windowContent}
+      {contentEl}
     </main-window-layout>
   }
 
