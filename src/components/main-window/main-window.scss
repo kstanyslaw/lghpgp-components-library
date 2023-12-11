@@ -1,5 +1,3 @@
-@import url('../../common/styles/general.scss');
-
 :host {
   display: block;
 }
@@ -43,7 +41,10 @@
   font-size: var(--font-size__x-large);
   font-weight: normal;
   padding: 0.5rem;
-  margin-left: 0;
   background-color: var(--background-color-tertiary);
   border-color: transparent;
+}
+
+*[slot="header"] {
+  height: 3.75rem;
 }

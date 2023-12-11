@@ -1,0 +1,27 @@
+$paddingSteps: (
+  '0': 0,
+  '1': 0.2rem,
+  '2': 0.4rem,
+  '3': 0.6rem,
+);
+
+@each $step, $value in $paddingSteps {
+  .px-#{$step} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+
+  .py-#{$step} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  @each $step, $value in $paddingSteps {
+    .px-lg-#{$step} {
+      padding-left: $value;
+      padding-right: $value;
+    }
+  }
+}

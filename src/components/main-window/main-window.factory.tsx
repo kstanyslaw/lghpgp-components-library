@@ -15,22 +15,13 @@ export function mainWindowFactory (
   ): {headerEl: HTMLElement, contentEl: HTMLElement} {
     let headerEl: HTMLElement;
     let contentEl: HTMLElement;
-<<<<<<< HEAD
   switch (!isLoading) {
     case (whatToDisplay === DisplayVariants.List):
-=======
-  switch (true) {
-    case (!isLoading && whatToDisplay === DisplayVariants.List):
->>>>>>> 480978cb0c752b1895ce70064d5649ae82c7c450
       headerEl = getListHeader(userMetadata, allGistsNumber);
       contentEl = getListContent(gistsList, currentPage, lastPageReached);
       break;
 
-<<<<<<< HEAD
     case (whatToDisplay === DisplayVariants.Gist):
-=======
-    case (!isLoading && whatToDisplay === DisplayVariants.Gist):
->>>>>>> 480978cb0c752b1895ce70064d5649ae82c7c450
       headerEl = getGistHeader(backButtonUserLogin, singleGist);
       contentEl = getGistContent(singleGist);
       break;
@@ -49,7 +40,7 @@ function getListHeader(
     allGistsNumber: number | null
   ): HTMLElement {
   return (
-    <h1 class={'my-0'} slot='header'>
+    <h1 class={'my-0 d-flex items-center'} slot='header'>
       {userMetadata.userLogin} — all gists
         <span
           class={'label gist-badge'}

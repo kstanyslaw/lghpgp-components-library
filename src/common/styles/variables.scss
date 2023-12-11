@@ -1,0 +1,20 @@
+:host {
+  --color-text: var(--ls-primary-text-color, whitesmoke);
+  --color-text-muted: var(--ls-pie-fg-color, gray);
+  --color-text-link: var(--ls-link-text-color, blue);
+  --color-text-link-hover: var(--ls-link-text-hover-color, darkblue);
+  --border-color: var(--ls-border-color, gray);
+  --border-color__hover: var(--ls-secondary-border-color, lightgray);
+  --background-color: var(--ls-primary-background-color);
+  --background-color-secondary: var(--ls-secondary-background-color);
+  --background-color-tertiary: var(--ls-tertiary-background-color);
+  --background-color__image: var(--ls-quaternary-background-color);
+  --border-width-thin: 1px;
+  --font-family: var(--ls-font-family);
+  --font-family__fallback: "Arial", "Helvetica", sans-serif;
+  --font-family__code: "Fira Code","Monaco,Menlo","Consolas","COURIER NEW",monospace;
+  --font-size__code: 0.85rem;
+  --font-size__x-small: 0.7rem;
+  --font-size__small: 0.8rem;
+  --font-size__x-large: 1.5rem;
+}

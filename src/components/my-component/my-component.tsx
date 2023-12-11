@@ -1,4 +1,4 @@
-import { Component, h, Host, Listen, State } from '@stencil/core';
+import { Build, Component, h, Host, Listen, State } from '@stencil/core';
 // import { fetchGistsList } from '../../utils/utils';
 import { IGistFileInsert } from '../../common/interfaces';
 import { DisplayVariants } from '../../common/enums/display-variants.enum';
@@ -110,3 +110,5 @@ export class MyComponent {
     </Host>
   }
 }
+
+// if (Build.isDev) module.exports = MyComponent;
