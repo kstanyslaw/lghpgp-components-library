@@ -1,6 +1,12 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { IGistItem } from '../../common/interfaces';
 
+/**
+ * A component that shows metadata, description and code preview
+ * of a given gist via the appropriate child components
+ * @prop {IGistItem} gistListItem
+ * @event goToGist emits ID of selected gist
+ */
 @Component({
   tag: 'gist-list-item',
   styleUrl: 'gist-list-item.scss',

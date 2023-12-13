@@ -1,5 +1,9 @@
 import { Component, Prop, h } from '@stencil/core';
 
+/**
+ * A component shows given gist description
+ * @prop {string} description
+ */
 @Component({
   tag: 'gist-description',
   styles: `

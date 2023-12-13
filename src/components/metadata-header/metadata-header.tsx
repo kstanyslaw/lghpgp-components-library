@@ -3,30 +3,42 @@ import { IGistMetadata } from '../../common/interfaces';
 import { IUserData } from '../../common/interfaces';
 import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/components/svg';
 
+/**
+ * A component shows given metadata of gist
+ * @prop {IGistMetadata} gistMetadata
+ * @prop {IUserData} userData - a data of gist's owner
+ * @event goToGist emits gist ID
+ * @event goToUserGists emits user login
+ */
 @Component({
   tag: 'metadata-header',
   styleUrl: 'metadata-header.scss',
-  // shadow: true,
 })
 export class MetadataHeader {
 
+  /**
+   * @type {IGistMetadata}
+   */
   @Prop()
   gistMetadata: IGistMetadata;
 
+  /**
+   * @type {IUserData} a data of gist's owner
+   */
   @Prop()
   userData: IUserData;
 
   @Event()
   goToGist: EventEmitter<string>;
 
-  goToGistHandler() {
+  goToGistHandler(): void {
     this.goToGist.emit(this.gistMetadata.gistId);
   }
 
   @Event()
   goToUserGists: EventEmitter<string>;
 
-  goToUserGistsHandler() {
+  goToUserGistsHandler(): void {
     this.goToUserGists.emit(this.userData.userLogin);
   }
 

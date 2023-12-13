@@ -4,8 +4,9 @@ import Prism from 'prismjs';
 /**
  * @param {string[]} code - A property that takes an array of lines of code
  * @param {string} lang - A programing language of this code
- * @returns A table of strings line by line.
+ * @returns An <pre> element with a strings of <code> line by line.
  * Uses {index + 1} to display the line number.
+ * Uses Prismjs to highlight code
  */
 @Component({
   tag: 'code-preview',
