@@ -26,7 +26,6 @@ graph TD;
   gist-list-item --> metadata-header
   gist-list-item --> gist-description
   gist-list-item --> code-preview
-  metadata-header --> relative-time
   gist-viewer --> gist-description
   gist-viewer --> single-file-view
   single-file-view --> code-preview

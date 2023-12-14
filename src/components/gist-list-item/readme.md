@@ -42,7 +42,6 @@ graph TD;
   gist-list-item --> metadata-header
   gist-list-item --> gist-description
   gist-list-item --> code-preview
-  metadata-header --> relative-time
   gists-list --> gist-list-item
   style gist-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

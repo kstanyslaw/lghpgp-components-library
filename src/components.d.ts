@@ -168,29 +168,21 @@ export namespace Components {
      * @prop {IGistMetadata} gistMetadata
      * @prop {IUserData} userData - a data of gist's owner
      * @event goToGist emits gist ID
-     * @event goToUserGists emits user login
+     * @event goToUserGists emits login of gist's owner that user ckicked
      */
     interface MetadataHeader {
         /**
+          * Gist metadata
           * @type {IGistMetadata}
          */
         "gistMetadata": IGistMetadata;
         /**
-          * @type {IUserData} a data of gist's owner
+          * A data of gist's owner
+          * @type {IUserData}
          */
         "userData": IUserData;
     }
     interface MyComponent {
-    }
-    /**
-     * A component shows relative time by given timestamp in Date format
-     * @prop {Date} timestamp
-     */
-    interface RelativeTime {
-        /**
-          * @type {Date}
-         */
-        "timestamp": Date;
     }
     /**
      * A component shows single file in a gist and emits this file data by click
@@ -417,7 +409,7 @@ declare global {
      * @prop {IGistMetadata} gistMetadata
      * @prop {IUserData} userData - a data of gist's owner
      * @event goToGist emits gist ID
-     * @event goToUserGists emits user login
+     * @event goToUserGists emits login of gist's owner that user ckicked
      */
     interface HTMLMetadataHeaderElement extends Components.MetadataHeader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMetadataHeaderElementEventMap>(type: K, listener: (this: HTMLMetadataHeaderElement, ev: MetadataHeaderCustomEvent<HTMLMetadataHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -438,16 +430,6 @@ declare global {
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
-    };
-    /**
-     * A component shows relative time by given timestamp in Date format
-     * @prop {Date} timestamp
-     */
-    interface HTMLRelativeTimeElement extends Components.RelativeTime, HTMLStencilElement {
-    }
-    var HTMLRelativeTimeElement: {
-        prototype: HTMLRelativeTimeElement;
-        new (): HTMLRelativeTimeElement;
     };
     interface HTMLSingleFileViewElementEventMap {
         "selectFileInsert": IGistFileInsert;
@@ -486,7 +468,6 @@ declare global {
         "main-window-layout": HTMLMainWindowLayoutElement;
         "metadata-header": HTMLMetadataHeaderElement;
         "my-component": HTMLMyComponentElement;
-        "relative-time": HTMLRelativeTimeElement;
         "single-file-view": HTMLSingleFileViewElement;
     }
 }
@@ -656,31 +637,31 @@ declare namespace LocalJSX {
      * @prop {IGistMetadata} gistMetadata
      * @prop {IUserData} userData - a data of gist's owner
      * @event goToGist emits gist ID
-     * @event goToUserGists emits user login
+     * @event goToUserGists emits login of gist's owner that user ckicked
      */
     interface MetadataHeader {
         /**
+          * Gist metadata
           * @type {IGistMetadata}
          */
         "gistMetadata"?: IGistMetadata;
+        /**
+          * Emits gist ID that user choosed
+          * @event
+         */
         "onGoToGist"?: (event: MetadataHeaderCustomEvent<string>) => void;
+        /**
+          * emits login of gist's owner that user ckicked
+          * @event
+         */
         "onGoToUserGists"?: (event: MetadataHeaderCustomEvent<string>) => void;
         /**
-          * @type {IUserData} a data of gist's owner
+          * A data of gist's owner
+          * @type {IUserData}
          */
         "userData"?: IUserData;
     }
     interface MyComponent {
-    }
-    /**
-     * A component shows relative time by given timestamp in Date format
-     * @prop {Date} timestamp
-     */
-    interface RelativeTime {
-        /**
-          * @type {Date}
-         */
-        "timestamp": Date;
     }
     /**
      * A component shows single file in a gist and emits this file data by click
@@ -722,7 +703,6 @@ declare namespace LocalJSX {
         "main-window-layout": MainWindowLayout;
         "metadata-header": MetadataHeader;
         "my-component": MyComponent;
-        "relative-time": RelativeTime;
         "single-file-view": SingleFileView;
     }
 }
@@ -810,15 +790,10 @@ declare module "@stencil/core" {
              * @prop {IGistMetadata} gistMetadata
              * @prop {IUserData} userData - a data of gist's owner
              * @event goToGist emits gist ID
-             * @event goToUserGists emits user login
+             * @event goToUserGists emits login of gist's owner that user ckicked
              */
             "metadata-header": LocalJSX.MetadataHeader & JSXBase.HTMLAttributes<HTMLMetadataHeaderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            /**
-             * A component shows relative time by given timestamp in Date format
-             * @prop {Date} timestamp
-             */
-            "relative-time": LocalJSX.RelativeTime & JSXBase.HTMLAttributes<HTMLRelativeTimeElement>;
             /**
              * A component shows single file in a gist and emits this file data by click
              * @prop {string} filename

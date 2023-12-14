@@ -37,7 +37,6 @@ graph TD;
   gist-list-item --> metadata-header
   gist-list-item --> gist-description
   gist-list-item --> code-preview
-  metadata-header --> relative-time
   main-window --> gists-list
   style gists-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
