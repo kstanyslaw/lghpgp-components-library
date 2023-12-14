@@ -2,32 +2,64 @@ import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { IGistMetadata } from '../../common/interfaces';
 import { IUserData } from '../../common/interfaces';
 import { gitCommentSVG, gitFileSVG, gitForkSVG, gitStarSVG } from '../../common/components/svg';
+import { timeString } from '../../utils/utils';
 
+/**
+ * A component shows given metadata of gist
+ * @prop {IGistMetadata} gistMetadata
+ * @prop {IUserData} userData - a data of gist's owner
+ * @event goToGist emits gist ID
+ * @event goToUserGists emits login of gist's owner that user ckicked
+ */
 @Component({
   tag: 'metadata-header',
   styleUrl: 'metadata-header.scss',
-  // shadow: true,
 })
 export class MetadataHeader {
 
+  /**
+   * Gist metadata
+   * @type {IGistMetadata}
+   */
   @Prop()
   gistMetadata: IGistMetadata;
 
+  /**
+   * A data of gist's owner
+   * @type {IUserData}
+   */
   @Prop()
   userData: IUserData;
 
+  /**
+   * Emits gist ID that user choosed
+   * @event
+   */
   @Event()
   goToGist: EventEmitter<string>;
 
-  goToGistHandler() {
+  goToGistHandler(): void {
     this.goToGist.emit(this.gistMetadata.gistId);
   }
 
+  /**
+   * emits login of gist's owner that user ckicked
+   * @event
+   */
   @Event()
   goToUserGists: EventEmitter<string>;
 
-  goToUserGistsHandler() {
+  goToUserGistsHandler(): void {
     this.goToUserGists.emit(this.userData.userLogin);
+  }
+
+  /**
+   * Get relative date string from Date object
+   * @param {Date} lastActive - a date since last update on gist
+   * @returns {string} relative date string
+   */
+  getRelativeTime(lastActive: Date): string {
+    return timeString(lastActive);
   }
 
   render() {
@@ -78,7 +110,7 @@ export class MetadataHeader {
               {isSecret && <span title='Only those with the link can see this gist.' class={'label'}>Secret</span>}
             </span>
 
-            <div class={'fg-color-muted fg-small'}>Last active <relative-time timestamp={lastActive} /> </div>
+            <div class={'fg-color-muted fg-small'}>Last active {this.getRelativeTime(lastActive)} </div>
           </div>
         </div>
 

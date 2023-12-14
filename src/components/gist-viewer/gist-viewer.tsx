@@ -2,6 +2,14 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { IGistFile, IGistFileInsert } from '../../common/interfaces';
 import { IGistItem } from '../../common/interfaces';
 
+
+/**
+ * A component shows single gist with all files in it and descriotion
+ * Also this component intercepts gist ID to event when user choose a file
+ * form gist
+ * @prop {IGistFile} singleGist
+ * @method selectFileInsertInterceptor - intercepts gist ID
+ */
 @Component({
   tag: 'gist-viewer',
   styleUrl: 'gist-viewer.scss',
@@ -9,7 +17,7 @@ import { IGistItem } from '../../common/interfaces';
 })
 export class GistViewer {
   @Prop()
-  singleGist: IGistItem
+  singleGist: IGistItem;
 
   selectFileInsertInterceptor(event: CustomEvent<IGistFileInsert>) {
     event.detail.gistId = this.singleGist.gistMetadata.gistId;

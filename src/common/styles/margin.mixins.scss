@@ -1,0 +1,27 @@
+$marginSteps: (
+  '0': 0,
+  '1': 0.5rem,
+  '2': 1rem,
+  '3': 1.5rem,
+  '4': 2rem,
+  '5': 2.5rem
+);
+
+@each $step, $value in $marginSteps {
+  .m-#{$step} {
+    margin: $value;
+  }
+
+  .mb-#{$step} {
+    margin-bottom: $value;
+  }
+
+  .mt-#{$step} {
+    margin-top: $value;
+  }
+
+  .my-#{$step} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+}

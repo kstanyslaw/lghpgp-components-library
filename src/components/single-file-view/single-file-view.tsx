@@ -2,6 +2,13 @@ import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 import { IGistFile, IGistFileInsert } from '../../common/interfaces';
 import { arrowLeftSVG, gitFileSVG, listColoumnReverseSVG, peaseOfCodeSVG } from '../../common/components/svg';
 
+/**
+ * A component shows single file in a gist and emits this file data by click
+ * @prop {string} filename
+ * @prop {string[]} code - an arary of code from file line by line
+ * @prop {string} codeLang - code language
+ * @event selectFileInsert - event that emits file data object
+ */
 @Component({
   tag: 'single-file-view',
   styleUrls: ['single-file-view.scss'],
@@ -9,19 +16,33 @@ import { arrowLeftSVG, gitFileSVG, listColoumnReverseSVG, peaseOfCodeSVG } from 
 })
 export class SingleFileView {
 
+  /**
+   * @type {string}
+   */
   @Prop()
   filename: string;
 
+  /**
+   * @type {string[]} - an arary of code from file line by line
+   */
   @Prop()
   code: string[];
 
+  /**
+   * @type {string} - code language
+   */
   @Prop()
   codeLang: string;
 
+  /**
+   * Emits gist file data object that user clicked
+   * @type {IGistFileInsert}
+   * @event
+   */
   @Event()
   selectFileInsert: EventEmitter<IGistFileInsert>;
 
-  selectFileHandler() {
+  selectFileHandler(): void {
     const fileInsert: IGistFile ={
       code: this.code,
       fileName: this.filename,
@@ -39,7 +60,6 @@ export class SingleFileView {
             {this.filename}
           </div>
 
-          {/* <button onClick={this.selectFileHandler.bind(this)} class={'btn'}>Insert</button> */}
           <i class={'code-add-icon d-flex'}>
             {listColoumnReverseSVG()}
             {arrowLeftSVG()}

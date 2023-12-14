@@ -1,6 +1,11 @@
 import { Component, Event, EventEmitter, Listen, h } from "@stencil/core";
 import { closeCrossSVG } from "../../common/components/svg";
 
+/**
+ * A component that provides close button
+ * @event closeWindowClick
+ * @listens onClick on itself
+ */
 @Component({
   tag: 'close-window'
 })

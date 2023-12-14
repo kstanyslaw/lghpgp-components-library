@@ -1,5 +1,4 @@
-@import url('../../common/styles/general.scss');
-
 :host {
-  display: block;
+  color: var(--color-text, black);
+  font-family: var(--font-family), var(--font-family__fallback);
 }

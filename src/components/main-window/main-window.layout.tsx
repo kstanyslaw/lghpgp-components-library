@@ -1,5 +1,8 @@
 import { Component, Host, h } from "@stencil/core";
 
+/**
+ * A small component that returns just a main window layout skeleton
+ */
 @Component({
   tag: 'main-window-layout',
   styleUrl: 'main-window.scss'

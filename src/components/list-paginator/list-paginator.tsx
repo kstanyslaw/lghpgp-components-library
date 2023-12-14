@@ -1,17 +1,31 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
+/**
+ * @prop {number} currentPage
+ * @prop {boolean} lastPage - a condition that indicates if last page has been reached
+ * @event goToPage emits next page number
+ */
 @Component({
   tag: 'list-paginator',
   styleUrl: 'list-paginator.scss',
 })
 export class ListPaginator {
 
+  /**
+   * @type {number}
+   */
   @Prop()
   currentPage: number;
 
+  /**
+   * @type {boolean} a condition that indicates if last page has been reached
+   */
   @Prop()
   lastPage: boolean;
 
+  /**
+   * @event goToPage emits next page number
+   */
   @Event()
   goToPage: EventEmitter<number>;
 
