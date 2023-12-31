@@ -20,10 +20,10 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
-    {
-      type: 'docs-readme',
-    },
   ],
+  devServer: {
+    address: '0.0.0.0'
+  },
   plugins: [
     sass({
       injectGlobalPaths: [
