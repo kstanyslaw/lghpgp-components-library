@@ -6,20 +6,24 @@ const inDevMode: boolean | undefined = process.env.npm_lifecycle_script?.include
 export const config: Config = {
   namespace: 'lghgp-components-library',
   outputTargets: [
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
+    // {
+    //   type: 'dist',
+    //   esmLoaderPath: '../loader',
+    // },
     {
       type: 'dist-custom-elements',
+      customElementsExportBehavior: 'auto-define-custom-elements',
+      externalRuntime: false,
+      minify: true,
+
     },
     {
       type: 'docs-readme',
     },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
+    // {
+    //   type: 'www',
+    //   serviceWorker: null, // disable service workers
+    // },
   ],
   devServer: {
     address: '0.0.0.0'
