@@ -5,14 +5,32 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Dependencies
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+### Depends on
 
+- [main-window](../main-window)
+
+### Graph
+```mermaid
+graph TD;
+  my-component --> main-window
+  main-window --> main-window-layout
+  main-window --> gists-list
+  main-window --> back-to-gists-list
+  main-window --> metadata-header
+  main-window --> gist-viewer
+  main-window-layout --> close-window
+  gists-list --> gist-list-item
+  gists-list --> list-paginator
+  gist-list-item --> metadata-header
+  gist-list-item --> gist-description
+  gist-list-item --> code-preview
+  gist-viewer --> gist-description
+  gist-viewer --> single-file-view
+  single-file-view --> code-preview
+  style my-component fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

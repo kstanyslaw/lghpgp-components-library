@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.btn-pagination {
+  border-color: transparent;
+  background: none;
+  font-size: inherit;
+  color: var(--color-text);
+
+  &:hover:not(:disabled) {
+    border-color: var(--border-color);
+  }
+
+  &:disabled {
+    color: var(--color-text-muted);
+  }
+}

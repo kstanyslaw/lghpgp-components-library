@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.avatar {
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: var(--background-color__image);
+  background-position: center;
+  background-size: cover;
+}

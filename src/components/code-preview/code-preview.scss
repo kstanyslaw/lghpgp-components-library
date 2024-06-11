@@ -1,0 +1,32 @@
+@import 'hljs.scss';
+:host {
+  display: block;
+}
+
+code {
+  font-family: var(--font-family__code);
+  font-size: var(--font-size__code);
+}
+
+pre {
+  counter-reset: line;
+  margin: 0;
+}
+
+pre code {
+  display: block;
+  line-height: 1.5rem;
+}
+
+pre code:before {
+  background-color: var(--color-level-1);
+  color: var(--color-text-muted);
+  display: inline-block;
+  padding: 0 .5em;
+  margin-right: .5em;
+  min-width: 2.5rem;
+  width: auto;
+  counter-increment: line;
+  content: counter(line);
+  text-align: end;
+}
