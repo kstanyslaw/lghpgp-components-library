@@ -1,6 +1,6 @@
 {
   "name": "lghgp-components-library",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -27,7 +27,7 @@
     "generate": "stencil generate",
     "bump": "standard-version --skip-tag",
     "release": "git flow release start `sh scripts/nextver.sh`",
-    "publish": "git flow release finish `sh scripts/ver.sh"
+    "publish": "git flow release finish `sh scripts/ver.sh`"
   },
   "dependencies": {
     "@stencil/core": "^4.7.0",
