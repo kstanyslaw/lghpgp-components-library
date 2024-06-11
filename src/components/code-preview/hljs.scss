@@ -1,0 +1,39 @@
+.hljs-keyword {
+  color: var(--color-orange-9);
+}
+
+.hljs-string {
+  color: var(--color-lime-500);
+}
+
+.hljs-title {
+  &.class_ {
+    color: var(--color-teal-400);
+  }
+
+  &.function_ {
+    color: var(--color-teal-400);
+  }
+}
+
+.hljs-meta {
+  color: var(--color-teal-400);
+}
+
+.hljs-variable {
+  &.language_ {
+    color: var(--color-teal-400);
+  }
+}
+
+.hljs-attr {
+  color: var(--color-pink-700);
+}
+
+.hljs-property {
+  color: var(--color-teal-400);
+}
+
+.hljs-params {
+  color: var(--color-teal-400);
+}

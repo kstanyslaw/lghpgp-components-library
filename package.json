@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@stencil/core": "^4.7.0",
-    "prismjs": "^1.29.0"
+    "highlight.js": "^11.9.0"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.7",
