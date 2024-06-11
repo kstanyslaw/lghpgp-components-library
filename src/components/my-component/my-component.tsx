@@ -107,6 +107,7 @@ export class MyComponent {
               Open Main Window
             </button>
       }
+      {/* <code-preview code={DUMMY_GIST_FILES[1].code} codeLang={DUMMY_GIST_FILES[1].codeLang}></code-preview> */}
     </Host>
   }
 }

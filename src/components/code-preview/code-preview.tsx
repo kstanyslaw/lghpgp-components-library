@@ -1,5 +1,5 @@
-import { Component, Prop, h } from '@stencil/core';
-import Prism from 'prismjs';
+import { Component, Fragment, Prop, h } from '@stencil/core';
+import hljs from 'highlight.js/lib/common';
 
 /**
  * @param {string[]} code - A property that takes an array of lines of code
@@ -31,13 +31,17 @@ export class CodePreview {
       return null;
     }
 
+
+
     return (
-      <pre>
-        {this.code.map((row: string) => {
-          const highlighted = Prism.highlight(row, Prism.languages[this.codeLang], this.codeLang);
-          return <code innerHTML={highlighted}></code>
-        })}
-      </pre>
+      <Fragment>
+        <pre>
+          {this.code.map((row: string) => {
+            const highlightedCode = hljs.highlight(row, { language: this.codeLang }).value;
+            return <code innerHTML={highlightedCode}></code>
+          })}
+        </pre>
+      </Fragment>
     );
   }
 
